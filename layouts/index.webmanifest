@@ -1,34 +1,32 @@
 {
   "name": "{{ .Site.Title }}",
   "short_name": "{{ (urls.Parse .Site.Params.baseURL).Host }}",
-  {{- with .Site.Data.manifest }}
   "icons": [
-    {{ with index . "images/android-chrome-512x512.png" }}{
-      "src": "{{ .src | absURL | safeJS }}",
+    {{ with partial "functions/webpack" (dict "context" . "src" "images/android-chrome-512x512.png") }}{
+      "src": "{{ .src | safeJS }}",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },{{ end }}
-    {{ with index . "images/android-chrome-192x192.png" }}{
-      "src": "{{ .src | absURL | safeJS }}",
+    {{ with partial "functions/webpack" (dict "context" . "src" "images/android-chrome-192x192.png") }}{
+      "src": "{{ .src | safeJS }}",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },{{ end }}
-    {{ with index . "images/maskable-512x512.png" }}{
-      "src": "{{ .src | absURL | safeJS }}",
+    {{ with partial "functions/webpack" (dict "context" . "src" "images/maskable-512x512.png") }}{
+      "src": "{{ .src | safeJS }}",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     },{{ end }}
-    {{ with index . "images/maskable-192x192.png" }}{
-      "src": "{{ .src | absURL | safeJS }}",
+    {{ with partial "functions/webpack" (dict "context" . "src" "images/maskable-192x192.png") }}{
+      "src": "{{ .src | safeJS }}",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     }{{ end }}
   ],
-  {{- end }}
   "start_url": "/",
   "display": "browser",
   "background_color": "#ffffff",

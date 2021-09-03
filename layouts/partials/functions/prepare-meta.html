@@ -15,10 +15,8 @@
 
 {{/* Chooses and initializes various images for use by JSON schema & open graph tags */}}
 {{/* Author image (default) */}}
-{{- with .Site.Data.manifest -}}
-  {{- with index . $.Site.Author.image -}}
-    {{- $.Scratch.Set "authorImage" (dict "Permalink" (absURL .src) "Width" 1200 "Height" 1200 "MediaType" "image/jpeg") -}}
-  {{- end -}}
+{{- with partial "functions/webpack" (dict "context" . "src" .Site.Author.image) -}}
+  {{- $.Scratch.Set "authorImage" (dict "Permalink" .src "Width" 1200 "Height" 1200 "MediaType" "image/jpeg") -}}
 {{- end -}}
 {{/* Page image (via frontmatter) */}}
 {{- with .Params.image -}}
@@ -31,9 +29,8 @@
     {{- $.Scratch.Set "pageImage" . -}}
   {{- end -}}
 {{- end -}}
+
 {{/* Site logo */}}
-{{- with .Site.Data.manifest -}}
-  {{- with index . $.Site.Params.image -}}
-    {{- $.Scratch.Set "logoImage" (dict "Permalink" (absURL .src) "Width" 2048 "Height" 2048 "MediaType" "image/png") -}}
-  {{- end -}}
+{{- with partial "functions/webpack" (dict "context" . "src" .Site.Params.image) -}}
+  {{- $.Scratch.Set "logoImage" (dict "Permalink" .src "Width" 2048 "Height" 2048 "MediaType" "image/png") -}}
 {{- end -}}

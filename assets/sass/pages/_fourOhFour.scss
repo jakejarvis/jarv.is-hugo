@@ -1,0 +1,29 @@
+// 404 Styles
+div.layout-404 {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  text-align: center;
+  font-size: 0.9em;
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  h2 {
+    margin: 0.75em 0 0.5em 0;
+    letter-spacing: -0.005em;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+// Responsive
+@mixin responsive() {
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+}

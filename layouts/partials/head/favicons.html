@@ -1,15 +1,13 @@
-{{ with .Site.Data.manifest }}
-  {{- with index . "images/favicon.ico" }}
-  <link rel="icon" href="{{ .src | absURL }}">
-  {{- end }}
+{{- with partial "functions/webpack" (dict "context" . "src" "images/favicon.ico") }}
+  <link rel="icon" href="{{ .src }}">
+{{ end -}}
 
-  {{- with index . "images/favicon.svg" }}
-  <link rel="icon" href="{{ .src | absURL }}" type="image/svg+xml">
-  {{- end -}}
+{{- with partial "functions/webpack" (dict "context" . "src" "images/favicon.svg") }}
+  <link rel="icon" href="{{ .src }}" type="image/svg+xml">
+{{ end -}}
 
-  {{- with index . "images/apple-touch-icon.png" }}
-  <link rel="apple-touch-icon" href="{{ .src | absURL }}" sizes="180x180">
-  {{- end }}
-{{ end }}
+{{- with partial "functions/webpack" (dict "context" . "src" "images/apple-touch-icon.png") }}
+  <link rel="apple-touch-icon" href="{{ .src }}" sizes="180x180">
+{{ end -}}
 
 <link rel="manifest" href="{{ "site.webmanifest" | absURL }}">

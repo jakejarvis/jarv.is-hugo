@@ -1,5 +1,5 @@
 {{ printf "<!-- htmlmin:ignore -->" | safeHTML -}}
-{{ printf "<!-- %s -->" hugo.Environment | safeHTML }}
-{{ printf "<!-- %s -->" hugo.Version | safeHTML }}
-{{ printf "<!-- /content/%s -->" .File.Path | safeHTML }}
+{{ with hugo }}{{ printf "<!-- %s -->" .Environment | safeHTML }}
+{{ printf "<!-- %s -->" .Version | safeHTML }}{{ end }}
+{{ with .File }}{{ printf "<!-- /content/%s -->" .Path | safeHTML }}{{ end }}
 {{- printf "<!-- htmlmin:ignore -->" | safeHTML }}

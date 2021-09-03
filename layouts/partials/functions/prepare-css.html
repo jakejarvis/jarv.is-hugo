@@ -1,10 +1,8 @@
 {{/* Pull in CSS processed by Webpack */}}
 
 {{- define "__head_css" -}}
-  {{ with .Site.Data.manifest }}
-    {{ with index . "main.css" }}
-      <link rel="stylesheet" href="{{ .src | absURL }}">
-    {{ end }}
+  {{ with partial "functions/webpack" (dict "context" . "src" "main.css") }}
+    <link rel="stylesheet" href="{{ .src }}">
   {{ end }}
 
   {{/* Page-specific styles set via front matter, piped through PostCSS and inlined */}}
