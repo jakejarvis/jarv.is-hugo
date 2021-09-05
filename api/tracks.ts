@@ -129,7 +129,6 @@ const getNowPlaying = async (): Promise<Track> => {
 };
 
 const getTopTracks = async (): Promise<Track[]> => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { access_token } = await getAccessToken();
 
   const response = await fetch(TOP_TRACKS_ENDPOINT, {
@@ -141,10 +140,8 @@ const getTopTracks = async (): Promise<Track[]> => {
     },
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { items } = (await response.json()) as SpotifyTopSchema;
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   const tracks: Track[] = items.map((track: Readonly<SpotifyTrackSchema>) => ({
     artist: track.artists.map((_artist) => _artist.name).join(", "),
     title: track.name,

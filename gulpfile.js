@@ -1,3 +1,4 @@
+// @ts-nocheck
 import path from "path";
 import { fileURLToPath } from "url";
 import del from "del";
@@ -14,8 +15,7 @@ import imageminGifsicle from "imagemin-gifsicle";
 import imageminSvgo from "imagemin-svgo";
 
 // https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#what-do-i-use-instead-of-__dirname-and-__filename
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 gulp.task("default", gulp.series(
   clean,

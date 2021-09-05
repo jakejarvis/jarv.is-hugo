@@ -111,7 +111,7 @@ const getSiteStats = async (client: Client): Promise<OverallStats> => {
 
   pages.map((p: PageStats) => {
     // match URLs from RSS feed with db to populate some metadata
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
     const match = feed.rss.channel.item.find(
       (x: { link: string }) => x.link === baseUrl + p.slug + "/"
     );
