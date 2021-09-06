@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import del from "del";
 import gulp from "gulp";
 import { task as execa } from "gulp-execa";
+import cache from "gulp-cache";
 import htmlmin from "gulp-html-minifier-terser";
 import BrowserSync from "browser-sync";
 
@@ -89,19 +90,21 @@ function optimizeImages() {
   return gulp
     .src(["public/**/*.{gif,jpg,jpeg,png,svg}", "!public/assets/emoji/**/*"], { base: "./" })
     .pipe(
-      imagemin([
-        imageminMozjpeg({
-          quality: 85,
-          progressive: true,
-        }),
-        imageminPngquant({
-          quality: [0.7, 0.9],
-          speed: 1,
-          strip: true,
-        }),
-        imageminGifsicle(),
-        imageminSvgo(),
-      ])
+      cache(
+        imagemin([
+          imageminMozjpeg({
+            quality: 85,
+            progressive: true,
+          }),
+          imageminPngquant({
+            quality: [0.7, 0.9],
+            speed: 1,
+            strip: true,
+          }),
+          imageminGifsicle(),
+          imageminSvgo(),
+        ])
+      )
     )
     .pipe(gulp.dest(".", { overwrite: true }));
 }

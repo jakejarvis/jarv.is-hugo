@@ -90,6 +90,7 @@ export default {
                       "transform-block-scoping",
                       "transform-template-literals",
                     ],
+                    bugfixes: true,
                     useBuiltIns: "entry",
                     corejs: 3,
                   },
