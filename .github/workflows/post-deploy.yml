@@ -1,4 +1,4 @@
-name: Post-Deploy
+name: Release
 
 on:
   deployment_status
@@ -20,7 +20,10 @@ jobs:
         node-version: 14.x
     - run: yarn install --frozen-lockfile
     # https://docs.sentry.io/platforms/node/typescript/#configuring-typescript-compiler
-    - run: npx -p typescript tsc --esModuleInterop --sourceMap --sourceRoot '/' --inlineSources api/**/*.ts
+    - working-directory: ./api
+      run: |
+        npx -p typescript tsc --esModuleInterop --sourceMap --sourceRoot '/' --inlineSources *.ts
+        ls -lah
     - uses: getsentry/action-release@v1
       if: github.event.deployment_status.environment == 'production'
       env:

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import path from "path";
 import { fileURLToPath } from "url";
 import del from "del";
@@ -45,6 +44,7 @@ function clean() {
     "builds/",
     "_vendor/",
     "static/assets/",
+    "api/**/*.js*", // compiled typescript
   ]);
 }
 

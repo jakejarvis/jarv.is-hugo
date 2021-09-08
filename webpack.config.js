@@ -1,4 +1,3 @@
-// @ts-nocheck
 import path from "path";
 import { fileURLToPath } from "url";
 import webpack from "webpack";
