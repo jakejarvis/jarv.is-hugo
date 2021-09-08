@@ -44,7 +44,7 @@ function clean() {
     "builds/",
     "_vendor/",
     "static/assets/",
-    "api/**/*.js*", // compiled typescript
+    "api/**/*.js", // compiled typescript
   ]);
 }
 

@@ -64,7 +64,7 @@
     "public/**",
     "static/assets/**",
     "*.d.ts",
-    "api/**/*.js*",
+    "api/**/*.js",
     "gulpfile.js",
     "webpack.config.js"
   ]

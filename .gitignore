@@ -16,7 +16,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # compiled typescript
-api/**/*.js*
+api/**/*.js
 
 # Lighthouse CI
 .lighthouseci/
