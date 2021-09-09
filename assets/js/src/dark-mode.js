@@ -1,4 +1,4 @@
-import { init } from "@jakejarvis/dark-mode";
+import { init } from "dark-mode-switcheroo";
 
 init({
   toggle: document.querySelector(".dark-mode-toggle"),
