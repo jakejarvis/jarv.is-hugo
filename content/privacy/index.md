@@ -13,7 +13,7 @@ Okay, this is an easy one. 😉
 
 A simple hit counter on each page tallies an aggregate number of pageviews (i.e. `hits = hits + 1`). Individual views and identifying (or non-identifying) details are **never stored or logged**.
 
-The [serverless function](https://github.com/jakejarvis/jarv.is/blob/main/api/hits.ts) and [client script](https://github.com/jakejarvis/jarv.is/blob/main/assets/js/src/counter.js) are open source, and [snapshots of the database](https://github.com/jakejarvis/website-stats) are public.
+The [serverless function](https://github.com/jakejarvis/jarv.is/blob/main/api/hits.js) and [client script](https://github.com/jakejarvis/jarv.is/blob/main/assets/js/src/counter.js) are open source, and [snapshots of the database](https://github.com/jakejarvis/website-stats) are public.
 
 {{< image src="images/fauna_hits.png" alt="The entire database schema." link="/privacy/images/fauna_hits.png" />}}
 
