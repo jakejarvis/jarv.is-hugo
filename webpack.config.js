@@ -2,7 +2,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import webpack from "webpack";
 import WebpackAssetsManifest from "webpack-assets-manifest";
-import { SubresourceIntegrityPlugin } from "webpack-subresource-integrity";
 import CopyPlugin from "copy-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
@@ -59,16 +58,16 @@ export default {
         },
       ],
     }),
-    new SubresourceIntegrityPlugin({
-      enabled: true,
-      hashFuncNames: ["sha384"],
-    }),
     new WebpackAssetsManifest({
       writeToDisk: true, // allow Hugo to access file in dev mode
       output: path.resolve(__dirname, "data/manifest.json"),
       publicPath: true,
       integrity: true,
       integrityHashes: ["sha384"],
+      customize: (entry) => {
+        // don't add thousands of unneeded twemoji graphics to the manifest
+        if (entry.key.startsWith("emoji/")) return false;
+      },
     }),
   ],
   module: {
@@ -218,5 +217,15 @@ export default {
         },
       }),
     ],
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "public"),
+      watch: true,
+    },
+    host: "0.0.0.0", // weird docker bind behavior
+    port: process.env.PORT || 1337,
+    compress: true,
+    liveReload: true,
   },
 };
