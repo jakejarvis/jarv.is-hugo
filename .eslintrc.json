@@ -27,6 +27,9 @@
     "browser": true,
     "es6": true
   },
+  "rules": {
+    "compat/compat": "error"
+  },
   "settings": {
     "polyfills": [
       "fetch"
