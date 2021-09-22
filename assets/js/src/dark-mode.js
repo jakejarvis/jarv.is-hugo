@@ -1,4 +1,4 @@
-import { init as darkModeInit } from "dark-mode-switcheroo";
+import { init as initDarkMode } from "dark-mode-switcheroo";
 
 // HACK: disable theme transition until user's preference is auto-restored (1/2)
 const disableTransitionCSSHack = document.createElement("style");
@@ -10,7 +10,7 @@ disableTransitionCSSHack.innerHTML = `
 }`;
 document.head.appendChild(disableTransitionCSSHack);
 
-darkModeInit({
+initDarkMode({
   toggle: document.querySelector(".dark-mode-toggle"),
   onInit: function (t) {
     // make toggle visible now that we know JS is enabled
@@ -19,6 +19,6 @@ darkModeInit({
     // HACK: re-enable theme transitions after a very short delay, otherwise there's a weird race condition (2/2)
     setTimeout(() => {
       document.head.removeChild(disableTransitionCSSHack);
-    }, 250);
+    }, 500);
   },
 });
