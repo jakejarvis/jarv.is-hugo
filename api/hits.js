@@ -8,8 +8,8 @@ const q = faunadb.query;
 const baseUrl = "https://jarv.is/";
 
 Sentry.init({
-  dsn: process.env.SENTRY_DSN || "",
-  environment: process.env.NODE_ENV || process.env.VERCEL_ENV || "",
+  dsn: process.env.SENTRY_DSN ?? "",
+  environment: process.env.NODE_ENV ?? process.env.VERCEL_ENV ?? "",
 });
 
 export default async (req, res) => {

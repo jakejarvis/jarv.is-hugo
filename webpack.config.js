@@ -220,11 +220,11 @@ export default {
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, "public"),
+      directory: path.resolve(__dirname, "public"),
       watch: true,
     },
     host: "0.0.0.0", // weird docker bind behavior
-    port: process.env.PORT || 1337,
+    port: process.env.PORT ?? 1337,
     compress: true,
     liveReload: true,
   },

@@ -1,5 +1,3 @@
-/*! Copyright Twitter Inc. and other contributors. Licensed under MIT */
-
 import twemoji from "twemoji";
 
 twemoji.parse(document.body, {

@@ -6,7 +6,7 @@ import numeral from "numeral";
 const wrapper = document.getElementById("meta-hits");
 
 // use <link rel="canonical"> to deduce a consistent identifier for this page
-const canonical = document.querySelector("link[rel='canonical']");
+const canonical = document.head.querySelector("link[rel='canonical']");
 
 // page must have both span#meta-hits and canonical URL to enter
 if (wrapper && canonical) {
