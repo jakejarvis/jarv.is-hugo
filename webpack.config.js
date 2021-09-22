@@ -12,6 +12,8 @@ import autoprefixer from "autoprefixer";
 import postcssSvgo from "postcss-svgo";
 import postcssFocus from "postcss-focus";
 import postcssColorRgbaFallback from "postcss-color-rgba-fallback";
+import postcssMergeRules from "postcss-merge-rules";
+import postcssDiscardDuplicates from "postcss-discard-duplicates";
 import postcssCombineDuplicatedSelectors from "postcss-combine-duplicated-selectors";
 import postcssNormalizeCharset from "postcss-normalize-charset";
 
@@ -144,6 +146,8 @@ export default {
                     ],
                   }),
                   postcssCombineDuplicatedSelectors(),
+                  postcssMergeRules(),
+                  postcssDiscardDuplicates(),
                   postcssNormalizeCharset(),
                 ],
               },

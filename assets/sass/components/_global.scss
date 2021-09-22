@@ -77,9 +77,8 @@ a {
   background-repeat: no-repeat;
   background-size: 0% settings.$link-underline-size;
   padding-bottom: settings.$link-underline-size;
-  transition: background-size 0.25s ease-in-out;
 
-  @include themes.themed(color, "links");
+  @include themes.themed(color, "links", ("background-size 0.25s ease-in-out"));
 
   // cool link underlines (via messy SCSS hacking):
   // https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/

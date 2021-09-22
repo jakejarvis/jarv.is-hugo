@@ -1,14 +1,41 @@
 @use "sass:map";
 @use "sass:string";
+@use "sass:list";
 
-@use "../abstracts/functions" as *;
+@use "settings";
+@use "functions" as *;
 
 // Takes a single CSS property and theme key (see abstracts/_themes) and sets
 // both body.light and body.dark selectors.
-@mixin themed($property, $key) {
-  // hack to allow root (body) theming
+@mixin themed($property, $key, $moreTransitions: "") {
+  // allow root element (body) theming
   $selectors: str-split("#{&}");
 
+  // fade colors on theme toggle
+  $transitions: ();
+  @each $element in settings.$theme-transition-elements {
+    $transitions: list.append(
+      $transitions,
+      string.unquote(
+        "#{$element} #{settings.$theme-transition-duration} #{settings.$theme-transition-function}"
+      )
+    );
+  }
+  @if $moreTransitions != "" {
+    // HACK: $moreTransitions is passed in and appended here because joining multiple transitions is hard :(
+    $transitions: list.append($transitions, string.unquote($moreTransitions));
+  }
+  @each $selector in $selectors {
+    @if $selector == "" {
+      // support root body element
+      $selector: "body";
+    }
+    @at-root #{$selector} {
+      transition: list.join($transitions, (), $separator: comma);
+    }
+  }
+
+  // set the actual light/dark properties
   @each $theme, $map in $themes {
     @each $selector in $selectors {
       @at-root body.#{$theme} #{$selector} {

@@ -62,15 +62,14 @@ header {
 
         a {
           display: inline-block;
-          transition: transform 0.15s ease-in-out;
           will-change: transform;
 
-          @include themes.themed(color, "medium-dark");
+          @include themes.themed(color, "medium-dark", ("transform 0.15s ease-in-out"));
 
           &:hover {
             transform: scale(1.1);
 
-            @include themes.themed(color, "links");
+            @include themes.themed(color, "links", ("transform 0.15s ease-in-out"));
           }
 
           span.icon {
