@@ -2,13 +2,14 @@ import { init as initDarkMode } from "dark-mode-switcheroo";
 
 // HACK: disable theme transition until user's preference is auto-restored (1/2)
 const disableTransitionCSSHack = document.createElement("style");
-disableTransitionCSSHack.innerHTML = `
-*,
-::before,
-::after {
-  transition-property: none !important;
-}`;
 document.head.appendChild(disableTransitionCSSHack);
+disableTransitionCSSHack.sheet.insertRule(`
+  *,
+  ::before,
+  ::after {
+    transition-property: none !important;
+  }
+`);
 
 initDarkMode({
   toggle: document.querySelector(".dark-mode-toggle"),
