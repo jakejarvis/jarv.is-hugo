@@ -171,8 +171,8 @@ export default {
     ],
   },
   performance: {
-    // ignore performance hints on source maps and JSON asset manifest
-    assetFilter: (assetFilename) => !/\.map|\.json$/.test(assetFilename),
+    // only evaluate JS and CSS file sizes (ignore source maps, images, etc.)
+    assetFilter: (assetFilename) => /\.js$|\.css$/.test(assetFilename),
   },
   optimization: {
     sideEffects: true,
