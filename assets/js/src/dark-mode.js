@@ -20,6 +20,6 @@ initDarkMode({
     // HACK: re-enable theme transitions after a very short delay, otherwise there's a weird race condition (2/2)
     setTimeout(() => {
       document.head.removeChild(disableTransitionCSSHack);
-    }, 700);
+    }, 500);
   },
 });

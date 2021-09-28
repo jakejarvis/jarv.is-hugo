@@ -34,6 +34,6 @@ jobs:
         cache: yarn
     - run: yarn install --frozen-lockfile
     - run: NODE_ENV=production yarn build
-    - run: yarn percy
+    - run: npx -p @percy/cli percy snapshot ./public
       env:
         PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
