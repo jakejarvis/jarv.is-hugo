@@ -55,13 +55,8 @@ pre,
   }
 }
 
-// stretch background for entire width of content area
-main {
-  width: 100%;
-  padding: 0 1.5em;
-
-  @include themes.themed(color, "text");
-  @include themes.themed(background-color, "background-inner");
+a {
+  text-decoration: none;
 }
 
 // this is what's extended by different layouts (in ../pages)
@@ -71,53 +66,53 @@ div.layout {
   display: block; // https://stackoverflow.com/questions/28794718/max-width-not-working-for-ie-11
 }
 
-a {
-  text-decoration: none;
-  background-position: 0% 100%;
-  background-repeat: no-repeat;
-  background-size: 0% settings.$link-underline-size;
-  padding-bottom: settings.$link-underline-size;
+// stretch background for entire width of content area
+main {
+  width: 100%;
+  padding: 0 1.5em;
 
-  @include themes.themed(color, "links", ("background-size 0.25s ease-in-out"));
+  @include themes.themed(color, "text");
+  @include themes.themed(background-color, "background-inner");
 
-  // cool link underlines (via messy SCSS hacking):
-  // https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/
-  @each $theme, $map in themes.$themes {
-    @at-root body.#{$theme} #{&} {
-      background-image: underline-hack(map-get($map, "links"));
+  a {
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% settings.$link-underline-size;
+    padding-bottom: settings.$link-underline-size;
+
+    @include themes.themed(color, "links", ("background-size 0.25s ease-in-out"));
+
+    // cool link underlines (via messy SCSS hacking):
+    // https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/
+    @each $theme, $map in themes.$themes {
+      @at-root body.#{$theme} #{&} {
+        background-image: underline-hack(map-get($map, "links"));
+      }
+    }
+
+    &:hover {
+      background-size: 100% settings.$link-underline-size;
+    }
+
+    // set an anchor's class to `no-underline` to disable all of this
+    &.no-underline {
+      background: none !important;
+      padding-bottom: 0;
     }
   }
 
-  &:hover {
-    background-size: 100% settings.$link-underline-size;
+  // page titles
+  h1 {
+    margin-top: 0;
+    letter-spacing: -0.005em;
+
+    a {
+      // disable fancy underline without `.no-underline`
+      color: inherit !important;
+      background: none !important;
+      padding-bottom: 0;
+    }
   }
-
-  &.no-underline {
-    background: none !important;
-    padding-bottom: 0;
-  }
-}
-
-b,
-strong {
-  letter-spacing: 0.008em; // not sure why the discrepancy between weights
-}
-
-blockquote {
-  margin-left: 0;
-  padding-left: 1.5em;
-  border-left: 3px solid;
-
-  @include themes.themed(color, "medium-dark");
-  @include themes.themed(border-color, "links");
-}
-
-hr {
-  margin: 1.5em auto;
-  height: 2px;
-  border: 0;
-
-  @include themes.themed(background-color, "light");
 }
 
 // make SVG twemojis relative to surrounding text

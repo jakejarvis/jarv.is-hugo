@@ -6,7 +6,20 @@ div#content {
   letter-spacing: -0.004em;
   line-height: 1.7;
 
-  h1,
+  b,
+  strong {
+    letter-spacing: 0.008em; // not sure why the discrepancy between weights
+  }
+
+  blockquote {
+    margin-left: 0;
+    padding-left: 1.5em;
+    border-left: 3px solid;
+
+    @include themes.themed(color, "medium-dark");
+    @include themes.themed(border-color, "links");
+  }
+
   h2,
   h3,
   h4 {
@@ -14,8 +27,34 @@ div#content {
     margin-bottom: 0.5em;
     letter-spacing: 0.001em;
     line-height: 1.5;
+
+    // AnchorJS styles
+    a.anchorjs-link {
+      display: inline-block;
+      margin-left: 0.25em;
+      padding: 0 0.5em 0 0.25em;
+      background: none;
+      opacity: 0;
+      font-weight: 300;
+      line-height: 1;
+
+      &::before {
+        content: "\0023"; // pound sign
+      }
+
+      @include themes.themed(color, "medium-light");
+
+      &:hover {
+        @include themes.themed(color, "links");
+      }
+    }
+
+    &:hover > a.anchorjs-link {
+      opacity: 1; // '#' link appears on hover over entire sub-heading line
+    }
   }
 
+  // special bottom border for H2s
   h2 {
     padding-bottom: 0.25em;
     border-bottom: 1px solid;
@@ -56,33 +95,12 @@ div#content {
     }
   }
 
-  // AnchorJS styles
-  h2,
-  h3,
-  h4 {
-    a.anchorjs-link {
-      display: inline-block;
-      margin-left: 0.25em;
-      padding: 0 0.5em 0 0.25em;
-      background: none;
-      opacity: 0;
-      font-weight: 300;
-      line-height: 1;
+  hr {
+    margin: 1.5em auto;
+    height: 2px;
+    border: 0;
 
-      &::before {
-        content: "\0023"; // pound sign
-      }
-
-      @include themes.themed(color, "medium-light");
-
-      &:hover {
-        @include themes.themed(color, "links");
-      }
-    }
-
-    &:hover > a.anchorjs-link {
-      opacity: 1; // '#' link appears on hover over entire sub-heading line
-    }
+    @include themes.themed(background-color, "light");
   }
 }
 

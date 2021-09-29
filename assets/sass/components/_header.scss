@@ -17,22 +17,23 @@ header {
     align-items: center;
     justify-content: space-between;
 
-    a#logo {
+    a#header-logo {
       display: flex;
       align-items: center;
 
       @include themes.themed(color, "medium-dark");
 
-      img#selfie {
+      img#header-selfie {
         width: 50px;
         height: 50px;
         border: 1px solid;
         border-radius: 50%;
+        user-select: none;
 
         @include themes.themed(border-color, "light");
       }
 
-      span#name {
+      span#header-name {
         margin: 0 0.6em;
         font-size: 1.25em;
         font-weight: 500;
@@ -42,7 +43,7 @@ header {
       &:hover {
         @include themes.themed(color, "links");
 
-        img#selfie {
+        img#header-selfie {
           opacity: 0.9;
         }
       }
@@ -57,11 +58,10 @@ header {
       padding: 0;
 
       li {
-        text-align: right;
         margin-left: 1.75em;
 
         a {
-          display: inline-block;
+          display: inline-flex;
           will-change: transform;
 
           @include themes.themed(color, "medium-dark", ("transform 0.15s ease-in-out"));
@@ -72,16 +72,21 @@ header {
             @include themes.themed(color, "links", ("transform 0.15s ease-in-out"));
           }
 
-          span.icon {
-            font-size: 1.3em;
-            vertical-align: -0.085em;
-          }
+          span {
+            align-self: center;
 
-          span.text {
-            font-size: 0.95em;
-            font-weight: 500;
-            letter-spacing: -0.002em;
-            margin-left: 0.65em;
+            &.header-menu-icon {
+              font-size: 1.3em;
+              vertical-align: -0.085em;
+              user-select: none;
+            }
+
+            &.header-menu-text {
+              font-size: 0.95em;
+              font-weight: 500;
+              letter-spacing: -0.002em;
+              margin-left: 0.65em;
+            }
           }
         }
 
@@ -121,36 +126,36 @@ header {
     padding: 0.5em 1.25em;
 
     nav {
-      a#logo {
-        img#selfie {
+      a#header-logo {
+        img#header-selfie {
           width: 70px;
           height: 70px;
         }
 
-        span#name {
+        span#header-name {
           display: none;
         }
 
         &:hover {
-          img#selfie {
+          img#header-selfie {
             opacity: 1;
           }
         }
       }
 
-      ul {
+      ul.header-menu {
         font-size: 1.6em;
 
         li {
           margin-left: 1.15em;
 
-          a {
-            span.icon {
+          a.header-menu-item {
+            span.header-menu-icon {
               font-size: 0.9em;
             }
 
             // hide text next to emojis on mobile
-            span.text {
+            span.header-menu-text {
               display: none;
             }
 

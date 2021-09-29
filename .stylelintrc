@@ -23,5 +23,8 @@
     "selector-no-qualifying-type": null,
     "shorthand-property-no-redundant-values": null
   },
-  "ignoreFiles": ["assets/**/vendor/**"]
+  "ignoreFiles": [
+    "assets/**/vendor/**",
+    "public/**"
+  ]
 }

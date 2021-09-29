@@ -5,7 +5,7 @@ div.layout-list {
   padding-top: 1.5em;
   padding-bottom: 0.25em;
 
-  section.year {
+  section.list-section-year {
     font-size: 1.05em;
 
     h2 {
@@ -28,7 +28,7 @@ div.layout-list {
       line-height: 1.75;
       margin-bottom: 1em;
 
-      div.date {
+      div.list-item-date {
         width: 5.25em;
         flex-shrink: 0;
 
@@ -48,7 +48,7 @@ div.layout-list {
     padding-top: 1em;
     padding-bottom: 0;
 
-    section.year {
+    section.list-section-year {
       font-size: 1em;
 
       h2 {

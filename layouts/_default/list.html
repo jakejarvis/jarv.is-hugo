@@ -2,14 +2,14 @@
 <div class="layout layout-list">
   {{- with .Pages }}
   {{- range .GroupByDate "2006" }}
-  <section class="year">
+  <section class="list-section-year">
     <h2>{{ .Key }}</h2>
     <ul>
     {{- with .Pages }}
     {{- range . }}
       <li>
-        <div class="date">{{ .Date.Format "Jan 2" }}</div>
-        <div class="title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></div>
+        <div class="list-item-date">{{ .Date.Format "Jan 2" }}</div>
+        <div class="list-item-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></div>
       </li>
     {{- end }}
     {{- end }}

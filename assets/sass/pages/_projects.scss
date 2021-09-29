@@ -6,14 +6,8 @@ div.layout-projects {
   padding-bottom: 0.75em;
 
   h1 {
-    margin-top: 0;
     margin-bottom: 0.4em;
     text-align: center;
-    letter-spacing: -0.005em;
-
-    a {
-      color: inherit;
-    }
   }
 
   div#content > p {
@@ -62,28 +56,34 @@ div.layout-projects {
       }
 
       div.repo-meta {
-        display: inline-block;
-        margin-right: 1.2em;
-        font-size: 0.925em;
+        display: flex;
+        flex-wrap: wrap;
 
-        @include themes.themed(color, "medium");
-
-        svg {
+        div.repo-meta-item {
           display: inline-block;
-          position: relative;
-          top: 0.25em;
-          margin-right: 0.2em;
-          fill: currentColor;
-        }
+          align-self: baseline;
+          margin-right: 1.5em;
+          font-size: 0.925em;
 
-        span.repo-language-color {
-          display: inline-block;
-          width: 1.2em;
-          height: 1.2em;
-          border-radius: 50%;
-          position: relative;
-          top: 0.235em;
-          margin-right: 0.2em;
+          @include themes.themed(color, "medium");
+
+          svg {
+            display: inline-block;
+            position: relative;
+            top: 0.25em;
+            margin-right: 0.2em;
+            fill: currentColor;
+          }
+
+          span.repo-language-color {
+            display: inline-block;
+            width: 1.2em;
+            height: 1.2em;
+            border-radius: 50%;
+            position: relative;
+            top: 0.235em;
+            margin-right: 0.2em;
+          }
         }
       }
     }

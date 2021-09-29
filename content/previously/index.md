@@ -29,16 +29,15 @@ css: |
   div#content span.limegreen {
     color: #32cd32;
   }
-  header nav a#logo span#name {
+  header nav a#header-logo span#header-name {
     font-size: 1.5em;
     font-weight: 700 !important;
   }
-  header nav ul li a span.text {
-    font-size: 1.05em;
-    line-height: 1.05;
+  header nav ul li a span.header-menu-text {
+    font-size: 1.1em;
     font-weight: 700 !important;
   }
-  footer div#copyright, footer div#poweredby {
+  footer div.footer-row div {
     font-size: 1.1em;
   }
 ---

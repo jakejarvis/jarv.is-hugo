@@ -11,7 +11,7 @@ const canonical = document.head.querySelector("link[rel='canonical']");
 // page must have both span#meta-hits and canonical URL to enter
 if (wrapper && canonical) {
   // javascript is enabled so show the loading indicator
-  wrapper.style.display = "inline-block";
+  wrapper.style.display = "inline-flex";
 
   // get path and strip beginning and ending forward slash
   const slug = urlParse(canonical.href).pathname.replace(/^\/|\/$/g, "");
@@ -26,13 +26,13 @@ if (wrapper && canonical) {
         wrapper.title = hitsComma + " " + hitsPlural;
 
         // finally inject the hits...
-        const counter = document.getElementById("hit-counter");
+        const counter = document.getElementById("meta-hits-counter");
         if (counter) {
           counter.appendChild(document.createTextNode(hitsComma));
         }
 
         // ...and hide the loading spinner
-        const spinner = document.getElementById("hit-spinner");
+        const spinner = document.getElementById("meta-hits-loading");
         if (spinner) {
           spinner.style.display = "none";
         }

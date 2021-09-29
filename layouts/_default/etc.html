@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="layout layout-etc">
-  <h1><a class="no-underline" href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h1>
+  <h1><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h1>
 
   <div id="content">
     {{ .Content }}
