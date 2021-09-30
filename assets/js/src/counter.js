@@ -1,12 +1,20 @@
 import fetch from "cross-fetch";
 import urlParse from "url-parse";
 import numeral from "numeral";
+import canonicalUrl from "get-canonical-url";
 
 // don't continue if there isn't a span#meta-hits element on this page
 const wrapper = document.getElementById("meta-hits");
 
 // use <link rel="canonical"> to deduce a consistent identifier for this page
-const canonical = document.head.querySelector("link[rel='canonical']");
+const canonical = canonicalUrl({
+  normalize: true,
+  normalizeOptions: {
+    removeTrailingSlash: true,
+    removeQueryParameters: true,
+    stripHash: true,
+  },
+});
 
 // page must have both span#meta-hits and canonical URL to enter
 if (wrapper && canonical) {
