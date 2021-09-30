@@ -53,10 +53,16 @@ export default {
         {
           from: path.resolve(__dirname, "assets/images/"),
           to: "images/",
+          globOptions: {
+            dot: false,
+          },
         },
         {
           from: path.resolve(__dirname, "node_modules/twemoji-emojis/vendor/svg/"),
           to: "emoji/",
+          globOptions: {
+            dot: false,
+          },
         },
       ],
     }),
@@ -102,14 +108,13 @@ export default {
                   {
                     modules: {
                       "lit-html": ["html"],
-                      "lit-element": ["html"],
+                      "lit-html/static.js": ["html"],
                     },
                     htmlMinifier: {
                       html5: true,
-                      collapseWhitespace: true,
-                      conservativeCollapse: true,
-                      removeComments: false,
                       caseSensitive: true,
+                      collapseWhitespace: true,
+                      removeComments: false,
                     },
                   },
                 ],
