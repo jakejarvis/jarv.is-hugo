@@ -27,8 +27,12 @@
 <meta property="article:tag" content="{{ . }}">{{ end }}{{ end }}
 {{ end -}}
 
-{{ with .Site.Author.social.facebookid }}<meta property="fb:admins" content="{{ . }}">{{ end }}
-{{ with .Site.Params.social.facebookAppID }}<meta property="fb:app_id" content="{{ . }}">{{ end }}
+{{- with .Site.Author.social.facebookid }}
+<meta property="fb:admins" content="{{ . }}">
+{{ end -}}
+{{- with .Site.Params.social.facebookAppID }}
+<meta property="fb:app_id" content="{{ . }}">
+{{ end -}}
 
 <meta name="twitter:card" content="{{ if .IsPage }}summary_large_image{{ else }}summary{{ end }}">
 <meta name="twitter:domain" content="{{ (urls.Parse .Site.Params.baseURL).Host }}">
@@ -39,3 +43,7 @@
 {{ with .Site.Author.social.twitterid }}<meta name="twitter:creator_id" content="{{ . }}">{{ end }}
 <meta name="twitter:dnt" content="on">
 <meta name="twitter:widgets:csp" content="on">
+
+{{- with .Site.Author.monetization }}
+<meta name="monetization" content="{{ . }}">
+{{ end -}}

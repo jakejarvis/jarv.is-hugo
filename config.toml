@@ -45,6 +45,7 @@ disableAliases = true
   name = "Jake Jarvis"
   image = "images/me.jpg"  # relative to assetDir root
   email = "jake@jarv.is"
+  monetization = "$ilp.uphold.com/BJp6d2FrEB69"  # Uphold ILP wallet: https://support.uphold.com/hc/en-us/articles/360043227832-How-to-find-your-ILP-address-Interledger-payment-pointer-
   [author.social]
     github = "jakejarvis"
     keybase = "jakejarvis"
