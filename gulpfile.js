@@ -1,3 +1,5 @@
+/* eslint-env node */
+import "dotenv/config";
 import gulp from "gulp";
 import { task as execa } from "gulp-execa";
 import cache from "gulp-cache";
@@ -11,33 +13,31 @@ import imageminPngquant from "imagemin-pngquant";
 import imageminGifsicle from "imagemin-gifsicle";
 import imageminSvgo from "imagemin-svgo";
 
-gulp.task("default", gulp.series(
-  clean,
-  npx("webpack", ["--mode", "production"]),
-  npx("hugo"),
-  gulp.parallel(
-    optimizeHtml,
-    optimizeImages,
-  ),
-));
+gulp.task(
+  "default",
+  gulp.series(
+    clean,
+    npx("webpack", ["--mode", "production"]),
+    npx("hugo"),
+    gulp.parallel(optimizeHtml, optimizeImages)
+  )
+);
 
-gulp.task("serve", gulp.series(
-  clean,
-  gulp.parallel(
-    npx("webpack", ["serve", "--mode", "development"]),
-    npx("hugo", ["--watch", "--buildDrafts", "--buildFuture", "--verbose"]),
-  ),
-));
+gulp.task(
+  "serve",
+  gulp.series(
+    clean,
+    gulp.parallel(
+      npx("webpack", ["serve", "--mode", "development"]),
+      npx("hugo", ["--watch", "--buildDrafts", "--buildFuture", "--verbose"])
+    )
+  )
+);
 
 gulp.task("clean", clean);
 
 function clean() {
-  return del([
-    "public/",
-    "builds/",
-    "_vendor/",
-    "static/assets/",
-  ]);
+  return del(["public/", "builds/", "_vendor/", "static/assets/"]);
 }
 
 function optimizeHtml() {
