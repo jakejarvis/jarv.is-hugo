@@ -22,7 +22,7 @@ if (wrapper && canonical) {
   wrapper.style.display = "inline-flex";
 
   // get path and strip beginning and ending forward slash
-  const slug = urlParse(canonical.href).pathname.replace(/^\/|\/$/g, "");
+  const slug = urlParse(canonical).pathname.replace(/^\/|\/$/g, "");
 
   fetch(`/api/hits/?slug=${encodeURIComponent(slug)}`)
     .then((response) => response.json())

@@ -50,8 +50,6 @@
   }],
   "ignorePatterns": [
     "public/**",
-    "static/assets/**",
-    "gulpfile.js",
-    "webpack.config.js"
+    "static/assets/**"
   ]
 }

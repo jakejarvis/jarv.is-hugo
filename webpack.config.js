@@ -1,3 +1,4 @@
+/* eslint-env node */
 import path from "path";
 import { fileURLToPath } from "url";
 import webpack from "webpack";
@@ -146,9 +147,7 @@ export default {
                   }),
                   postcssFocus(),
                   postcssColorRgbaFallback({
-                    properties: [
-                      "background-image",
-                    ],
+                    properties: ["background-image"],
                   }),
                   postcssCombineDuplicatedSelectors(),
                   postcssMergeRules(),
@@ -171,7 +170,7 @@ export default {
         type: "asset/resource",
         generator: {
           filename: "fonts/[name][ext]",
-        }
+        },
       },
     ],
   },

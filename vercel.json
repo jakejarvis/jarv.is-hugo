@@ -1,14 +1,20 @@
 {
   "name": "jarvis",
-  "alias": [ "jarv.is", "www.jarv.is" ],
+  "alias": ["jarv.is", "www.jarv.is"],
   "public": false,
   "trailingSlash": true,
   "cleanUrls": false,
   "rewrites": [
     { "source": "/favicon.ico", "destination": "/assets/images/favicon.ico" },
     { "source": "/apple-touch-icon.png", "destination": "/assets/images/apple-touch-icon.png" },
-    { "source": "/apple-touch-icon-precomposed.png", "destination": "/assets/images/apple-touch-icon.png" },
-    { "source": "/api/csp_wizard/", "destination": "https://jarvis.report-uri.com/r/d/csp/enforce" },
+    {
+      "source": "/apple-touch-icon-precomposed.png",
+      "destination": "/assets/images/apple-touch-icon.png"
+    },
+    {
+      "source": "/api/csp_wizard/",
+      "destination": "https://jarvis.report-uri.com/r/d/csp/enforce"
+    },
     { "source": "/api/report/", "destination": "https://jarvis.report-uri.com/a/d/g" },
     { "source": "/api/mention/", "destination": "https://webmention.io/jarv.is/webmention" },
     { "source": "/api/ping/", "destination": "https://webmention.io/jarv.is/xmlrpc" }
@@ -20,14 +26,37 @@
     { "source": "/rss/", "destination": "/feed.xml", "permanent": true },
     { "source": "/blog/(.*)", "destination": "/notes/", "permanent": true },
     { "source": "/archives/(.*)", "destination": "/notes/", "permanent": true },
-    { "source": "/2013/11/21/no-homo-still-raps-motto/", "destination": "/notes/no-homo-still-raps-motto/", "permanent": true },
-    { "source": "/2016/02/28/millenial-with-hillary-clinton/", "destination": "/notes/millenial-with-hillary-clinton/", "permanent": true },
-    { "source": "/2018/12/04/how-to-shrink-linux-virtual-disk-vmware/", "destination": "/notes/how-to-shrink-linux-virtual-disk-vmware/", "permanent": true },
-    { "source": "/2018/12/07/shrinking-a-linux-virtual-disk-with-vmware/", "destination": "/notes/how-to-shrink-linux-virtual-disk-vmware/", "permanent": true },
-    { "source": "/2018/12/10/cool-bash-tricks-for-your-terminal-dotfiles/", "destination": "/notes/cool-bash-tricks-for-your-terminal-dotfiles/", "permanent": true },
+    {
+      "source": "/2013/11/21/no-homo-still-raps-motto/",
+      "destination": "/notes/no-homo-still-raps-motto/",
+      "permanent": true
+    },
+    {
+      "source": "/2016/02/28/millenial-with-hillary-clinton/",
+      "destination": "/notes/millenial-with-hillary-clinton/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/12/04/how-to-shrink-linux-virtual-disk-vmware/",
+      "destination": "/notes/how-to-shrink-linux-virtual-disk-vmware/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/12/07/shrinking-a-linux-virtual-disk-with-vmware/",
+      "destination": "/notes/how-to-shrink-linux-virtual-disk-vmware/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/12/10/cool-bash-tricks-for-your-terminal-dotfiles/",
+      "destination": "/notes/cool-bash-tricks-for-your-terminal-dotfiles/",
+      "permanent": true
+    },
     { "source": "/resume/", "destination": "/resume.pdf" },
     { "source": "/jarvis.asc", "destination": "/pubkey.asc" },
-    { "source": "/ios-trackers/(.*)", "destination": "https://jakejarvis.github.io/ios-trackers/$1" },
+    {
+      "source": "/ios-trackers/(.*)",
+      "destination": "https://jakejarvis.github.io/ios-trackers/$1"
+    },
     { "source": "/awesome/(.*)", "destination": "https://synonymsforawesome.com/" },
     { "source": "/scrabble/(.*)", "destination": "https://jakejarvis.github.io/scrabble/$1" }
   ],
@@ -56,7 +85,7 @@
     },
     {
       "source": "/(.*)",
-      "headers" : [
+      "headers": [
         {
           "key": "Onion-Location",
           "value": "http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion/$1"
@@ -98,8 +127,8 @@
           "value": "1; mode=block"
         },
         {
-          "key" : "X-Got-Milk",
-          "value" : "2%"
+          "key": "X-Got-Milk",
+          "value": "2%"
         }
       ]
     }

@@ -13,13 +13,8 @@ _vendor/
 
 # dotfiles/config
 .*
-postcss.config.js
-webpack.config.js
-gulpfile.js
-babel.config.json
 
 # miscellaneous
-vercel.json
 .vercel/
 .github/
 .lighthouseci/
