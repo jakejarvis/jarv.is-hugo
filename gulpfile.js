@@ -87,7 +87,7 @@ function npx(bin, args) {
   return execa(cmd, {
     echo: false,
     preferLocal: true,
-    shell: true,
     stdio: "inherit",
+    killSignal: "SIGKILL", // graceful shutdown leaves webpack-dev-server dangling sometimes
   });
 }

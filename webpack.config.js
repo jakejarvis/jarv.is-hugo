@@ -235,5 +235,6 @@ export default {
     port: process.env.PORT ?? 1337,
     compress: true,
     liveReload: true,
+    setupExitSignals: false, // prevent dangling server when started via gulp
   },
 };
