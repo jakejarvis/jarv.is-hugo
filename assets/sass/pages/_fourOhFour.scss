@@ -22,8 +22,5 @@ div.layout-404 {
 
 // Responsive
 @mixin responsive() {
-  img {
-    height: auto;
-    max-width: 100%;
-  }
+  // stylelint-disable-block block-no-empty
 }
