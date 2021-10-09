@@ -6,10 +6,12 @@ import numeral from "numeral";
 import { format, formatDistanceToNowStrict, parseJSON } from "date-fns";
 import twemoji from "twemoji";
 
+// API endpoint (sort by stars, limit to 12)
+const PROJECTS_ENDPOINT = "/api/projects/?top&limit=12";
+
 // don't continue if there isn't a span#meta-hits element on this page
 // TODO: be better.
 const wrapper = document.getElementById("github-cards");
-const spinner = document.getElementById("loading-spinner");
 
 if (wrapper) {
   // this is a total sh*tshow, but safer than setting one big string via innerHTML :)
@@ -69,7 +71,7 @@ if (wrapper) {
     </div>
   `;
 
-  fetch("/api/projects/?top")
+  fetch(PROJECTS_ENDPOINT)
     .then((response) => response.json())
     .then((data) => {
       data.forEach((repo) => {
@@ -80,6 +82,7 @@ if (wrapper) {
       });
 
       // we're done, hide the loading spinner
+      const spinner = document.getElementById("loading-spinner");
       if (spinner) {
         spinner.style.display = "none";
       }

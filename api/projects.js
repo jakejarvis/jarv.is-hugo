@@ -2,8 +2,8 @@ import * as Sentry from "@sentry/node";
 import { graphql } from "@octokit/graphql";
 
 Sentry.init({
-  dsn: process.env.SENTRY_DSN ?? "",
-  environment: process.env.NODE_ENV ?? process.env.VERCEL_ENV ?? "",
+  dsn: process.env.SENTRY_DSN || "",
+  environment: process.env.NODE_ENV || process.env.VERCEL_ENV || "",
 });
 
 export default async (req, res) => {
@@ -16,13 +16,19 @@ export default async (req, res) => {
       throw new Error("GitHub API credentials aren't set.");
     }
 
+    // allow custom limit, max. 24 results
+    let limit = 24;
+    if (req.query.limit && req.query.limit > 0 && req.query.limit < limit) {
+      limit = req.query.limit;
+    }
+
     let result;
     if (typeof req.query.top !== "undefined") {
       // get most popular repos (/projects/?top)
-      result = await fetchRepos("STARGAZERS");
+      result = await fetchRepos("STARGAZERS", limit);
     } else {
       // default to latest repos
-      result = await fetchRepos("PUSHED_AT");
+      result = await fetchRepos("PUSHED_AT", limit);
     }
 
     // let Vercel edge and browser cache results for 15 mins
@@ -44,7 +50,7 @@ export default async (req, res) => {
   }
 };
 
-const fetchRepos = async (sort) => {
+const fetchRepos = async (sort, limit) => {
   // https://docs.github.com/en/graphql/reference/objects#repository
   const { user } = await graphql(
     `
@@ -78,7 +84,7 @@ const fetchRepos = async (sort) => {
     `,
     {
       username: "jakejarvis",
-      limit: 16,
+      limit: parseInt(limit),
       sort: sort,
       headers: {
         authorization: `token ${process.env.GH_PUBLIC_TOKEN}`,

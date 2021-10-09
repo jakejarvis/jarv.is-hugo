@@ -17,8 +17,8 @@ const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-pla
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10`;
 
 Sentry.init({
-  dsn: process.env.SENTRY_DSN ?? "",
-  environment: process.env.NODE_ENV ?? process.env.VERCEL_ENV ?? "",
+  dsn: process.env.SENTRY_DSN || "",
+  environment: process.env.NODE_ENV || process.env.VERCEL_ENV || "",
 });
 
 export default async (req, res) => {

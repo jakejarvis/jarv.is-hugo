@@ -232,7 +232,7 @@ export default {
       watch: true,
     },
     host: "0.0.0.0", // weird docker bind behavior
-    port: process.env.PORT ?? 1337,
+    port: process.env.PORT || 1337,
     compress: true,
     liveReload: true,
     setupExitSignals: false, // prevent dangling server when started via gulp
