@@ -5,11 +5,11 @@ import { decode } from "html-entities";
 import faunadb from "faunadb";
 const q = faunadb.query;
 
-const baseUrl = "https://jarv.is/";
+const BASE_URL = "https://jarv.is/";
 
 Sentry.init({
-  dsn: process.env.SENTRY_DSN ?? "",
-  environment: process.env.NODE_ENV ?? process.env.VERCEL_ENV ?? "",
+  dsn: process.env.SENTRY_DSN || "",
+  environment: process.env.NODE_ENV || process.env.VERCEL_ENV || "",
 });
 
 export default async (req, res) => {
@@ -24,6 +24,7 @@ export default async (req, res) => {
 
     const client = new faunadb.Client({
       secret: process.env.FAUNADB_SERVER_SECRET,
+      checkNewVersion: false, // https://github.com/fauna/faunadb-js/pull/504
     });
     const { slug } = req.query;
     let result;
@@ -86,7 +87,7 @@ const incrementPageHits = async (slug, client) => {
 const getSiteStats = async (client) => {
   // get database and RSS results asynchronously
   const [feed, result] = await Promise.all([
-    parser.parse(await (await fetch(baseUrl + "feed.xml")).text()), // this is messy but it works :)
+    parser.parse(await (await fetch(BASE_URL + "feed.xml")).text()), // this is messy but it works :)
     client.query(
       q.Map(
         q.Paginate(q.Documents(q.Collection("hits")), { size: 99 }),
@@ -103,7 +104,7 @@ const getSiteStats = async (client) => {
 
   pages.map((p) => {
     // match URLs from RSS feed with db to populate some metadata
-    const match = feed.rss.channel.item.find((x) => x.link === baseUrl + p.slug + "/");
+    const match = feed.rss.channel.item.find((x) => x.link === BASE_URL + p.slug + "/");
     if (match) {
       p.title = decode(match.title);
       p.url = match.link;
