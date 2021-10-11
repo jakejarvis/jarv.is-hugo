@@ -24,6 +24,7 @@
     display: inline-block;
     animation: loading 1.5s infinite ease-in-out both;
 
+    // stylelint-disable rule-empty-line-before
     &:nth-child(1) {
       animation-delay: -0.32s;
     }
@@ -33,12 +34,14 @@
     &:nth-child(3) {
       animation-delay: 0s;
     }
+    // stylelint-enable rule-empty-line-before
 
     @include themes.themed(background-color, "medium-light");
   }
 }
 
 @keyframes wave {
+  // stylelint-disable rule-empty-line-before
   0% {
     transform: rotate(0deg);
   }
@@ -64,9 +67,11 @@
   100% {
     transform: rotate(0deg);
   }
+  // stylelint-enable rule-empty-line-before
 }
 
 @keyframes beat {
+  // stylelint-disable rule-empty-line-before
   0% {
     transform: scale(1);
   }
@@ -86,9 +91,11 @@
   100% {
     transform: scale(1);
   }
+  // stylelint-enable rule-empty-line-before
 }
 
 @keyframes loading {
+  // stylelint-disable rule-empty-line-before
   0%,
   80%,
   100% {
@@ -97,6 +104,7 @@
   40% {
     transform: scale(0.6);
   }
+  // stylelint-enable rule-empty-line-before
 }
 
 // https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites

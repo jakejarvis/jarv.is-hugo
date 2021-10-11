@@ -22,6 +22,8 @@ code {
   margin: 0 0.075em !important;
   padding: 0 !important;
 }
+
+// same as above but different font weight for big titles
 h1.title code {
   font-weight: 600;
 }
@@ -80,6 +82,7 @@ div.highlight-clipboard-enabled {
     overflow: auto;
     display: block;
   }
+
   // columns
   .lntd {
     vertical-align: top;
@@ -92,16 +95,19 @@ div.highlight-clipboard-enabled {
       padding-right: 1em;
     }
   }
+
   // line numbers
   .ln,
   .lnt {
     user-select: none;
   }
+
   .gh,
   .gi,
   .gu {
     font-weight: bold;
   }
+
   .kd,
   //.nb,
   //.nl,
@@ -112,6 +118,7 @@ div.highlight-clipboard-enabled {
   .ge {
     font-style: italic;
   }
+
   .gl {
     text-decoration: underline;
   }
@@ -144,6 +151,7 @@ body.light {
     .no {
       color: #029cb9;
     }
+
     .na,
     .nc,
     .nd,
@@ -152,12 +160,14 @@ body.light {
     .nx {
       color: #70a800;
     }
+
     .nt,
     .o,
     .ow,
     .kn {
       color: #f92672;
     }
+
     .l,
     .se,
     .m,
@@ -169,6 +179,7 @@ body.light {
     .mo {
       color: #ae81ff;
     }
+
     .ld,
     .s,
     .sa,
@@ -185,6 +196,7 @@ body.light {
     .ss {
       color: #d88200;
     }
+
     .c,
     .ch,
     .cm,
@@ -194,6 +206,7 @@ body.light {
     .cpf {
       color: #75715e;
     }
+
     .lnt {
       color: #8a8a8a;
     }
@@ -227,6 +240,7 @@ body.dark {
     .no {
       color: #3b9dd2;
     }
+
     .na,
     .nc,
     .nd,
@@ -235,12 +249,14 @@ body.dark {
     .nx {
       color: #78df55;
     }
+
     .nt,
     .o,
     .ow,
     .kn {
       color: #f95757;
     }
+
     .l,
     .se,
     .m,
@@ -252,6 +268,7 @@ body.dark {
     .mo {
       color: #d588fb;
     }
+
     .ld,
     .s,
     .sa,
@@ -268,6 +285,7 @@ body.dark {
     .ss {
       color: #fd992a;
     }
+
     .c,
     .ch,
     .cm,
@@ -277,6 +295,7 @@ body.dark {
     .cpf {
       color: #929292;
     }
+
     .lnt {
       color: #b1b1b1;
     }
