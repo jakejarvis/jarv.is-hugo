@@ -1,7 +1,6 @@
 name: Release
 
-on:
-  deployment_status
+on: deployment_status
 
 jobs:
   release:
@@ -12,49 +11,49 @@ jobs:
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       LHCI_SERVER_BASE_URL: https://lhci.jrvs.io
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 14.x
-    - run: yarn install --frozen-lockfile
-    - uses: getsentry/action-release@v1
-      if: github.event.deployment_status.environment == 'production'
-      env:
-        SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-        SENTRY_ORG: jakejarvis
-        SENTRY_PROJECT: jarvis
-      with:
-        environment: ${{ github.event.deployment_status.environment }}
-    - uses: browser-actions/setup-chrome@latest
-      with:
-        chrome-version: stable
-    - run: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm install -g @lhci/cli
-    - run: |
-        chrome --version
-        lhci --version
-        curl $LHCI_SERVER_BASE_URL/version
-        echo "ref: ${{ github.event.deployment.ref }}"
-        echo "env: ${{ github.event.deployment_status.environment }}"
-        echo "url: ${{ github.event.deployment_status.target_url }}"
-    - if: github.event.deployment_status.environment == 'production'
-      run: |
-        echo "BASE_DEPLOY_URL=https://jarv.is" >> $GITHUB_ENV
-        echo "LHCI_EXTRA_FLAGS=" >> $GITHUB_ENV
-        echo "LHCI_BUILD_CONTEXT__CURRENT_BRANCH=main" >> $GITHUB_ENV
-    - if: github.event.deployment_status.environment == 'preview'
-      run: |
-        echo "BASE_DEPLOY_URL=${{ github.event.deployment_status.target_url }}" >> $GITHUB_ENV
-        echo "LHCI_EXTRA_FLAGS=--assert.assertions.is-crawlable=off --assert.assertions.canonical=off" >> $GITHUB_ENV
-        echo "LHCI_BUILD_CONTEXT__CURRENT_BRANCH=${{ github.event.deployment.ref }}" >> $GITHUB_ENV
-    - continue-on-error: true
-      run: |
-        lhci autorun ${{ env.LHCI_EXTRA_FLAGS }} \
-          --collect.url=${{ env.BASE_DEPLOY_URL }}/ \
-          --collect.url=${{ env.BASE_DEPLOY_URL }}/notes/how-to-pull-request-fork-github/ \
-          --collect.url=${{ env.BASE_DEPLOY_URL }}/projects/
-    - uses: actions/upload-artifact@v2
-      with:
-        name: lhci-results
-        path: ./.lighthouseci
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+      - run: yarn install --frozen-lockfile
+      - uses: getsentry/action-release@v1
+        if: github.event.deployment_status.environment == 'production'
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: jakejarvis
+          SENTRY_PROJECT: jarvis
+        with:
+          environment: ${{ github.event.deployment_status.environment }}
+      - uses: browser-actions/setup-chrome@latest
+        with:
+          chrome-version: stable
+      - run: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm install -g @lhci/cli
+      - run: |
+          chrome --version
+          lhci --version
+          curl $LHCI_SERVER_BASE_URL/version
+          echo "ref: ${{ github.event.deployment.ref }}"
+          echo "env: ${{ github.event.deployment_status.environment }}"
+          echo "url: ${{ github.event.deployment_status.target_url }}"
+      - if: github.event.deployment_status.environment == 'production'
+        run: |
+          echo "BASE_DEPLOY_URL=https://jarv.is" >> $GITHUB_ENV
+          echo "LHCI_EXTRA_FLAGS=" >> $GITHUB_ENV
+          echo "LHCI_BUILD_CONTEXT__CURRENT_BRANCH=main" >> $GITHUB_ENV
+      - if: github.event.deployment_status.environment == 'preview'
+        run: |
+          echo "BASE_DEPLOY_URL=${{ github.event.deployment_status.target_url }}" >> $GITHUB_ENV
+          echo "LHCI_EXTRA_FLAGS=--assert.assertions.is-crawlable=off --assert.assertions.canonical=off" >> $GITHUB_ENV
+          echo "LHCI_BUILD_CONTEXT__CURRENT_BRANCH=${{ github.event.deployment.ref }}" >> $GITHUB_ENV
+      - continue-on-error: true
+        run: |
+          lhci autorun ${{ env.LHCI_EXTRA_FLAGS }} \
+            --collect.url=${{ env.BASE_DEPLOY_URL }}/ \
+            --collect.url=${{ env.BASE_DEPLOY_URL }}/notes/how-to-pull-request-fork-github/ \
+            --collect.url=${{ env.BASE_DEPLOY_URL }}/projects/
+      - uses: actions/upload-artifact@v2
+        with:
+          name: lhci-results
+          path: ./.lighthouseci

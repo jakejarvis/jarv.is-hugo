@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
 
 jobs:
@@ -11,29 +11,29 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 14.x
-        cache: yarn
-    - run: yarn install --frozen-lockfile
-    - run: yarn lint
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint
 
   snapshot:
     runs-on: ubuntu-latest
     if: "github.actor == 'jakejarvis' && !contains(github.event.head_commit.message, '[skip ci]')"
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 14.x
-        cache: yarn
-    - run: yarn install --frozen-lockfile
-    - run: NODE_ENV=production yarn build
-    - run: npx -p @percy/cli percy snapshot ./public
-      env:
-        PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+      - run: NODE_ENV=production yarn build
+      - run: npx -p @percy/cli percy snapshot ./public
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}

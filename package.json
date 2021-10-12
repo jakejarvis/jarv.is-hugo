@@ -17,13 +17,13 @@
   "main": "./assets/js/index.js",
   "scripts": {
     "build": "gulp",
+    "clean": "gulp clean",
     "start": "gulp serve",
     "start:vercel": "volta run --node 14 --npm 6 -- vercel dev",
-    "clean": "gulp clean",
     "lint": "run-s lint:**",
     "lint:js": "eslint .",
-    "lint:scss": "stylelint 'assets/sass/**/*.scss' --syntax scss",
-    "lint:md": "markdownlint 'content/**/*.md'",
+    "lint:css": "stylelint '**/*.{css,scss}'",
+    "lint:md": "markdownlint '**/*.md' --config .markdownlintrc.json --ignore node_modules",
     "lint:prettier": "prettier --check ."
   },
   "dependencies": {
@@ -67,7 +67,7 @@
     "babel-plugin-template-html-minifier": "^4.1.0",
     "clean-css": "^5.2.1",
     "copy-webpack-plugin": "^9.0.1",
-    "core-js": "^3.18.2",
+    "core-js": "^3.18.3",
     "css-loader": "^6.4.0",
     "css-minimizer-webpack-plugin": "^3.1.1",
     "del": "^6.0.0",
@@ -127,8 +127,8 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*.scss": [
-      "stylelint --syntax scss",
+    "*.{css,scss}": [
+      "stylelint",
       "prettier --check"
     ],
     "*.js": [
@@ -141,7 +141,7 @@
     ]
   },
   "volta": {
-    "node": "14.18.0",
+    "node": "14.18.1",
     "yarn": "1.22.15"
   }
 }

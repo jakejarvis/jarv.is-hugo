@@ -1,4 +1,3 @@
-/* eslint-env node */
 import "dotenv/config";
 import gulp from "gulp";
 import { task as execa } from "gulp-execa";

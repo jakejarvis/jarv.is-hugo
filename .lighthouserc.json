@@ -14,7 +14,7 @@
         "csp-xss": "warn",
         "link-text": "warn",
         "long-tasks": "warn",
-        "total-byte-weight": ["warn", {"minScore": 0.9}],
+        "total-byte-weight": ["warn", { "minScore": 0.9 }],
         "unminified-css": "warn",
         "unminified-javascript": "warn",
         "unsized-images": "warn",

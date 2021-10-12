@@ -11,13 +11,8 @@ builds/
 resources/
 _vendor/
 
-# dotfiles/config
-.*
-
 # miscellaneous
 .vercel/
-.github/
 .lighthouseci/
 .vscode/
-LICENSE.md
 content/notes/dark-mode/example.html
