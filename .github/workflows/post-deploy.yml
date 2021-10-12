@@ -6,18 +6,13 @@ jobs:
   release:
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success'
-    env:
-      LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
-      LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-      LHCI_SERVER_BASE_URL: https://lhci.jrvs.io
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 10
       - uses: actions/setup-node@v2
         with:
           node-version: 14.x
-      - run: yarn install --frozen-lockfile
       - uses: getsentry/action-release@v1
         if: github.event.deployment_status.environment == 'production'
         env:
@@ -33,7 +28,7 @@ jobs:
       - run: |
           chrome --version
           lhci --version
-          curl $LHCI_SERVER_BASE_URL/version
+          curl https://lhci.jrvs.io/version || true
           echo "ref: ${{ github.event.deployment.ref }}"
           echo "env: ${{ github.event.deployment_status.environment }}"
           echo "url: ${{ github.event.deployment_status.target_url }}"
@@ -48,6 +43,9 @@ jobs:
           echo "LHCI_EXTRA_FLAGS=--assert.assertions.is-crawlable=off --assert.assertions.canonical=off" >> $GITHUB_ENV
           echo "LHCI_BUILD_CONTEXT__CURRENT_BRANCH=${{ github.event.deployment.ref }}" >> $GITHUB_ENV
       - continue-on-error: true
+        env:
+          LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         run: |
           lhci autorun ${{ env.LHCI_EXTRA_FLAGS }} \
             --collect.url=${{ env.BASE_DEPLOY_URL }}/ \
