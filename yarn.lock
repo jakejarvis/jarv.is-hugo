@@ -926,12 +926,9 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@jakejarvis/eslint-config@jakejarvis/eslint-config#main":
-  version "1.1.0"
-  resolved "https://codeload.github.com/jakejarvis/eslint-config/tar.gz/15176a732ac151398a263131050a3234b5aede85"
-  dependencies:
-    eslint-plugin-compat "~3.13.0"
-    eslint-plugin-import "~2.25.1"
+"@jakejarvis/eslint-config@github:jakejarvis/eslint-config#main":
+  version "2.0.0"
+  resolved "https://codeload.github.com/jakejarvis/eslint-config/tar.gz/02f185c144ee514c4ce182e892ad43717374998f"
 
 "@jest/types@^27.2.5":
   version "27.2.5"
@@ -3662,7 +3659,7 @@ eslint-plugin-compat@~3.13.0:
     lodash.memoize "4.1.2"
     semver "7.3.5"
 
-eslint-plugin-import@~2.25.1, eslint-plugin-import@~2.25.2:
+eslint-plugin-import@~2.25.2:
   version "2.25.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.25.2.tgz#b3b9160efddb702fc1636659e71ba1d10adbe9e9"
   integrity sha512-qCwQr9TYfoBHOFcVGKY9C9unq05uOxxdklmBXLVvcwo68y5Hta6/GzCZEMx2zQiu0woKNEER0LE7ZgaOfBU14g==
@@ -3689,11 +3686,6 @@ eslint-plugin-lit@~1.6.0:
     parse5 "^6.0.1"
     parse5-htmlparser2-tree-adapter "^6.0.1"
     requireindex "^1.2.0"
-
-eslint-plugin-no-unsanitized@~3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-no-unsanitized/-/eslint-plugin-no-unsanitized-3.1.5.tgz#7e1ee74cf41ae59fec48c2ee2e21a7dcb86965fb"
-  integrity sha512-s/6w++p1590h/H/dE2Wo660bOkaM/3OEK14Y7xm1UT0bafxkKw1Cq0ksjxkxLdH/WWd014DlsLKuD6CyNrR2Dw==
 
 eslint-plugin-prettier@~4.0.0:
   version "4.0.0"

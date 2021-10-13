@@ -2,7 +2,8 @@ module.exports = {
   root: true,
   extends: [
     "@jakejarvis/eslint-config",
-    "plugin:no-unsanitized/DOM",
+    "plugin:compat/recommended",
+    "plugin:import/recommended",
     "plugin:lit/recommended",
     "plugin:prettier/recommended",
   ],
