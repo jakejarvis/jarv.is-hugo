@@ -31,9 +31,9 @@
 
   - Hugo
   - Vercel
-  - Webpack
-  - Gulp
   - FaunaDB
+  - Airtable
+  - hCaptcha
   - Percy
   - Sentry
   - ...and more: https://jarv.is/uses/
@@ -48,7 +48,7 @@
 
 # TOR MIRROR
 
-    http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion
+    http://jarvis2i2vp4j4tbxjogsnqdemnte5xhzyi7hziiyzxwge3hzmh57zad.onion/
 
 # LICENSE
 

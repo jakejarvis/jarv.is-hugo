@@ -40,7 +40,7 @@
     "faunadb": "^4.4.1",
     "get-canonical-url": "^1.0.1",
     "graphql": "^15.6.1",
-    "graphql-request": "^3.5.0",
+    "graphql-request": "^3.6.0",
     "graphql-tag": "^2.12.5",
     "html-entities": "^2.3.2",
     "lit-html": "^2.0.1",
@@ -52,7 +52,8 @@
     "trim-newlines": "^4.0.2",
     "twemoji": "^13.1.0",
     "twemoji-emojis": "^14.1.0",
-    "url-parse": "^1.5.3"
+    "url-parse": "^1.5.3",
+    "vanilla-hcaptcha": "^1.0.0-alpha"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -72,7 +73,7 @@
     "css-minimizer-webpack-plugin": "^3.1.1",
     "del": "^6.0.0",
     "dotenv": "^10.0.0",
-    "eslint": "~8.0.0",
+    "eslint": "~8.0.1",
     "eslint-config-prettier": "~8.3.0",
     "eslint-plugin-compat": "~3.13.0",
     "eslint-plugin-import": "~2.25.2",
@@ -94,13 +95,13 @@
     "postcss-combine-duplicated-selectors": "^10.0.3",
     "postcss-discard-duplicates": "^5.0.1",
     "postcss-focus": "^5.0.1",
-    "postcss-loader": "^6.1.1",
+    "postcss-loader": "^6.2.0",
     "postcss-merge-rules": "^5.0.2",
     "postcss-normalize-charset": "^5.0.1",
-    "postcss-reporter": "^7.0.3",
+    "postcss-reporter": "^7.0.4",
     "postcss-svgo": "^5.0.2",
     "prettier": "^2.4.1",
-    "sass": "^1.42.1",
+    "sass": "^1.43.2",
     "sass-loader": "^12.2.0",
     "simple-git-hooks": "^2.6.1",
     "stylelint": "~13.13.1",
@@ -111,7 +112,7 @@
     "stylelint-scss": "~3.21.0",
     "terser": "^5.9.0",
     "terser-webpack-plugin": "^5.2.4",
-    "webpack": "^5.58.1",
+    "webpack": "^5.58.2",
     "webpack-assets-manifest": "^5.0.6",
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.3.1"
@@ -135,7 +136,7 @@
       "prettier --check"
     ],
     "*.md": [
-      "markdownlint",
+      "markdownlint --config .markdownlintrc.json",
       "prettier --check"
     ]
   },

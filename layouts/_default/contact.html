@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="layout layout-contact">
+  <h1><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h1>
+
+  <p>Fill out this quick form and I'll get back to you as soon as I can! You can also <a href="&#x6D;&#x61;&#x69;&#x6C;&#x74;&#x6F;&#x3A;&#x6A;&#x61;&#x6B;&#x65;&#x40;&#x6A;&#x61;&#x72;&#x76;&#x2E;&#x69;&#x73;">email me directly</a>, send me a <a href="https://twitter.com/messages/compose?recipient_id=229769022" target="_blank" rel="noopener nofollow">direct message on Twitter</a>, or <a href="sms:+1-617-917-3737">text me</a>.</p>
+
+  <form id="contact-form" action="/api/contact/" method="POST">
+    <input type="text" id="name" name="name" placeholder="Name">
+    <input type="email" id="email" name="email" placeholder="Email">
+
+    <textarea id="message" name="message" placeholder="Write something..."></textarea>
+    <span id="contact-form-md-info">Basic <a href="https://commonmark.org/help/" title="Markdown reference sheet" target="_blank" rel="noopener">Markdown syntax</a> is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [<a href="https://jarv.is" target="_blank" rel="noopener">links</a>](https://jarv.is), and <code>`code`</code>.</span>
+
+    <h-captcha
+      id="contact-form-captcha"
+      site-key="{{ getenv "HCAPTCHA_SITE_KEY" | default "10000000-ffff-ffff-ffff-000000000001" }}"
+      size="normal"
+      tabindex="0"></h-captcha>
+
+    <div id="contact-form-action-row">
+      <button title="Submit" aria-label="Submit" id="contact-form-btn-submit">📤 Send</button>
+      <div id="contact-form-result">
+        <span id="contact-form-result-error"></span>
+        <span id="contact-form-result-success"></span>
+      </div>
+    </div>
+  </form>
+</div>
+{{ end }}

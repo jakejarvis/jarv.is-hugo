@@ -92,7 +92,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'none'; connect-src 'self' api.github.com platform.twitter.com; font-src 'self'; form-action 'none'; frame-ancestors 'self'; frame-src 'self' jakejarvis.github.io buttons.github.io codepen.io platform.twitter.com www.youtube-nocookie.com; img-src 'self' data: https:; manifest-src 'self'; media-src 'self' data: https:; object-src 'none'; prefetch-src 'self'; script-src 'self' buttons.github.io gist.github.com syndication.twitter.com platform.twitter.com 'sha256-y3Xr/40/KQnUvqk/kZO5us6t3i/I49BsbYjsH8ELhVg='; style-src 'self' 'unsafe-inline' github.githubassets.com; worker-src 'self'; block-all-mixed-content; report-uri https://jarv.is/api/csp_wizard/; report-to default"
+          "value": "default-src 'self'; base-uri 'none'; connect-src 'self' api.github.com hcaptcha.com *.hcaptcha.com platform.twitter.com; font-src 'self'; form-action 'self'; frame-ancestors 'self'; frame-src 'self' jakejarvis.github.io buttons.github.io codepen.io hcaptcha.com *.hcaptcha.com platform.twitter.com www.youtube-nocookie.com; img-src 'self' data: https:; manifest-src 'self'; media-src 'self' data: https:; object-src 'none'; prefetch-src 'self'; script-src 'self' buttons.github.io gist.github.com hcaptcha.com *.hcaptcha.com syndication.twitter.com platform.twitter.com 'sha256-y3Xr/40/KQnUvqk/kZO5us6t3i/I49BsbYjsH8ELhVg='; style-src 'self' 'unsafe-inline' github.githubassets.com; worker-src 'self'; block-all-mixed-content; report-uri https://jarv.is/api/csp_wizard/; report-to default"
         },
         {
           "key": "Report-To",

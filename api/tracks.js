@@ -3,7 +3,7 @@
 
 import * as Sentry from "@sentry/node";
 import fetch from "node-fetch";
-import * as queryString from "query-string";
+import queryString from "query-string";
 
 const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN } = process.env;
 

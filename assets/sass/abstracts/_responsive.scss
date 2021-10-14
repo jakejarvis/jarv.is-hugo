@@ -11,6 +11,7 @@
 @use "../pages/videos";
 @use "../pages/etc";
 @use "../pages/projects";
+@use "../pages/contact";
 @use "../pages/fourOhFour";
 
 // Responsive Awesomeness
@@ -26,5 +27,6 @@
   @include videos.responsive();
   @include etc.responsive();
   @include projects.responsive();
+  @include contact.responsive();
   @include fourOhFour.responsive();
 }

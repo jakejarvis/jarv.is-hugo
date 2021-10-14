@@ -1,0 +1,111 @@
+@use "../abstracts/themes";
+
+// Contact Styles
+div.layout-contact {
+  max-width: 600px;
+  padding: 1.5em 0;
+
+  h1 {
+    margin-bottom: 0.4em;
+    text-align: center;
+  }
+
+  p {
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.8em;
+    margin: 0.6em 0;
+    border: 1px solid;
+    border-radius: 0.3em;
+    font-size: 0.9em;
+
+    @include themes.themed(color, "text");
+    @include themes.themed(background-color, "super-duper-light");
+    @include themes.themed(border-color, "light");
+  }
+
+  textarea {
+    height: 10em;
+    margin-bottom: 0;
+
+    // allow vertical resizing & disable horizontal
+    resize: vertical; // stylelint-disable-line plugin/no-unsupported-browser-features
+  }
+
+  div#contact-form-action-row {
+    display: flex;
+    align-items: center;
+
+    button {
+      padding: 0.8em 1.2em;
+      margin-right: 1.5em;
+      border: 0;
+      border-radius: 0.3em;
+      cursor: pointer;
+      line-height: 1.5;
+      user-select: none;
+
+      @include themes.themed(color, "text");
+      @include themes.themed(background-color, "kinda-light");
+
+      &:hover,
+      &:focus {
+        @include themes.themed(color, "super-duper-light");
+        @include themes.themed(background-color, "links");
+      }
+
+      img.emoji {
+        margin-right: 0.4em;
+        cursor: inherit;
+      }
+    }
+
+    span {
+      font-size: 0.9em;
+      font-weight: 600;
+
+      &#contact-form-result-success {
+        @include themes.themed(color, "success");
+      }
+
+      &#contact-form-result-error {
+        @include themes.themed(color, "error");
+      }
+    }
+  }
+
+  // hcaptcha widget
+  #contact-form-captcha {
+    display: block;
+    margin: 1.2em 0;
+  }
+
+  span#contact-form-md-info {
+    display: block;
+    font-size: 0.75em;
+    margin-top: 0.25em;
+    margin-left: 0.75em;
+
+    a {
+      // disable fancy underline without `.no-underline`
+      background: none !important;
+      padding: 0;
+
+      &:first-of-type {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// Responsive
+// stylelint-disable-next-line block-no-empty
+@mixin responsive() {
+}
