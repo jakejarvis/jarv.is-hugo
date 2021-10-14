@@ -45,4 +45,4 @@ Using [**hCaptcha**](https://www.hcaptcha.com/) to fight bot spam on the [contac
 
 You can refer to hCaptcha's [privacy policy](https://www.hcaptcha.com/privacy) and [terms of service](https://www.hcaptcha.com/terms) for more details. While some information is sent to the hCaptcha API about your behavior **(on the contact page only)**, at least you won't be helping a certain internet conglomerate [train their self-driving cars](https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/). 🚗
 
-I also enabled the setting to donate 100% of my [HMT token](https://humanprotocol.org/?lng=en-US) earnings to the [Wikimedia Foundation](https://www.wikimedia.org/), for what it's worth. (A few cents, probably... 💰)
+I also enabled the setting to donate 100% of my [HMT token](https://humanprotocol.org/?lng=en-US) earnings to the [Wikimedia Foundation](https://wikimediafoundation.org/), for what it's worth. (A few cents, probably... 💰)
