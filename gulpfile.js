@@ -58,7 +58,10 @@ function optimizeHtml() {
 
 function optimizeImages() {
   // allow skipping this step via an env variable to save time during CI, etc.
-  if (process.env.SKIP_OPTIMIZE_IMAGES === "true") return Promise.resolve("skipped");
+  if (process.env.SKIP_OPTIMIZE_IMAGES === "true") {
+    console.log("Skipping image optimization...");
+    return Promise.resolve();
+  }
 
   return gulp
     .src(["public/**/*.{gif,jpg,jpeg,png,svg}", "!public/assets/emoji/**/*"], { base: "./" })

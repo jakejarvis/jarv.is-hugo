@@ -176,6 +176,7 @@ export default {
   performance: {
     // only evaluate JS and CSS file sizes (ignore source maps, images, etc.)
     assetFilter: (assetFilename) => /\.js$|\.css$/.test(assetFilename),
+    maxAssetSize: 990000, // ~99 KiB
   },
   optimization: {
     sideEffects: true,
