@@ -13,6 +13,14 @@ div.layout-contact {
   p {
     font-size: 0.9em;
     margin-bottom: 0.5em;
+
+    a code {
+      background: none;
+      border: 0;
+      padding: 0;
+      word-spacing: -0.2em;
+      white-space: normal;
+    }
   }
 
   input[type="text"],
