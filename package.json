@@ -123,6 +123,9 @@
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^10.0.0"
   },
+  "resolutions": {
+    "mozjpeg": "7.1.0"
+  },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
   },
