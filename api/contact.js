@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/node";
 import fetch from "node-fetch";
 import queryString from "query-string";
 
@@ -9,6 +10,11 @@ const HCAPTCHA_API_ENDPOINT = "https://hcaptcha.com/siteverify";
 
 const { AIRTABLE_API_KEY, AIRTABLE_BASE } = process.env;
 const AIRTABLE_API_ENDPOINT = `https://api.airtable.com/v0/`;
+
+Sentry.init({
+  dsn: process.env.SENTRY_DSN || "",
+  environment: process.env.NODE_ENV || process.env.VERCEL_ENV || "",
+});
 
 export default async (req, res) => {
   // disable caching on both ends
@@ -59,6 +65,13 @@ export default async (req, res) => {
     console.error(error);
 
     const message = error instanceof Error ? error.message : "Unknown error.";
+
+    // don't log PEBCAK errors to sentry
+    if (message !== "missingData" && message !== "invalidCaptcha") {
+      // log error to sentry, give it 2 seconds to finish sending
+      Sentry.captureException(error);
+      await Sentry.flush(2000);
+    }
 
     res.status(400).json({ success: false, message: message });
   }
