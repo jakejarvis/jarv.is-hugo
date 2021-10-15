@@ -37,26 +37,28 @@ export default async (req, res) => {
 
     const { body } = req;
 
-    // all fields are required
+    // these are both backups to client-side validations just in case someone
+    // squeezes through without them. the codes are identical so they're caught
+    // in the same fashion.
     if (!body.name || !body.email || !body.message) {
-      throw new Error("missingData");
+      // all fields are required
+      throw new Error("MISSING_DATA");
     }
-
-    // either the captcha is wrong or completely missing
     if (!body["h-captcha-response"] || !(await validateCaptcha(body["h-captcha-response"]))) {
-      throw new Error("invalidCaptcha");
+      // either the captcha is wrong or completely missing
+      throw new Error("INVALID_CAPTCHA");
     }
 
     // sent directly to airtable
-    const sendResult = await sendMessage({
+    const airtableResult = await sendToAirtable({
       Name: body.name,
       Email: body.email,
       Message: body.message,
     });
 
     // throw an internal error, not user's fault
-    if (sendResult !== true) {
-      throw new Error("airtableApiError");
+    if (airtableResult !== true) {
+      throw new Error("AIRTABLE_API_ERROR");
     }
 
     // return in JSON format
@@ -64,10 +66,10 @@ export default async (req, res) => {
   } catch (error) {
     console.error(error);
 
-    const message = error instanceof Error ? error.message : "Unknown error.";
+    const message = error instanceof Error ? error.message : "UNKNOWN_EXCEPTION";
 
     // don't log PEBCAK errors to sentry
-    if (message !== "missingData" && message !== "invalidCaptcha") {
+    if (message !== "MISSING_DATA" && message !== "INVALID_CAPTCHA") {
       // log error to sentry, give it 2 seconds to finish sending
       Sentry.captureException(error);
       await Sentry.flush(2000);
@@ -95,7 +97,7 @@ const validateCaptcha = async (formResponse) => {
   return result.success;
 };
 
-const sendMessage = async (data) => {
+const sendToAirtable = async (data) => {
   const response = await fetch(`${AIRTABLE_API_ENDPOINT}${AIRTABLE_BASE}/Messages`, {
     method: "POST",
     headers: {

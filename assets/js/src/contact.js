@@ -34,10 +34,10 @@ if (contactForm) {
       // we throw identical error messages to the server's so they're caught in
       // the same way below.
       if (!formData.name || !formData.email || !formData.message) {
-        throw new Error("missingData");
+        throw new Error("MISSING_DATA");
       }
       if (!formData["h-captcha-response"]) {
-        throw new Error("invalidCaptcha");
+        throw new Error("INVALID_CAPTCHA");
       }
 
       // post JSONified form input to /api/contact/
@@ -68,12 +68,12 @@ if (contactForm) {
           }
         });
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Unknown";
+      const message = error instanceof Error ? error.message : "UNKNOWN_EXCEPTION";
 
       // give user feedback based on the error message returned
-      if (message === "invalidCaptcha") {
+      if (message === "INVALID_CAPTCHA") {
         errorSpan.innerText = "Did you complete the CAPTCHA? (If you're human, that is...)";
-      } else if (message === "missingData") {
+      } else if (message === "MISSING_DATA") {
         errorSpan.innerText = "Please make sure that all fields are filled in.";
       } else {
         // something else went wrong, and it's probably my fault...

@@ -9,7 +9,8 @@ snapshot:
     iframe,
     video,
     img[src$=".gif"],
-    div#meta-hits {
+    .loading,
+    #contact-form-captcha {
       display: none !important;
     }
 
@@ -26,6 +27,7 @@ static:
     - "uses/index.html"
     - "notes/how-to-pull-request-fork-github/index.html"
     - "notes/shodan-search-queries/index.html"
+    - "contact/index.html"
 discovery:
   network-idle-timeout: 750
   disable-cache: true

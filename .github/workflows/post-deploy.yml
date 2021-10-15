@@ -51,6 +51,7 @@ jobs:
             --collect.url=${{ env.BASE_DEPLOY_URL }}/ \
             --collect.url=${{ env.BASE_DEPLOY_URL }}/notes/how-to-pull-request-fork-github/ \
             --collect.url=${{ env.BASE_DEPLOY_URL }}/projects/
+            --collect.url=${{ env.BASE_DEPLOY_URL }}/contact/
       - uses: actions/upload-artifact@v2
         with:
           name: lhci-results
