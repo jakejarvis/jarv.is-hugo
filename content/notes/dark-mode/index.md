@@ -1,10 +1,11 @@
 ---
 title: "How To: Add Dark Mode to a Website 🌓"
-date: 2020-04-29 12:14:09-0400
+date: 2021-10-15 08:56:33-0400
 description: "Simple dark mode switching using local storage, OS preference detection, and minimal JavaScript."
 tags:
-  - CSS
   - JavaScript
+  - NPM
+  - CSS
   - Dark Mode
   - How To
   - Tutorial
@@ -42,6 +43,49 @@ I've written a simple implementation below, which...
 {{< iframe src="/notes/dark-mode/example.html" width="650" height="275" title="Dark Mode Example" sandbox="allow-same-origin allow-scripts allow-popups" >}}
 
 A _very_ barebones example is embedded above ([view the source here](https://github.com/jakejarvis/dark-mode-example), or [open in a new window](/notes/dark-mode/example.html) if your browser is blocking the frame) and you can try it out on this site by clicking the 💡 lightbulb in the upper right corner of this page. You'll notice that the dark theme sticks when refreshing this page, navigating between other pages, or if you were to return to this example weeks from now.
+
+---
+
+### ⚡ Update: Now Available on [NPM](https://www.npmjs.com/package/dark-mode-switcheroo)! {#npm-module}
+
+I have cleaned up this code a bit, added a few features, and packaged it as an [📦 NPM module](https://www.npmjs.com/package/dark-mode-switcheroo) (zero dependencies and still [only ~500 bytes](https://bundlephobia.com/package/dark-mode-switcheroo) minified and gzipped!). Here's a small snippet of the updated method for the browser (pulling the module from [UNPKG](https://unpkg.com/browse/dark-mode-switcheroo/)), but definitely [read the readme](https://github.com/jakejarvis/dark-mode#readme) for much more detail on the API.
+
+```html
+<button class="dark-mode-toggle" style="visibility: hidden;">
+  💡 Click to see the light... or not.
+</button>
+
+<script src="https://unpkg.com/dark-mode-switcheroo/dist/dark-mode.min.js"></script>
+<script>
+  window.darkMode.init({
+    toggle: document.querySelector(".dark-mode-toggle"),
+    classes: {
+      light: "light",
+      dark: "dark",
+    },
+    default: "light",
+    storageKey: "dark_mode_pref",
+    onInit: function (toggle) {
+      toggle.style.visibility = "visible"; // toggle appears now that we know JS is enabled
+    },
+    onChange: function (theme, toggle) {
+      console.log("Theme is now " + theme);
+    },
+  });
+</script>
+```
+
+You can also install it [straight from NPM](https://www.npmjs.com/package/dark-mode-switcheroo) (`npm install dark-mode-switcheroo` or `yarn add dark-mode-switcheroo`) and simply include the ESM module, which works great when bundling using [Webpack](https://webpack.js.org/), [Browserify](https://browserify.org/), [Parcel](https://parceljs.org/), [esbuild](https://esbuild.github.io/), etc.
+
+```js
+import { init } from "dark-mode-switcheroo";
+
+init({
+  // ...same options as browser code.
+});
+```
+
+The [example HTML and CSS below](#html-css) is still helpful for reference.
 
 ---
 
