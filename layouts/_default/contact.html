@@ -6,10 +6,10 @@
   <p>🔐 You can grab my public key here: <a href="/pubkey.asc" title="My Public PGP Key" target="_blank" rel="pgpkey authn noopener"><code>6BF3 79D3 6F67 1480 2B0C 9CF2 51E6 9A39</code></a>.</p>
 
   <form id="contact-form" action="/api/contact/" method="POST">
-    <input type="text" id="name" name="name" placeholder="Name">
-    <input type="email" id="email" name="email" placeholder="Email">
+    <input type="text" name="name" placeholder="Name">
+    <input type="email" name="email" placeholder="Email">
+    <textarea name="message" placeholder="Write something..."></textarea>
 
-    <textarea id="message" name="message" placeholder="Write something..."></textarea>
     <span id="contact-form-md-info">Basic <a href="https://commonmark.org/help/" title="Markdown reference sheet" target="_blank" rel="noopener">Markdown syntax</a> is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [<a href="https://jarv.is" target="_blank" rel="noopener">links</a>](https://jarv.is), and <code>`code`</code>.</span>
 
     <h-captcha
