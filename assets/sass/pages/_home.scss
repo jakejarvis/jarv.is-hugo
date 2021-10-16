@@ -7,13 +7,17 @@ $colors-home: (
     light: #fb4d42,
     dark: #ff5146,
   ),
+  js-vanilla: (
+    light: #f48024,
+    dark: #e18431,
+  ),
+  js-frameworks: (
+    light: #1091b3,
+    dark: #6fcbe3,
+  ),
   jamstack: (
     light: #04a699,
     dark: #08bbac,
-  ),
-  javascript: (
-    light: #f48024,
-    dark: #e18431,
   ),
   node: (
     light: #6fbc4e,
@@ -22,14 +26,6 @@ $colors-home: (
   golang: (
     light: #00acd7,
     dark: #2ad1fb,
-  ),
-  react: (
-    light: #4fb3cd,
-    dark: #6fcbe3,
-  ),
-  angular: (
-    light: #c3002f,
-    dark: #f95757,
   ),
   php: (
     light: #8892bf,
