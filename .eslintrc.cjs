@@ -37,5 +37,5 @@ module.exports = {
       },
     },
   ],
-  ignorePatterns: ["public/**", "static/assets/**", ".yarn/**"],
+  ignorePatterns: ["public/**", "static/assets/**"],
 };

@@ -15,5 +15,4 @@ _vendor/
 .vercel/
 .lighthouseci/
 .vscode/
-.yarn/
 content/notes/dark-mode/example.html
