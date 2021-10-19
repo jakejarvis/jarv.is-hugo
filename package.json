@@ -20,7 +20,7 @@
     "clean": "gulp clean",
     "start": "gulp serve",
     "start:vercel": "volta run --node 14 --npm 6 -- vercel dev",
-    "lint": "run-s lint:**",
+    "lint": "run-s 'lint:**'",
     "lint:js": "eslint .",
     "lint:css": "stylelint '**/*.{css,scss}'",
     "lint:md": "markdownlint '**/*.md' --config .markdownlintrc.json --ignore node_modules",
