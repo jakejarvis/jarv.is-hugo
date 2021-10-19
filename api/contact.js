@@ -42,11 +42,11 @@ export default async (req, res) => {
     // in the same fashion.
     if (!body.name || !body.email || !body.message) {
       // all fields are required
-      throw new Error("MISSING_DATA");
+      throw new Error("USER_MISSING_DATA");
     }
     if (!body["h-captcha-response"] || !(await validateCaptcha(body["h-captcha-response"]))) {
       // either the captcha is wrong or completely missing
-      throw new Error("INVALID_CAPTCHA");
+      throw new Error("USER_INVALID_CAPTCHA");
     }
 
     // sent directly to airtable
@@ -69,7 +69,7 @@ export default async (req, res) => {
     const message = error instanceof Error ? error.message : "UNKNOWN_EXCEPTION";
 
     // don't log PEBCAK errors to sentry
-    if (message !== "MISSING_DATA" && message !== "INVALID_CAPTCHA") {
+    if (!message.startsWith("USER_")) {
       // log error to sentry, give it 2 seconds to finish sending
       Sentry.captureException(error);
       await Sentry.flush(2000);
