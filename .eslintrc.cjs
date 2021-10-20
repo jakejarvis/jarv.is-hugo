@@ -5,6 +5,7 @@ module.exports = {
     "plugin:compat/recommended",
     "plugin:import/recommended",
     "plugin:lit/recommended",
+    "plugin:no-unsanitized/DOM",
     "plugin:prettier/recommended",
   ],
   plugins: ["prettier"],
