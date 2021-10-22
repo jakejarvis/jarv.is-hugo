@@ -47,6 +47,28 @@ div.highlight {
   }
 }
 
+// elements dynamically added by clipboard.js code
+div.highlight-clipboard-enabled {
+  position: relative;
+
+  button.copy-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5.5em;
+    padding: 0.75em 0.25em;
+    border: 1px solid;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: 500;
+    line-height: 1;
+
+    &:hover {
+      @include themes.themed(color, "links");
+    }
+  }
+}
+
 // global table styles for line numbers and font styles
 .chroma {
   .lntable {
@@ -102,6 +124,7 @@ div.highlight {
 
 /*! Syntax Highlighting (light) - modified from Monokai Light: https://github.com/mlgill/pygments-style-monokailight */
 body.light {
+  // stylelint-disable no-descending-specificity
   div.highlight,
   button.copy-button,
   :not(pre) > code {
@@ -116,6 +139,7 @@ body.light {
   button.copy-button {
     color: #313131;
   }
+  // stylelint-enable no-descending-specificity
 
   .chroma {
     .k,
@@ -191,6 +215,7 @@ body.light {
 
 /*! Syntax Highlighting (dark) - modified from Dracula: https://github.com/dracula/pygments */
 body.dark {
+  // stylelint-disable no-descending-specificity
   div.highlight,
   button.copy-button,
   :not(pre) > code {
@@ -205,6 +230,7 @@ body.dark {
   button.copy-button {
     color: #e4e4e4;
   }
+  // stylelint-enable no-descending-specificity
 
   .chroma {
     .k,
@@ -274,28 +300,6 @@ body.dark {
 
     .lnt {
       color: #b1b1b1;
-    }
-  }
-}
-
-// elements dynamically added by clipboard.js code
-div.highlight-clipboard-enabled {
-  position: relative;
-
-  button.copy-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 5.5em;
-    padding: 0.75em 0.25em;
-    border: 1px solid;
-    cursor: pointer;
-    font-size: 0.85em;
-    font-weight: 500;
-    line-height: 1;
-
-    &:hover {
-      @include themes.themed(color, "links");
     }
   }
 }
