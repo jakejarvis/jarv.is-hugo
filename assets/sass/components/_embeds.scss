@@ -1,5 +1,12 @@
 // External social embeds
 div.embed {
+  &.codepen {
+    iframe {
+      width: 100%;
+      border: 0;
+    }
+  }
+
   &.tweet {
     .twitter-tweet-rendered iframe {
       margin: 0.5em 0;
@@ -40,13 +47,6 @@ div.embed {
     > span,
     > a {
       margin: 0 0.5em;
-    }
-  }
-
-  &.codepen {
-    iframe {
-      width: 100%;
-      border: 0;
     }
   }
 }

@@ -34,7 +34,7 @@ div#content {
       margin-left: 0.25em;
       padding: 0 0.5em 0 0.25em;
       background: none;
-      opacity: 0;
+      opacity: 0%;
       font-weight: 300;
       line-height: 1;
 
@@ -50,7 +50,7 @@ div#content {
     }
 
     &:hover > a.anchorjs-link {
-      opacity: 1; // '#' link appears on hover over entire sub-heading line
+      opacity: 100%; // '#' link appears on hover over entire sub-heading line
     }
   }
 

@@ -47,30 +47,6 @@ div.highlight {
   }
 }
 
-// elements dynamically added by clipboard.js code
-div.highlight-clipboard-enabled {
-  position: relative;
-
-  button.copy-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    width: 5.5em;
-    padding: 0.75em 0.25em;
-    border: 1px solid;
-    cursor: pointer;
-
-    font-size: 0.85em;
-    font-weight: 500;
-    line-height: 1;
-
-    &:hover {
-      @include themes.themed(color, "links");
-    }
-  }
-}
-
 // global table styles for line numbers and font styles
 .chroma {
   .lntable {
@@ -109,9 +85,9 @@ div.highlight-clipboard-enabled {
   }
 
   .kd,
-  //.nb,
-  //.nl,
-  //.nv,
+  // .nb,
+  // .nl,
+  // .nv,
   .vc,
   .vg,
   .vi,
@@ -298,6 +274,28 @@ body.dark {
 
     .lnt {
       color: #b1b1b1;
+    }
+  }
+}
+
+// elements dynamically added by clipboard.js code
+div.highlight-clipboard-enabled {
+  position: relative;
+
+  button.copy-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5.5em;
+    padding: 0.75em 0.25em;
+    border: 1px solid;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: 500;
+    line-height: 1;
+
+    &:hover {
+      @include themes.themed(color, "links");
     }
   }
 }

@@ -7,6 +7,8 @@
 // https://github.com/fonttools/fonttools
 // ex: glyphhanger --whitelist="" --family="Inter" --formats=woff2,woff --subset="*.woff"
 // ex: pyftsubset --unicodes="" --layout-features=kern,liga,calt,clig,ss01 --flavor=woff --with-zopfli inter.ttf
+
+// stylelint-disable-next-line scss/operator-no-unspaced
 $unicode-subset: U+0000-00FF, U+2000-206F, U+2200-22FF, U+2122;
 
 // Webfont scaffolding

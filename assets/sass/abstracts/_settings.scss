@@ -8,11 +8,11 @@ $webfont-mono-variable: "Roboto Mono var";
 
 // System fonts
 // https://markdotto.com/2018/02/07/github-system-fonts/
+// stylelint-disable-next-line value-keyword-case
 $system-fonts-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif,
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $system-fonts-monospace: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "Courier",
   monospace;
-
 $font-stack-sans: list.join($webfont-sans, $system-fonts-sans);
 $font-stack-variable: list.join($webfont-sans-variable, $system-fonts-sans);
 $font-stack-mono: list.join($webfont-mono, $system-fonts-monospace);
@@ -20,6 +20,7 @@ $font-stack-mono-variable: list.join($webfont-mono-variable, $system-fonts-monos
 
 // The maximum width of the content area:
 $max-width: 865px;
+
 // Width at which to switch to mobile styles:
 $responsive-width: 800px;
 

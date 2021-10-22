@@ -44,7 +44,7 @@ header {
         @include themes.themed(color, "links");
 
         img#header-selfie {
-          opacity: 0.9;
+          opacity: 90%;
         }
       }
     }
@@ -104,7 +104,8 @@ header {
             background-repeat: no-repeat;
             background-size: 100% 100%;
 
-            height: 1.56em; // 24.33px, don't ask
+            // 24.33px, don't ask
+            height: 1.56em;
             width: 1.56em;
             margin-top: -0.05em;
             margin-left: 1.4em;
@@ -142,7 +143,7 @@ header {
 
         &:hover {
           img#header-selfie {
-            opacity: 1;
+            opacity: 100%;
           }
         }
       }

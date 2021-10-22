@@ -14,6 +14,8 @@
 
   // Less compatible but better for light/dark mode switching.
   // We fall back to non-alpha hex colors with postcss-color-rgba-fallback to mitigate this.
+
+  // stylelint-disable-next-line color-function-notation
   $color-opaque-alpha: rgba($color, math.div(settings.$link-underline-opacity, 100%));
 
   // Return non-gradient linear-gradient():
@@ -25,19 +27,20 @@
 // https://stackoverflow.com/a/65853667/1438024
 @function str-split($str, $separator: ",") {
   // return immediately if this function isn't necessary
-  @if (string.index("#{$str}", "#{$separator}") == null) {
+  @if not string.index("#{$str}", "#{$separator}") {
     @return $str;
   }
 
   $str-list: ();
 
   @while string.index("#{$str}", "#{$separator}") != null {
-    @if (string.index("#{$str}", "#{$separator}") > 1) {
+    @if string.index("#{$str}", "#{$separator}") > 1 {
       $str-list: list.append(
         $str-list,
         string.slice("#{$str}", 1, string.index("#{$str}", "#{$separator}") - 1)
       );
     }
+
     $str: string.slice(
       "#{$str}",
       string.index("#{$str}", "#{$separator}") + 1,
@@ -45,7 +48,7 @@
     );
   }
 
-  @if (string.slice("#{$str}", 1, string.length("#{$str}")) != "") {
+  @if string.slice("#{$str}", 1, string.length("#{$str}")) != "" {
     $str-list: list.append($str-list, string.slice("#{$str}", 1, string.length("#{$str}")));
   }
 

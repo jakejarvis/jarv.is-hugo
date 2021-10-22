@@ -10,7 +10,6 @@ body {
   height: 100%;
   margin: 0 auto;
   scroll-behavior: smooth;
-
   font-family: settings.$font-stack-sans;
   font-kerning: normal;
   font-variant-ligatures: normal;
@@ -86,7 +85,7 @@ main {
     // https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/
     @each $theme, $map in themes.$themes {
       @at-root body.#{$theme} #{&} {
-        background-image: underline-hack(map-get($map, "links"));
+        background-image: underline-hack(map.get($map, "links"));
       }
     }
 
@@ -106,6 +105,7 @@ main {
     margin-top: 0;
     letter-spacing: -0.005em;
 
+    // stylelint-disable-next-line no-descending-specificity
     a {
       // disable fancy underline without `.no-underline`
       color: inherit !important;
