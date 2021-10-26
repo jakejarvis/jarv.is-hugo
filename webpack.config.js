@@ -74,7 +74,7 @@ export default {
       integrityHashes: ["sha384"],
       customize: (entry) => {
         // don't add thousands of unneeded twemoji graphics to the manifest
-        if (entry.key.startsWith("emoji/")) return false;
+        if (entry.key.startsWith("emoji/") || entry.key.endsWith(".map")) return false;
       },
     }),
   ],
@@ -168,7 +168,7 @@ export default {
         test: /\.(woff(2)?|ttf|otf|eot)$/,
         type: "asset/resource",
         generator: {
-          filename: "fonts/[name][ext]",
+          filename: isProd ? "fonts/[name]-[contenthash:6][ext]" : "fonts/[name][ext]",
         },
       },
     ],

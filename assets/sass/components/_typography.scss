@@ -1,122 +1,46 @@
-@use "sass:string";
-
-@use "../abstracts/functions" as *;
-
-// Note to self: got this list after subsetting Inter with glyphhanger or pyftsubset:
-// https://github.com/filamentgroup/glyphhanger
-// https://github.com/fonttools/fonttools
-// ex: glyphhanger --whitelist="" --family="Inter" --formats=woff2,woff --subset="*.woff"
-// ex: pyftsubset --unicodes="" --layout-features=kern,liga,calt,clig,ss01 --flavor=woff --with-zopfli inter.ttf
-
-// stylelint-disable-next-line scss/operator-no-unspaced
-$unicode-subset: U+0000-00FF, U+2000-206F, U+2200-22FF, U+2122;
-
-// Webfont scaffolding
-@mixin font-face(
-  $family,
-  $src,
-  $weight: normal,
-  $style: normal,
-  $display: swap,
-  $variable: false,
-  $base-path: "../fonts/"
-) {
-  @font-face {
-    font-family: string.quote($family);
-    font-style: $style;
-    font-weight: $weight;
-    font-display: $display;
-
-    @if $variable {
-      // All browsers that support variable fonts also support woff2, so a woff
-      // file is unncessary. (see: https://www.w3.org/TR/css-fonts-4/#src-desc)
-      src: url($base-path + $src + ".woff2") format("woff2-variations"),
-        url($base-path + $src + ".woff2") format("woff2");
-    } @else {
-      src: url($base-path + $src + ".woff2") format("woff2"),
-        url($base-path + $src + ".woff") format("woff");
-    }
-
-    // Allow additional rules to be passed in:
-    @content;
-  }
-}
-
-// ----------------
+@use "@fontsource/inter/scss/mixins" as Inter;
+@use "@fontsource/roboto-mono/scss/mixins" as RobotoMono;
+@use "@fontsource/comic-neue/scss/mixins" as ComicNeue;
 
 /*!
- * Inter typeface v3.15 - https://rsms.me/inter/
+ * Inter typeface - https://rsms.me/inter/
  *
  * Copyright (c) 2016-2020 The Inter Project Authors.
  * Licensed under the SIL Open Font License, Version 1.1:
- * https://github.com/rsms/inter/blob/v3.15/LICENSE.txt
+ * https://github.com/rsms/inter/blob/master/LICENSE.txt
  */
 
 // Variable
-@include font-face("Inter var", "inter-subset.var", 100 900, $variable: true) {
-  unicode-range: $unicode-subset;
-}
-@include font-face("Inter var", "inter-italic-subset.var", 100 900, italic, $variable: true) {
-  unicode-range: $unicode-subset;
-}
+@include Inter.fontFaceVariable($fontName: "Inter var", $type: "full");
 
 // Legacy
-@include font-face("Inter", "inter-regular-subset", 400) {
-  unicode-range: $unicode-subset;
-}
-@include font-face("Inter", "inter-regular-italic-subset", 400, italic) {
-  unicode-range: $unicode-subset;
-}
-@include font-face("Inter", "inter-medium-subset", 500) {
-  unicode-range: $unicode-subset;
-}
-@include font-face("Inter", "inter-medium-italic-subset", 500, italic) {
-  unicode-range: $unicode-subset;
-}
-@include font-face("Inter", "inter-bold-subset", 700) {
-  unicode-range: $unicode-subset;
-}
-@include font-face("Inter", "inter-bold-italic-subset", 700, italic) {
-  unicode-range: $unicode-subset;
-}
-
-// ----------------
+@include Inter.fontFace($fontName: "Inter", $weight: 400);
+@include Inter.fontFace($fontName: "Inter", $weight: 500);
+@include Inter.fontFace($fontName: "Inter", $weight: 700);
 
 /*!
- * Roboto Mono typeface v3.000 - https://fonts.google.com/specimen/Roboto+Mono
+ * Roboto Mono typeface - https://fonts.google.com/specimen/Roboto+Mono
  *
  * Copyright (c) 2015 The Roboto Mono Project Authors.
  * Licensed under the Apache License, Version 2.0:
- * https://github.com/google/fonts/blob/4df0b673c9b316ad5e8de8fa70b0768ab66c87d6/apache/robotomono/LICENSE.txt
+ * https://github.com/google/fonts/blob/main/apache/robotomono/LICENSE.txt
  */
 
 // Variable
-@include font-face("Roboto Mono var", "roboto-mono-subset.var", 100 700, $variable: true);
-@include font-face(
-  "Roboto Mono var",
-  "roboto-mono-italic-subset.var",
-  100 700,
-  italic,
-  $variable: true
-);
+@include RobotoMono.fontFaceVariable($fontName: "Roboto Mono var");
+@include RobotoMono.fontFaceVariable($fontName: "Roboto Mono var", $style: italic);
 
 // Legacy
-@include font-face("Roboto Mono", "roboto-mono-regular-subset", 400);
-@include font-face("Roboto Mono", "roboto-mono-italic-subset", 400, italic);
-
-// ----------------
+@include RobotoMono.fontFace($fontName: "Roboto Mono", $weight: 400);
+@include RobotoMono.fontFace($fontName: "Roboto Mono", $weight: 700);
 
 /*!
- * Comic Neue typeface v2.5 - http://comicneue.com/
+ * Comic Neue typeface - http://comicneue.com/
  *
  * Copyright (c) 2014 The Comic Neue Project Authors.
  * Licensed under the SIL Open Font License, Version 1.1:
- * https://github.com/crozynski/comicneue/blob/v2.5/OFL.txt
+ * https://github.com/crozynski/comicneue/blob/master/OFL.txt
  */
 
-@include font-face("Comic Neue", "comic-neue-regular-subset", 400) {
-  unicode-range: U+0000-00FF, U+2000-206F, U+20A0-20CF, U+2190-21FF, U+2200-22FF, U+2122;
-}
-@include font-face("Comic Neue", "comic-neue-bold-subset", 700) {
-  unicode-range: U+0000-00FF, U+2000-206F, U+20A0-20CF, U+2190-21FF, U+2200-22FF, U+2122;
-}
+@include ComicNeue.fontFace($fontName: "Comic Neue", $weight: 400);
+@include ComicNeue.fontFace($fontName: "Comic Neue", $weight: 700);

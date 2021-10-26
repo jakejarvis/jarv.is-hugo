@@ -1,19 +1,5 @@
 {{/* Pull in JS processed by Webpack */}}
 
-{{- define "__head_preload" -}}
-  {{ with partial "functions/webpack" (dict "context" . "src" "fonts/inter-subset.var.woff2") }}
-    <link rel="preload" href="{{ .src }}" as="font" type="font/woff2" crossorigin>
-  {{ end }}
-
-  {{ with partial "functions/webpack" (dict "context" . "src" "fonts/roboto-mono-subset.var.woff2") }}
-    <link rel="preload" href="{{ .src }}" as="font" type="font/woff2" crossorigin>
-  {{ end }}
-
-  {{ with partial "functions/webpack" (dict "context" . "src" "main.js") }}
-    <link rel="preload" href="{{ .src }}" as="script">
-  {{ end }}
-{{- end -}}
-
 {{- define "__body_js" -}}
   {{ with partial "functions/webpack" (dict "context" . "src" "main.js") }}
     <script async defer src="{{ .src }}"></script>
