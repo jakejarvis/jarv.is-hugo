@@ -6,7 +6,7 @@
   "cleanUrls": false,
   "rewrites": [
     { "source": "/favicon.ico", "destination": "/assets/images/favicon.ico" },
-    { "source": "/favicon.png", "destination": "/assets/images/favicon.png" },
+    { "source": "/favicon.png", "destination": "/assets/images/favicon-64.png" },
     { "source": "/apple-touch-icon.png", "destination": "/assets/images/apple-touch-icon.png" },
     {
       "source": "/apple-touch-icon-precomposed.png",
