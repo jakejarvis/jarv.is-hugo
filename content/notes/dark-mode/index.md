@@ -42,7 +42,7 @@ I've written a simple implementation below, which...
 
 {{< iframe src="/notes/dark-mode/example/" width="650" height="275" title="Dark Mode Example" sandbox="allow-same-origin allow-scripts allow-popups" >}}
 
-A _very_ barebones example is embedded above ([view the source here](https://github.com/jakejarvis/dark-mode-example), or [open in a new window](/notes/dark-mode/example.html) if your browser is blocking the frame) and you can try it out on this site by clicking the 💡 lightbulb in the upper right corner of this page. You'll notice that the dark theme sticks when refreshing this page, navigating between other pages, or if you were to return to this example weeks from now.
+A _very_ barebones example is embedded above ([view the source here](https://github.com/jakejarvis/dark-mode-example), or [open in a new window](/notes/dark-mode/example/) if your browser is blocking the frame) and you can try it out on this site by clicking the 💡 lightbulb in the upper right corner of this page. You'll notice that the dark theme sticks when refreshing this page, navigating between other pages, or if you were to return to this example weeks from now.
 
 ---
 
