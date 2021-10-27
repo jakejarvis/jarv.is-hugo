@@ -11,7 +11,7 @@
   },
   "features": {
     "git": "os-provided",
-    "node": "14"
+    "node": "16"
   },
 
   // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.

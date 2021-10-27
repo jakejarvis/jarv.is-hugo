@@ -38,7 +38,7 @@
     "fast-xml-parser": "^3.21.0",
     "faunadb": "^4.4.1",
     "get-canonical-url": "^1.0.1",
-    "graphql": "^15.6.1",
+    "graphql": "^15.7.0",
     "graphql-request": "^3.6.1",
     "graphql-tag": "^2.12.5",
     "html-entities": "^2.3.2",
@@ -86,7 +86,7 @@
     "gulp-html-minifier-terser": "^6.0.1",
     "gulp-imagemin": "^8.0.0",
     "hugo-extended": "github:jakejarvis/hugo-extended#reinstall-on-error",
-    "lint-staged": "^11.2.5",
+    "lint-staged": "^11.2.6",
     "markdownlint-cli": "~0.29.0",
     "mini-css-extract-plugin": "^2.4.3",
     "npm-run-all": "^4.1.5",
@@ -102,9 +102,9 @@
     "postcss-scss": "^4.0.1",
     "postcss-svgo": "^5.0.2",
     "prettier": "^2.4.1",
-    "sass": "^1.43.3",
-    "sass-loader": "^12.2.0",
-    "simple-git-hooks": "^2.6.1",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "simple-git-hooks": "^2.7.0",
     "stylelint": "~14.0.1",
     "stylelint-config-prettier": "~9.0.3",
     "stylelint-config-sass-guidelines": "~8.0.0",
@@ -146,7 +146,7 @@
     ]
   },
   "volta": {
-    "node": "14.18.1",
+    "node": "16.13.0",
     "yarn": "1.22.17"
   }
 }
