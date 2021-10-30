@@ -6841,10 +6841,9 @@ mkdirp@^0.5.1, mkdirp@^0.5.5:
   dependencies:
     minimist "^1.2.5"
 
-modern-normalize@^1.1.0:
+"modern-normalize@github:sindresorhus/modern-normalize#1fc6b5a86676b7ac8abc62d04d6080f92debc70f":
   version "1.1.0"
-  resolved "https://registry.yarnpkg.com/modern-normalize/-/modern-normalize-1.1.0.tgz#da8e80140d9221426bd4f725c6e11283d34f90b7"
-  integrity sha512-2lMlY1Yc1+CUy0gw4H95uNN7vjbpoED7NNRSBHE25nWfLBdmMzFCsPshlzbxHz+gYMcBEUN8V4pU16prcdPSgA==
+  resolved "https://codeload.github.com/sindresorhus/modern-normalize/tar.gz/1fc6b5a86676b7ac8abc62d04d6080f92debc70f"
 
 mozjpeg@7.1.0, mozjpeg@^7.0.0:
   version "7.1.0"
