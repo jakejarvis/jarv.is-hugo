@@ -1,5 +1,4 @@
 import fetch from "cross-fetch";
-import numeral from "numeral";
 import canonicalUrl from "get-canonical-url";
 import urlParse from "url-parse";
 
@@ -31,7 +30,7 @@ if (wrapper && canonical) {
     .then((response) => response.json())
     .then((data) => {
       // pretty number and units
-      const hitsComma = numeral(data.hits).format("0,0");
+      const hitsComma = data.hits.toLocaleString("en-US");
       const hitsPlural = data.hits === 1 ? "view" : "views";
       wrapper.title = `${hitsComma} ${hitsPlural}`;
 
