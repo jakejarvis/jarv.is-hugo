@@ -17,7 +17,8 @@ initDarkMode({
     // make toggle visible now that we know JS is enabled
     t.style.display = "block";
 
-    // HACK: re-enable theme transitions after a very short delay, otherwise there's a weird race condition (2/2)
+    // HACK: re-enable theme transitions after a very short delay, otherwise
+    // there's a weird race condition (2/2)
     setTimeout(() => {
       document.head.removeChild(disableTransitionCSSHack);
     }, 500);

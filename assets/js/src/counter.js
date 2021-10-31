@@ -8,18 +8,18 @@ const HITS_ENDPOINT = "/api/hits/";
 // don't continue if there isn't a span#meta-hits element on this page
 const wrapper = document.getElementById("meta-hits");
 
-// use <link rel="canonical"> to deduce a consistent identifier for this page
-const canonical = canonicalUrl({
-  normalize: true,
-  normalizeOptions: {
-    removeTrailingSlash: true,
-    removeQueryParameters: true,
-    stripHash: true,
-  },
-});
-
 // page must have both span#meta-hits and canonical URL to enter
-if (wrapper && canonical) {
+if (wrapper) {
+  // use <link rel="canonical"> to deduce a consistent identifier for this page
+  const canonical = canonicalUrl({
+    normalize: true,
+    normalizeOptions: {
+      removeTrailingSlash: true,
+      removeQueryParameters: true,
+      stripHash: true,
+    },
+  });
+
   // javascript is enabled so show the loading indicator
   wrapper.style.display = "inline-flex";
 

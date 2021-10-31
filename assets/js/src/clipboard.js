@@ -5,8 +5,8 @@ import trimNewlines from "trim-newlines";
 const defaultTerm = "Copy";
 const successTerm = "Copied!";
 
-// immediately give up if not supported
-if (ClipboardJS.isSupported()) {
+// immediately give up if not supported or if there are no code blocks
+if (ClipboardJS.isSupported() && document.querySelector("div.highlight")) {
   // loop through each code fence on page (if any)
   document.querySelectorAll("div.highlight").forEach((highlightDiv) => {
     const wrapperDiv = document.createElement("div");
@@ -22,10 +22,10 @@ if (ClipboardJS.isSupported()) {
     wrapperDiv.insertBefore(button, wrapperDiv.firstChild);
   });
 
+  // now that all the buttons are in place, bind them to the copy action
   new ClipboardJS("button.copy-button", {
-    // actual code element will (should) have class "language-*", even if plaintext
     text: (trigger) =>
-      // eslint-disable-next-line quotes
+      // actual code element will have class "language-*", even if plaintext
       trimNewlines(trigger.parentElement.querySelector('code[class^="language-"]').innerText),
   }).on("success", (e) => {
     // show a subtle indication of success
