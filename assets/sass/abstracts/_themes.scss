@@ -16,9 +16,7 @@
   @each $element in settings.$theme-transition-elements {
     $transitions: list.append(
       $transitions,
-      string.unquote(
-        "#{$element} #{settings.$theme-transition-duration} #{settings.$theme-transition-function}"
-      )
+      string.unquote("#{$element} #{settings.$theme-transition-duration} #{settings.$theme-transition-function}")
     );
   }
   @if $moreTransitions != "" {

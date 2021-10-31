@@ -27,11 +27,7 @@ export default async (req, res) => {
     if (req.method !== "GET") {
       throw new Error(`Method ${req.method} not allowed.`);
     }
-    if (
-      !process.env.SPOTIFY_CLIENT_ID ||
-      !process.env.SPOTIFY_CLIENT_SECRET ||
-      !process.env.SPOTIFY_REFRESH_TOKEN
-    ) {
+    if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET || !process.env.SPOTIFY_REFRESH_TOKEN) {
       throw new Error("Spotify API credentials aren't set.");
     }
 
@@ -47,10 +43,7 @@ export default async (req, res) => {
       response = await getTopTracks();
 
       // let Vercel edge and browser cache results for 3 hours
-      res.setHeader(
-        "Cache-Control",
-        "public, max-age=10800, s-maxage=10800, stale-while-revalidate"
-      );
+      res.setHeader("Cache-Control", "public, max-age=10800, s-maxage=10800, stale-while-revalidate");
     }
 
     res.setHeader("Access-Control-Allow-Methods", "GET");

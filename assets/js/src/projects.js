@@ -28,10 +28,7 @@ if (wrapper) {
     <div class="repo-meta">
       ${repo.language
         ? html`<div class="repo-meta-item">
-            <span
-              class="repo-language-color"
-              style="background-color: ${ifDefined(repo.language.color)}"
-            ></span>
+            <span class="repo-language-color" style="background-color: ${ifDefined(repo.language.color)}"></span>
             <span>${repo.language.name}</span>
           </div>`
         : null}

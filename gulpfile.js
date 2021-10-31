@@ -17,7 +17,7 @@ gulp.task(
   gulp.series(
     clean,
     npx("webpack", ["--mode", "production"]),
-    npx("hugo"),
+    npx("hugo", ["--verbose"]),
     gulp.parallel(optimizeHtml, optimizeImages)
   )
 );

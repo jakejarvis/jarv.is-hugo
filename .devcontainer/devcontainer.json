@@ -32,6 +32,12 @@
 
   // Set *default* container specific settings.json values on container create.
   "settings": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.rulers": [120],
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
     "css.validate": false,
     "scss.validate": false,
     "html.format.templating": true,

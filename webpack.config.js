@@ -20,10 +20,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isProd = process.env.NODE_ENV === "production";
 
 export default {
-  entry: [
-    path.resolve(__dirname, "assets/js/index.js"),
-    path.resolve(__dirname, "assets/sass/main.scss"),
-  ],
+  entry: [path.resolve(__dirname, "assets/js/index.js"), path.resolve(__dirname, "assets/sass/main.scss")],
   mode: isProd ? "production" : "development",
   devtool: isProd ? "source-map" : "inline-source-map",
   output: {
@@ -88,11 +85,7 @@ export default {
                 [
                   "@babel/preset-env",
                   {
-                    include: [
-                      "transform-arrow-functions",
-                      "transform-block-scoping",
-                      "transform-template-literals",
-                    ],
+                    include: ["transform-arrow-functions", "transform-block-scoping", "transform-template-literals"],
                     bugfixes: true,
                     useBuiltIns: "entry",
                     corejs: 3,

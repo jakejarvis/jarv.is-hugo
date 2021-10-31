@@ -4,8 +4,7 @@ import queryString from "query-string";
 
 // fallback to dummy secret for testing: https://docs.hcaptcha.com/#integration-testing-test-keys
 const HCAPTCHA_SITE_KEY = process.env.HCAPTCHA_SITE_KEY || "10000000-ffff-ffff-ffff-000000000001";
-const HCAPTCHA_SECRET_KEY =
-  process.env.HCAPTCHA_SECRET_KEY || "0x0000000000000000000000000000000000000000";
+const HCAPTCHA_SECRET_KEY = process.env.HCAPTCHA_SECRET_KEY || "0x0000000000000000000000000000000000000000";
 const HCAPTCHA_API_ENDPOINT = "https://hcaptcha.com/siteverify";
 
 const { AIRTABLE_API_KEY, AIRTABLE_BASE } = process.env;
@@ -37,9 +36,8 @@ export default async (req, res) => {
 
     const { body } = req;
 
-    // these are both backups to client-side validations just in case someone
-    // squeezes through without them. the codes are identical so they're caught
-    // in the same fashion.
+    // these are both backups to client-side validations just in case someone squeezes through without them. the codes
+    // are identical so they're caught in the same fashion.
     if (!body.name || !body.email || !body.message) {
       // all fields are required
       throw new Error("USER_MISSING_DATA");

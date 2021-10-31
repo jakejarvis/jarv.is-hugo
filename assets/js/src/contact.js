@@ -29,10 +29,9 @@ if (contactForm) {
       // https://simonplend.com/how-to-use-fetch-to-post-form-data-as-json-to-your-api/
       const formData = Object.fromEntries(new FormData(event.currentTarget).entries());
 
-      // some client-side validation, these are all also checked on the server
-      // to be safe but we can save some unnecessary requests here.
-      // we throw identical error messages to the server's so they're caught in
-      // the same way below.
+      // some client-side validation. these are all also checked on the server to be safe but we can save some
+      // unnecessary requests here.
+      // we throw identical error messages to the server's so they're caught in the same way below.
       if (!formData.name || !formData.email || !formData.message) {
         throw new Error("USER_MISSING_DATA");
       }
