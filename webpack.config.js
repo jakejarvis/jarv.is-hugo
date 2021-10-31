@@ -12,9 +12,6 @@ import autoprefixer from "autoprefixer";
 import postcssSvgo from "postcss-svgo";
 import postcssFocus from "postcss-focus";
 import postcssColorRgbaFallback from "postcss-color-rgba-fallback";
-import postcssMergeRules from "postcss-merge-rules";
-import postcssDiscardDuplicates from "postcss-discard-duplicates";
-import postcssCombineDuplicatedSelectors from "postcss-combine-duplicated-selectors";
 import postcssNormalizeCharset from "postcss-normalize-charset";
 
 // https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#what-do-i-use-instead-of-__dirname-and-__filename
@@ -144,13 +141,10 @@ export default {
                   postcssSvgo({
                     encode: true,
                   }),
-                  postcssFocus(),
                   postcssColorRgbaFallback({
                     properties: ["background-image"],
                   }),
-                  postcssCombineDuplicatedSelectors(),
-                  postcssMergeRules(),
-                  postcssDiscardDuplicates(),
+                  postcssFocus(),
                   postcssNormalizeCharset(),
                 ],
               },
@@ -186,6 +180,7 @@ export default {
         test: /\.js$/,
         parallel: true,
         terserOptions: {
+          sourceMap: true,
           compress: {
             arrows: false,
             drop_console: true,
@@ -206,8 +201,9 @@ export default {
         minify: CssMinimizerPlugin.cleanCssMinify,
         minimizerOptions: {
           compatibility: "*",
-          level: 1,
+          level: 2,
           processImport: false,
+          sourceMap: true,
           format: {
             breaks: {
               afterAtRule: true,
