@@ -29,7 +29,7 @@ footer {
     padding-bottom: 2px;
     border-bottom: 1px solid;
 
-    @include themes.themed($border-color: "light");
+    @include themes.themed($color: "medium-dark", $border-color: "light");
   }
 }
 

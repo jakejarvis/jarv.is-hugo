@@ -2,7 +2,7 @@
 
 @use "../abstracts/settings";
 @use "../abstracts/themes";
-@use "../abstracts/functions" as *;
+@use "../abstracts/functions";
 
 // Global Styles
 body {
@@ -77,18 +77,18 @@ main {
     background-size: 0% settings.$link-underline-size;
     padding-bottom: settings.$link-underline-size;
 
-    @include themes.themed($color: "links");
-
-    // TODO: overriding transition-property from themed() -- very hacky
-    transition-property: color, background-size;
-    transition-duration: #{settings.$theme-transition-duration}, 0.25s;
-    transition-timing-function: linear, ease-in-out;
+    @include themes.themed($color: "links") {
+      // TODO: overriding transition-property from themed() -- very hacky
+      transition-property: color, background-size;
+      transition-duration: #{settings.$theme-transition-duration}, 0.25s;
+      transition-timing-function: #{settings.$theme-transition-function}, ease-in-out;
+    }
 
     // cool link underlines (via messy SCSS hacking):
     // https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/
     @each $theme, $map in themes.$themes {
       @at-root body.#{$theme} #{&} {
-        background-image: underline-hack(map.get($map, "links"));
+        background-image: functions.underline-hack(map.get($map, "links"));
       }
     }
 

@@ -62,22 +62,26 @@ header {
 
         a {
           display: inline-flex;
+
+          // hovers are super choppy without this in some browsers
           will-change: transform;
 
-          @include themes.themed($color: "medium-dark");
-
-          // TODO: overriding transition-property from themed() -- very hacky
-          transition-property: color, transform;
-          transition-timing-function: linear, ease-in-out;
+          @include themes.themed($color: "medium-dark") {
+            // TODO: overriding transition-property from themed() -- very hacky
+            transition-property: color, transform;
+            transition-duration: #{settings.$theme-transition-duration};
+            transition-timing-function: #{settings.$theme-transition-function}, ease-in-out;
+          }
 
           &:hover {
             transform: scale(1.1);
 
-            @include themes.themed($color: "links");
-
-            // TODO: overriding transition-property from themed() -- very hacky
-            transition-property: color, transform;
-            transition-timing-function: linear, ease-in-out;
+            @include themes.themed($color: "links") {
+              // TODO: overriding transition-property from themed() -- very hacky
+              transition-property: color, transform;
+              transition-duration: #{settings.$theme-transition-duration};
+              transition-timing-function: #{settings.$theme-transition-function}, ease-in-out;
+            }
           }
 
           span {

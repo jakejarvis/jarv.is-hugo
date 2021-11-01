@@ -1,9 +1,8 @@
-@use "sass:map";
 @use "sass:list";
+@use "sass:map";
 @use "sass:meta";
 
 @use "settings";
-@use "functions" as *;
 
 // Takes a map of CSS properties and theme keys (see below) and set both body.light and body.dark selectors.
 // ex. @include themes.themed($color: "text", $background-color: "background-inner");
@@ -19,7 +18,7 @@
   // list themed properties under CSS transitions for fancy fading
   transition-property: list.join($properties, (), $separator: comma);
   transition-duration: #{settings.$theme-transition-duration};
-  transition-timing-function: linear;
+  transition-timing-function: #{settings.$theme-transition-function};
 
   // add corresponding body.light and body.dark root selectors
   @each $theme, $map in $themes {
@@ -38,6 +37,9 @@
       }
     }
   }
+
+  // allow anything above to be overridden manually by passing in a content block
+  @content;
 }
 
 // ----------------

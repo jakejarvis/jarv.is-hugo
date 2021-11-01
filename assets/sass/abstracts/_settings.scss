@@ -1,5 +1,11 @@
 @use "sass:list";
 
+// The maximum width of the content area:
+$max-width: 865px;
+
+// Width at which to switch to mobile styles:
+$responsive-width: 800px;
+
 // Web fonts:
 $webfont-sans: "Inter";
 $webfont-sans-variable: "Inter var";
@@ -18,16 +24,11 @@ $font-stack-variable: list.join($webfont-sans-variable, $system-fonts-sans);
 $font-stack-mono: list.join($webfont-mono, $system-fonts-monospace);
 $font-stack-mono-variable: list.join($webfont-mono-variable, $system-fonts-monospace);
 
-// The maximum width of the content area:
-$max-width: 865px;
-
-// Width at which to switch to mobile styles:
-$responsive-width: 800px;
-
 // Fancy link underline settings:
 $link-underline-opacity: 40%;
 $link-underline-size: 2px;
 $link-opacity-color: #ffffff;
 
-// Elements to fade on dark/light theme toggle:
+// Default fading style when switching between light/dark themes:
 $theme-transition-duration: 0.15s;
+$theme-transition-function: linear;

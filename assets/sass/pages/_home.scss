@@ -1,5 +1,5 @@
 @use "../abstracts/themes";
-@use "../abstracts/functions" as *;
+@use "../abstracts/functions";
 
 // Colorful Homepage
 $colors-home: (
@@ -193,12 +193,12 @@ div.layout-home {
   }
 }
 
-// Loop through $colors-home (see abstracts/_variables)
+// Loop through $colors-home (see above)
 @each $id, $colors in $colors-home {
   @each $theme, $color in $colors {
     @at-root body.#{$theme} div.layout-home a##{$id} {
       color: $color;
-      background-image: underline-hack($color);
+      background-image: functions.underline-hack($color);
     }
   }
 }
