@@ -1,15 +1,14 @@
-@use "sass:math";
+@use "sass:color";
 
 @use "settings";
 
-// Gradient hack to get our custom underline to wrap:
-// https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/
-@function underline-hack($color) {
-  // Less compatible but better for light/dark mode switching. We fall back to non-alpha hex colors with
-  // postcss-color-rgba-fallback to mitigate this.
-  // stylelint-disable-next-line color-function-notation
-  $color-opaque-alpha: rgba($color, math.div(settings.$link-underline-opacity, 100%));
+// Figure out the color of the "transparent" link underlines:
+@function underline-hack($color, $background: #ffffff) {
+  // Calculate underline color by mix()'ing it with a given background to give the impression of opacity but with much
+  // better efficiency and compatibility.
+  $color-transparentized: color.mix($color, $background, settings.$link-underline-opacity);
 
-  // Return non-gradient linear-gradient():
-  @return linear-gradient($color-opaque-alpha, $color-opaque-alpha);
+  // Return a "gradient" as a hack to get the fancy underline to wrap:
+  // https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/
+  @return linear-gradient($color-transparentized, $color-transparentized);
 }

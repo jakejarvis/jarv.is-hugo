@@ -34,7 +34,13 @@ div.layout-contact {
     border-radius: 0.3em;
     font-size: 0.9em;
 
-    @include themes.themed($color: "text", $background-color: "super-duper-light", $border-color: "light");
+    @include themes.themed(
+      (
+        color: "text",
+        background-color: "super-duper-light",
+        border-color: "light",
+      )
+    );
   }
 
   textarea {
@@ -58,11 +64,21 @@ div.layout-contact {
       line-height: 1.5;
       user-select: none;
 
-      @include themes.themed($color: "text", $background-color: "kinda-light");
+      @include themes.themed(
+        (
+          color: "text",
+          background-color: "kinda-light",
+        )
+      );
 
       &:hover,
       &:focus {
-        @include themes.themed($color: "super-duper-light", $background-color: "links");
+        @include themes.themed(
+          (
+            color: "super-duper-light",
+            background-color: "links",
+          )
+        );
       }
 
       img.emoji {
@@ -76,11 +92,19 @@ div.layout-contact {
       font-weight: 600;
 
       &#contact-form-result-success {
-        @include themes.themed($color: "success");
+        @include themes.themed(
+          (
+            color: "success",
+          )
+        );
       }
 
       &#contact-form-result-error {
-        @include themes.themed($color: "error");
+        @include themes.themed(
+          (
+            color: "error",
+          )
+        );
       }
     }
   }

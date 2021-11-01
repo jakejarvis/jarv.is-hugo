@@ -11,7 +11,6 @@ import TerserPlugin from "terser-webpack-plugin";
 import autoprefixer from "autoprefixer";
 import postcssSvgo from "postcss-svgo";
 import postcssFocus from "postcss-focus";
-import postcssColorRgbaFallback from "postcss-color-rgba-fallback";
 import postcssNormalizeCharset from "postcss-normalize-charset";
 
 // https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#what-do-i-use-instead-of-__dirname-and-__filename
@@ -133,9 +132,6 @@ export default {
                   autoprefixer(),
                   postcssSvgo({
                     encode: true,
-                  }),
-                  postcssColorRgbaFallback({
-                    properties: ["background-image"],
                   }),
                   postcssFocus(),
                   postcssNormalizeCharset(),

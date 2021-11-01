@@ -11,7 +11,11 @@ div.layout-video {
     line-height: 1.5;
     margin: 1.25em 1em 0.5em 1em;
 
-    @include themes.themed($color: "medium-light");
+    @include themes.themed(
+      (
+        color: "medium-light",
+      )
+    );
 
     a {
       font-weight: bold;

@@ -16,7 +16,12 @@ div#content {
     padding-left: 1.5em;
     border-left: 3px solid;
 
-    @include themes.themed($color: "medium-dark", $border-color: "links");
+    @include themes.themed(
+      (
+        color: "medium-dark",
+        border-color: "links",
+      )
+    );
   }
 
   h2,
@@ -41,10 +46,18 @@ div#content {
         content: "\0023"; // pound sign
       }
 
-      @include themes.themed($color: "medium-light");
+      @include themes.themed(
+        (
+          color: "medium-light",
+        )
+      );
 
       &:hover {
-        @include themes.themed($color: "links");
+        @include themes.themed(
+          (
+            color: "links",
+          )
+        );
       }
     }
 
@@ -58,7 +71,11 @@ div#content {
     padding-bottom: 0.25em;
     border-bottom: 1px solid;
 
-    @include themes.themed($border-color: "kinda-light");
+    @include themes.themed(
+      (
+        border-color: "kinda-light",
+      )
+    );
   }
 
   p.center {
@@ -80,7 +97,11 @@ div#content {
       line-height: 1.5;
       margin-top: 0.5em;
 
-      @include themes.themed($color: "medium");
+      @include themes.themed(
+        (
+          color: "medium",
+        )
+      );
     }
   }
 
@@ -99,7 +120,11 @@ div#content {
     height: 2px;
     border: 0;
 
-    @include themes.themed($background-color: "light");
+    @include themes.themed(
+      (
+        background-color: "light",
+      )
+    );
   }
 }
 

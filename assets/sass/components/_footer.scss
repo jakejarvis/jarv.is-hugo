@@ -8,10 +8,19 @@ footer {
   padding: 1.25em 1.5em;
   border-top: 1px solid;
 
-  @include themes.themed($color: "medium-dark", $border-color: "kinda-light");
+  @include themes.themed(
+    (
+      color: "medium-dark",
+      border-color: "kinda-light",
+    )
+  );
 
   a {
-    @include themes.themed($color: "medium-dark");
+    @include themes.themed(
+      (
+        color: "medium-dark",
+      )
+    );
   }
 
   div.footer-row {
@@ -29,7 +38,12 @@ footer {
     padding-bottom: 2px;
     border-bottom: 1px solid;
 
-    @include themes.themed($color: "medium-dark", $border-color: "light");
+    @include themes.themed(
+      (
+        color: "medium-dark",
+        border-color: "light",
+      )
+    );
   }
 }
 

@@ -13,7 +13,11 @@ div.layout-single {
     line-height: 2.3;
     letter-spacing: 0.04em;
 
-    @include themes.themed($color: "medium");
+    @include themes.themed(
+      (
+        color: "medium",
+      )
+    );
 
     a {
       color: inherit;
@@ -65,7 +69,11 @@ div.layout-single {
           content: "#"; // cosmetically hashtagify tags
           padding-right: 0.125em;
 
-          @include themes.themed($color: "light");
+          @include themes.themed(
+            (
+              color: "light",
+            )
+          );
         }
 
         &:last-of-type {

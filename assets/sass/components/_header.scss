@@ -7,7 +7,11 @@ header {
   padding: 0.7em 1.5em;
   border-bottom: 1px solid;
 
-  @include themes.themed($border-color: "kinda-light");
+  @include themes.themed(
+    (
+      border-color: "kinda-light",
+    )
+  );
 
   nav {
     width: 100%;
@@ -21,7 +25,11 @@ header {
       display: flex;
       align-items: center;
 
-      @include themes.themed($color: "medium-dark");
+      @include themes.themed(
+        (
+          color: "medium-dark",
+        )
+      );
 
       img#header-selfie {
         width: 50px;
@@ -30,7 +38,11 @@ header {
         border-radius: 50%;
         user-select: none;
 
-        @include themes.themed($border-color: "light");
+        @include themes.themed(
+          (
+            border-color: "light",
+          )
+        );
       }
 
       span#header-name {
@@ -41,7 +53,11 @@ header {
       }
 
       &:hover {
-        @include themes.themed($color: "links");
+        @include themes.themed(
+          (
+            color: "links",
+          )
+        );
 
         img#header-selfie {
           opacity: 90%;
@@ -66,22 +82,26 @@ header {
           // hovers are super choppy without this in some browsers
           will-change: transform;
 
-          @include themes.themed($color: "medium-dark") {
-            // TODO: overriding transition-property from themed() -- very hacky
-            transition-property: color, transform;
-            transition-duration: #{settings.$theme-transition-duration};
-            transition-timing-function: #{settings.$theme-transition-function}, ease-in-out;
-          }
+          @include themes.themed(
+            $properties: (
+              color: "medium-dark",
+            ),
+            $addTransitions: (
+              transform 0.2s ease-in-out,
+            )
+          );
 
           &:hover {
             transform: scale(1.1);
 
-            @include themes.themed($color: "links") {
-              // TODO: overriding transition-property from themed() -- very hacky
-              transition-property: color, transform;
-              transition-duration: #{settings.$theme-transition-duration};
-              transition-timing-function: #{settings.$theme-transition-function}, ease-in-out;
-            }
+            @include themes.themed(
+              $properties: (
+                color: "links",
+              ),
+              $addTransitions: (
+                transform 0.2s ease-in-out,
+              )
+            );
           }
 
           span {

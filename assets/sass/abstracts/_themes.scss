@@ -1,45 +1,42 @@
 @use "sass:list";
 @use "sass:map";
-@use "sass:meta";
 
 @use "settings";
 
 // Takes a map of CSS properties and theme keys (see below) and set both body.light and body.dark selectors.
-// ex. @include themes.themed($color: "text", $background-color: "background-inner");
-@mixin themed($colors...) {
-  $selectors: "#{&}";
-
-  // keep track of each property we're theming
-  $properties: ();
-  @each $property, $color in meta.keywords($colors) {
-    $properties: list.append($properties, $property);
+// ex. @include themes.themed((color: "text", background-color: "background-inner"));
+// Also accepts additional transitions (in shorthand) to tack on.
+@mixin themed($properties, $addTransitions: ()) {
+  // generate CSS transition shorthand for each themed property w/ default duration and function
+  $defaults: ();
+  @each $property, $color in $properties {
+    $shorthand: $property settings.$theme-transition-duration settings.$theme-transition-function;
+    $defaults: list.append($defaults, $shorthand);
   }
 
-  // list themed properties under CSS transitions for fancy fading
-  transition-property: list.join($properties, (), $separator: comma);
-  transition-duration: #{settings.$theme-transition-duration};
-  transition-timing-function: #{settings.$theme-transition-function};
+  // list all transitions separated by commas (with additional shorthand(s) passed in)
+  transition: list.join($addTransitions, $defaults, $separator: comma);
+
+  // keep track of the original selector(s) calling this mixin for below
+  $selectors: "#{&}";
 
   // add corresponding body.light and body.dark root selectors
   @each $theme, $map in $themes {
     @at-root body.#{$theme} {
-      // support root body element
+      // support theming root body element
       @if $selectors == "body" {
-        @each $property, $color in meta.keywords($colors) {
+        @each $property, $color in $properties {
           #{$property}: map.get($map, $color);
         }
       } @else {
         #{$selectors} {
-          @each $property, $color in meta.keywords($colors) {
+          @each $property, $color in $properties {
             #{$property}: map.get($map, $color);
           }
         }
       }
     }
   }
-
-  // allow anything above to be overridden manually by passing in a content block
-  @content;
 }
 
 // ----------------

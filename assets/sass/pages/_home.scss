@@ -1,3 +1,5 @@
+@use "sass:map";
+
 @use "../abstracts/themes";
 @use "../abstracts/functions";
 
@@ -184,7 +186,11 @@ div.layout-home {
     }
 
     &#shh {
-      @include themes.themed($color: "medium-light");
+      @include themes.themed(
+        (
+          color: "medium-light",
+        )
+      );
     }
 
     &.wave {
@@ -198,7 +204,7 @@ div.layout-home {
   @each $theme, $color in $colors {
     @at-root body.#{$theme} div.layout-home a##{$id} {
       color: $color;
-      background-image: functions.underline-hack($color);
+      background-image: functions.underline-hack($color, map.get(map.get(themes.$themes, $theme), "background-inner"));
     }
   }
 }
