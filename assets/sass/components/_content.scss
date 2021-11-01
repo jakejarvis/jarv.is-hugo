@@ -32,35 +32,6 @@ div#content {
     letter-spacing: 0.001em;
     line-height: 1.5;
 
-    // AnchorJS styles
-    a.anchorjs-link {
-      display: inline-block;
-      margin-left: 0.25em;
-      padding: 0 0.5em 0 0.25em;
-      background: none;
-      opacity: 0%;
-      font-weight: 300;
-      line-height: 1;
-
-      &::before {
-        content: "\0023"; // pound sign
-      }
-
-      @include themes.themed(
-        (
-          color: "medium-light",
-        )
-      );
-
-      &:hover {
-        @include themes.themed(
-          (
-            color: "links",
-          )
-        );
-      }
-    }
-
     &:hover > a.anchorjs-link {
       opacity: 100%; // '#' link appears on hover over entire sub-heading line
     }
@@ -76,6 +47,37 @@ div#content {
         border-color: "kinda-light",
       )
     );
+  }
+
+  // AnchorJS styles
+  // stylelint-disable-next-line no-descending-specificity
+  a.anchorjs-link {
+    display: inline-block;
+    margin-left: 0.25em;
+    padding: 0 0.5em 0 0.25em;
+    background: none;
+    opacity: 0%;
+    font-weight: 300;
+    line-height: 1;
+
+    &::before {
+      content: "\0023"; // pound sign
+    }
+
+    @include themes.themed(
+      (
+        color: "medium-light",
+      )
+    );
+
+    // stylelint-disable-next-line no-descending-specificity
+    &:hover {
+      @include themes.themed(
+        (
+          color: "links",
+        )
+      );
+    }
   }
 
   p.center {
