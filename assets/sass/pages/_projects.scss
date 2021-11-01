@@ -42,8 +42,7 @@ div.layout-projects {
       border-radius: 0.5em;
       font-size: 0.9em;
 
-      @include themes.themed(color, "medium-dark");
-      @include themes.themed(border-color, "kinda-light");
+      @include themes.themed($color: "medium-dark", $border-color: "kinda-light");
 
       a.repo-name {
         font-size: 1.2em;
@@ -64,7 +63,7 @@ div.layout-projects {
           margin-right: 1.5em;
           font-size: 0.925em;
 
-          @include themes.themed(color, "medium");
+          @include themes.themed($color: "medium");
 
           svg {
             display: inline-block;

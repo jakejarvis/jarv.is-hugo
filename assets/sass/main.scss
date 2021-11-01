@@ -1,8 +1,10 @@
 @charset "UTF-8";
 
+@use "abstracts/settings";
+
 // Global Styles
-@use "vendor/reset";
-@use "components/typography";
+@use "abstracts/reset";
+@use "abstracts/typography";
 @use "components/global";
 @use "components/header";
 @use "components/footer";
@@ -23,5 +25,20 @@
 @use "components/syntax";
 @use "components/animation";
 
-// Responsive Mixins
-@use "abstracts/responsive";
+// Responsive Awesomeness
+@media screen and (max-width: settings.$responsive-width) {
+  @include global.responsive;
+  @include header.responsive;
+  @include footer.responsive;
+  @include content.responsive;
+  @include embeds.responsive;
+
+  @include home.responsive;
+  @include list.responsive;
+  @include single.responsive;
+  @include videos.responsive;
+  @include etc.responsive;
+  @include projects.responsive;
+  @include contact.responsive;
+  @include fourOhFour.responsive;
+}

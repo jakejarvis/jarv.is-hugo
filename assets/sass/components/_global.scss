@@ -19,6 +19,8 @@ body {
   font-size: 0.975em;
   line-height: 1.5;
 
+  @include themes.themed($background-color: "background-outer");
+
   // set themed lightbulb icons manually
   &.light button.dark-mode-toggle {
     background-image: url(themes.$icon-bulb-on);
@@ -28,9 +30,6 @@ body {
     background-image: url(themes.$icon-bulb-off);
   }
 }
-
-// need to set light/dark mode backgrounds outside of the body selector
-@include themes.themed(background-color, "background-outer");
 
 code,
 pre,
@@ -70,8 +69,7 @@ main {
   width: 100%;
   padding: 0 1.5em;
 
-  @include themes.themed(color, "text");
-  @include themes.themed(background-color, "background-inner");
+  @include themes.themed($color: "text", $background-color: "background-inner");
 
   a {
     background-position: 0% 100%;
@@ -79,7 +77,12 @@ main {
     background-size: 0% settings.$link-underline-size;
     padding-bottom: settings.$link-underline-size;
 
-    @include themes.themed(color, "links", ("background-size 0.25s ease-in-out"));
+    @include themes.themed($color: "links");
+
+    // TODO: overriding transition-property from themed() -- very hacky
+    transition-property: color, background-size;
+    transition-duration: #{settings.$theme-transition-duration}, 0.25s;
+    transition-timing-function: linear, ease-in-out;
 
     // cool link underlines (via messy SCSS hacking):
     // https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/

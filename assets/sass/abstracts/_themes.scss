@@ -1,43 +1,40 @@
 @use "sass:map";
-@use "sass:string";
 @use "sass:list";
+@use "sass:meta";
 
 @use "settings";
 @use "functions" as *;
 
-// Takes a single CSS property and theme key (see abstracts/_themes) and sets
-// both body.light and body.dark selectors.
-@mixin themed($property, $key, $moreTransitions: "") {
-  // allow root element (body) theming
-  $selectors: str-split("#{&}");
+// Takes a map of CSS properties and theme keys (see below) and set both body.light and body.dark selectors.
+// ex. @include themes.themed($color: "text", $background-color: "background-inner");
+@mixin themed($colors...) {
+  $selectors: "#{&}";
 
-  // fade colors on theme toggle
-  $transitions: ();
-  @each $element in settings.$theme-transition-elements {
-    $transitions: list.append(
-      $transitions,
-      string.unquote("#{$element} #{settings.$theme-transition-duration} #{settings.$theme-transition-function}")
-    );
-  }
-  @if $moreTransitions != "" {
-    // HACK: $moreTransitions is passed in and appended here because joining multiple transitions is hard :(
-    $transitions: list.append($transitions, string.unquote($moreTransitions));
-  }
-  @each $selector in $selectors {
-    @if $selector == "" {
-      // support root body element
-      $selector: "body";
-    }
-    @at-root #{$selector} {
-      transition: list.join($transitions, (), $separator: comma);
-    }
+  // keep track of each property we're theming
+  $properties: ();
+  @each $property, $color in meta.keywords($colors) {
+    $properties: list.append($properties, $property);
   }
 
-  // set the actual light/dark properties
+  // list themed properties under CSS transitions for fancy fading
+  transition-property: list.join($properties, (), $separator: comma);
+  transition-duration: #{settings.$theme-transition-duration};
+  transition-timing-function: linear;
+
+  // add corresponding body.light and body.dark root selectors
   @each $theme, $map in $themes {
-    @each $selector in $selectors {
-      @at-root body.#{$theme} #{$selector} {
-        #{$property}: map.get($map, $key);
+    @at-root body.#{$theme} {
+      // support root body element
+      @if $selectors == "body" {
+        @each $property, $color in meta.keywords($colors) {
+          #{$property}: map.get($map, $color);
+        }
+      } @else {
+        #{$selectors} {
+          @each $property, $color in meta.keywords($colors) {
+            #{$property}: map.get($map, $color);
+          }
+        }
       }
     }
   }

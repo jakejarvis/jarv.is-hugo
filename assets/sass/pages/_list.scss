@@ -32,7 +32,7 @@ div.layout-list {
         width: 5.25em;
         flex-shrink: 0;
 
-        @include themes.themed(color, "medium");
+        @include themes.themed($color: "medium");
       }
 
       &:last-child {

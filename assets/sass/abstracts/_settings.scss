@@ -1,17 +1,18 @@
 @use "sass:list";
 
-// Web fonts
+// Web fonts:
 $webfont-sans: "Inter";
 $webfont-sans-variable: "Inter var";
 $webfont-mono: "Roboto Mono";
 $webfont-mono-variable: "Roboto Mono var";
 
-// System fonts
+// System fonts:
 // https://markdotto.com/2018/02/07/github-system-fonts/
 // stylelint-disable-next-line value-keyword-case
-$system-fonts-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-  "Segoe UI Emoji", "Segoe UI Symbol";
+$system-fonts-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica", "Arial", sans-serif;
 $system-fonts-monospace: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "Courier", monospace;
+
+// Prefer web fonts with system fonts as backup:
 $font-stack-sans: list.join($webfont-sans, $system-fonts-sans);
 $font-stack-variable: list.join($webfont-sans-variable, $system-fonts-sans);
 $font-stack-mono: list.join($webfont-mono, $system-fonts-monospace);
@@ -23,12 +24,10 @@ $max-width: 865px;
 // Width at which to switch to mobile styles:
 $responsive-width: 800px;
 
-// Fancy link underline settings
+// Fancy link underline settings:
 $link-underline-opacity: 40%;
 $link-underline-size: 2px;
 $link-opacity-color: #ffffff;
 
 // Elements to fade on dark/light theme toggle:
-$theme-transition-elements: ("color", "background-color", "border-color");
 $theme-transition-duration: 0.15s;
-$theme-transition-function: linear;

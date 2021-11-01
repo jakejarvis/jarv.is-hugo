@@ -1,47 +1,15 @@
 @use "sass:math";
-@use "sass:list";
-@use "sass:string";
 
 @use "settings";
 
 // Gradient hack to get our custom underline to wrap:
 // https://www.dannyguo.com/blog/animated-multiline-link-underlines-with-css/
 @function underline-hack($color) {
-  // [deprecated] Calculate lighter underline color compared to text color by mix()'ing with background (#fff) to give
-  // the impression of opacity but with MUCH better compatibility.
-  // $color-opaque-hex: mix($color, $link-opacity-color, $link-underline-opacity);
-
   // Less compatible but better for light/dark mode switching. We fall back to non-alpha hex colors with
   // postcss-color-rgba-fallback to mitigate this.
-
   // stylelint-disable-next-line color-function-notation
   $color-opaque-alpha: rgba($color, math.div(settings.$link-underline-opacity, 100%));
 
   // Return non-gradient linear-gradient():
   @return linear-gradient($color-opaque-alpha, $color-opaque-alpha);
-}
-
-// Returns a list of strings from a given string separated by a given separator (defaults to comma).
-// https://stackoverflow.com/a/65853667/1438024
-@function str-split($str, $separator: ",") {
-  // return immediately if this function isn't necessary
-  @if not string.index("#{$str}", "#{$separator}") {
-    @return $str;
-  }
-
-  $str-list: ();
-
-  @while string.index("#{$str}", "#{$separator}") != null {
-    @if string.index("#{$str}", "#{$separator}") > 1 {
-      $str-list: list.append($str-list, string.slice("#{$str}", 1, string.index("#{$str}", "#{$separator}") - 1));
-    }
-
-    $str: string.slice("#{$str}", string.index("#{$str}", "#{$separator}") + 1, string.length("#{$str}"));
-  }
-
-  @if string.slice("#{$str}", 1, string.length("#{$str}")) != "" {
-    $str-list: list.append($str-list, string.slice("#{$str}", 1, string.length("#{$str}")));
-  }
-
-  @return $str-list;
 }

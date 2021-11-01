@@ -184,7 +184,7 @@ div.layout-home {
     }
 
     &#shh {
-      @include themes.themed(color, "medium-light");
+      @include themes.themed($color: "medium-light");
     }
 
     &.wave {

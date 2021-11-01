@@ -7,7 +7,7 @@ header {
   padding: 0.7em 1.5em;
   border-bottom: 1px solid;
 
-  @include themes.themed(border-color, "kinda-light");
+  @include themes.themed($border-color: "kinda-light");
 
   nav {
     width: 100%;
@@ -21,7 +21,7 @@ header {
       display: flex;
       align-items: center;
 
-      @include themes.themed(color, "medium-dark");
+      @include themes.themed($color: "medium-dark");
 
       img#header-selfie {
         width: 50px;
@@ -30,7 +30,7 @@ header {
         border-radius: 50%;
         user-select: none;
 
-        @include themes.themed(border-color, "light");
+        @include themes.themed($border-color: "light");
       }
 
       span#header-name {
@@ -41,7 +41,7 @@ header {
       }
 
       &:hover {
-        @include themes.themed(color, "links");
+        @include themes.themed($color: "links");
 
         img#header-selfie {
           opacity: 90%;
@@ -64,12 +64,20 @@ header {
           display: inline-flex;
           will-change: transform;
 
-          @include themes.themed(color, "medium-dark", ("transform 0.15s ease-in-out"));
+          @include themes.themed($color: "medium-dark");
+
+          // TODO: overriding transition-property from themed() -- very hacky
+          transition-property: color, transform;
+          transition-timing-function: linear, ease-in-out;
 
           &:hover {
             transform: scale(1.1);
 
-            @include themes.themed(color, "links", ("transform 0.15s ease-in-out"));
+            @include themes.themed($color: "links");
+
+            // TODO: overriding transition-property from themed() -- very hacky
+            transition-property: color, transform;
+            transition-timing-function: linear, ease-in-out;
           }
 
           span {

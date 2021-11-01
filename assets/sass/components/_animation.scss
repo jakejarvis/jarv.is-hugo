@@ -36,7 +36,7 @@
     }
     // stylelint-enable rule-empty-line-before
 
-    @include themes.themed(background-color, "medium-light");
+    @include themes.themed($background-color: "medium-light");
   }
 }
 

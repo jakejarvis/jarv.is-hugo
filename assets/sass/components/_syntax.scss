@@ -64,7 +64,7 @@ div.highlight-clipboard-enabled {
     line-height: 1;
 
     &:hover {
-      @include themes.themed(color, "links");
+      @include themes.themed($color: "links");
     }
   }
 }
