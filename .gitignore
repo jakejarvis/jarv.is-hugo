@@ -3,6 +3,7 @@ public/
 builds/
 _vendor/
 hugo_stats.json
+.hugo_build.lock
 
 # webpack artifacts
 data/manifest.json
