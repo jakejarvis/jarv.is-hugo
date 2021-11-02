@@ -27,11 +27,11 @@ export default {
     path: path.resolve(__dirname, "static/assets/"),
     publicPath: "/assets/",
     clean: true,
-    crossOriginLoading: "anonymous",
     environment: {
       // https://github.com/babel/babel-loader#top-level-function-iife-is-still-arrow-on-webpack-5
       arrowFunction: false,
     },
+    devtoolModuleFilenameTemplate: "webpack:///[resource-path]?[loaders]",
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -39,7 +39,7 @@ export default {
     }),
     new webpack.BannerPlugin({
       banner: `@license MIT <https://opensource.org/licenses/MIT>
-@copyright (c) 2017-${new Date().getFullYear()} Jake Jarvis <https://jarv.is/>`,
+@copyright (c) 2015-${new Date().getFullYear()} Jake Jarvis <https://jarv.is/>`,
     }),
     new CopyPlugin({
       patterns: [

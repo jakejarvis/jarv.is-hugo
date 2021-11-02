@@ -25,5 +25,6 @@ jobs:
           SKIP_OPTIMIZE_IMAGES: true
       - run: yarn lint
       - run: npx -p @percy/cli percy snapshot ./public
+        if: github.actor == 'jakejarvis'
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
