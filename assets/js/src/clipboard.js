@@ -14,26 +14,26 @@ if (ClipboardJS.isSupported() && document.querySelector("div.highlight")) {
 
     const button = document.createElement("button");
     button.className = "copy-button";
-    button.innerText = defaultTerm;
+    button.textContent = defaultTerm;
 
     // insert button as a sibling to Hugo's code fence
-    highlightDiv.parentNode.insertBefore(wrapperDiv, highlightDiv);
-    wrapperDiv.appendChild(highlightDiv);
-    wrapperDiv.insertBefore(button, wrapperDiv.firstChild);
+    highlightDiv.before(wrapperDiv);
+    wrapperDiv.prepend(button);
+    wrapperDiv.append(highlightDiv);
   });
 
   // now that all the buttons are in place, bind them to the copy action
   new ClipboardJS("button.copy-button", {
     text: (trigger) =>
       // actual code element will have class "language-*", even if plaintext
-      trimNewlines(trigger.parentElement.querySelector('code[class^="language-"]').innerText),
+      trimNewlines(trigger.parentElement.querySelector('code[class^="language-"]').textContent),
   }).on("success", (e) => {
     // show a subtle indication of success
-    e.trigger.innerText = successTerm;
+    e.trigger.textContent = successTerm;
 
     // reset button to original text after 2 seconds
     setTimeout(() => {
-      e.trigger.innerText = defaultTerm;
+      e.trigger.textContent = defaultTerm;
     }, 2000);
 
     // text needed to be auto-selected to copy, unselect immediately

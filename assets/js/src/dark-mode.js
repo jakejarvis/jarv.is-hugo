@@ -2,7 +2,7 @@ import { init as initDarkMode } from "dark-mode-switcheroo";
 
 // HACK: disable theme transition until user's preference is auto-restored (1/2)
 const disableTransitionCSSHack = document.createElement("style");
-document.head.appendChild(disableTransitionCSSHack);
+document.head.append(disableTransitionCSSHack);
 disableTransitionCSSHack.sheet.insertRule(`
   *,
   ::before,
@@ -19,7 +19,7 @@ initDarkMode({
 
     // HACK: re-enable theme transitions after a very short delay, otherwise there's a weird race condition (2/2)
     setTimeout(() => {
-      document.head.removeChild(disableTransitionCSSHack);
+      disableTransitionCSSHack.remove();
     }, 500);
   },
 });

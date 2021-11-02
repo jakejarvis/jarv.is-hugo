@@ -18,7 +18,7 @@
   transition: list.join($addTransitions, $defaults, $separator: comma);
 
   // keep track of the original selector(s) calling this mixin for below
-  $selectors: "#{&}";
+  $selectors: #{&};
 
   // add corresponding body.light and body.dark root selectors
   @each $theme, $map in $themes {

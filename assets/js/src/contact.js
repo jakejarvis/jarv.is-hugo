@@ -3,7 +3,7 @@ import fetch from "cross-fetch";
 
 // don't continue if there isn't a contact form on this page
 // TODO: be better and only do any of this on /contact/
-const contactForm = document.getElementById("contact-form");
+const contactForm = document.querySelector("form#contact-form");
 
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
@@ -11,17 +11,17 @@ if (contactForm) {
     event.preventDefault();
 
     // feedback <span>s for later
-    const successSpan = document.getElementById("contact-form-result-success");
-    const errorSpan = document.getElementById("contact-form-result-error");
+    const successSpan = document.querySelector("span#contact-form-result-success");
+    const errorSpan = document.querySelector("span#contact-form-result-error");
 
     // disable the whole form if the button has been disabled below (on success)
-    const submitButton = document.getElementById("contact-form-btn-submit");
+    const submitButton = document.querySelector("button#contact-form-btn-submit");
     if (submitButton.disabled === true) {
       return;
     }
 
     // change button appearance between click and server response
-    submitButton.innerText = "Sending...";
+    submitButton.textContent = "Sending...";
     submitButton.disabled = true; // prevent accidental multiple submissions
     submitButton.style.cursor = "default";
 
@@ -60,7 +60,7 @@ if (contactForm) {
             errorSpan.style.display = "none";
 
             // let user know we were successful
-            successSpan.innerText = "Success! You should hear from me soon. :)";
+            successSpan.textContent = "Success! You should hear from me soon. :)";
           } else {
             // pass on an error sent by the server
             throw new Error(data.message);
@@ -71,16 +71,16 @@ if (contactForm) {
 
       // give user feedback based on the error message returned
       if (message === "USER_INVALID_CAPTCHA") {
-        errorSpan.innerText = "Did you complete the CAPTCHA? (If you're human, that is...)";
+        errorSpan.textContent = "Did you complete the CAPTCHA? (If you're human, that is...)";
       } else if (message === "USER_MISSING_DATA") {
-        errorSpan.innerText = "Please make sure that all fields are filled in.";
+        errorSpan.textContent = "Please make sure that all fields are filled in.";
       } else {
         // something else went wrong, and it's probably my fault...
-        errorSpan.innerText = "Internal server error. Try again later?";
+        errorSpan.textContent = "Internal server error. Try again later?";
       }
 
       // reset submit button to let user try again
-      submitButton.innerText = "Try Again";
+      submitButton.textContent = "Try Again";
       submitButton.disabled = false;
       submitButton.style.cursor = "pointer";
       submitButton.blur(); // remove keyboard focus from the button

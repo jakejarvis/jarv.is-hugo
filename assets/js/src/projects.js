@@ -12,7 +12,7 @@ const PROJECTS_ENDPOINT = "/api/projects/?top&limit=12";
 
 // don't continue if there isn't a span#meta-hits element on this page
 // TODO: be better.
-const wrapper = document.getElementById("github-cards");
+const wrapper = document.querySelector("div#github-cards");
 
 if (wrapper) {
   dayjs.extend(dayjsLocalizedFormat);
@@ -74,13 +74,13 @@ if (wrapper) {
         const div = document.createElement("div");
         div.classList.add("github-card");
         render(template(repo), div);
-        wrapper.appendChild(div);
+        wrapper.append(div);
       });
 
       // we're done, hide the loading spinner
-      const spinner = document.getElementById("loading-spinner");
+      const spinner = document.querySelector("div.loading");
       if (spinner) {
-        spinner.style.display = "none";
+        spinner.remove();
       }
 
       // the repo descriptions were added after the first twemoji parsing
@@ -90,6 +90,6 @@ if (wrapper) {
     })
     .catch(() => {
       // something went horribly wrong, initiate coverup
-      wrapper.style.display = "none";
+      wrapper.remove();
     });
 }

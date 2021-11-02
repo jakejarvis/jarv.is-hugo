@@ -6,7 +6,7 @@ import urlParse from "url-parse";
 const HITS_ENDPOINT = "/api/hits/";
 
 // don't continue if there isn't a span#meta-hits element on this page
-const wrapper = document.getElementById("meta-hits");
+const wrapper = document.querySelector("div#meta-hits");
 
 // page must have both span#meta-hits and canonical URL to enter
 if (wrapper) {
@@ -35,19 +35,19 @@ if (wrapper) {
       wrapper.title = `${hitsComma} ${hitsPlural}`;
 
       // finally inject the hits...
-      const counter = document.getElementById("meta-hits-counter");
+      const counter = document.querySelector("span#meta-hits-counter");
       if (counter) {
-        counter.appendChild(document.createTextNode(hitsComma));
+        counter.append(hitsComma);
       }
 
       // ...and hide the loading spinner
-      const spinner = document.getElementById("meta-hits-loading");
+      const spinner = document.querySelector("div#meta-hits-loading");
       if (spinner) {
-        spinner.style.display = "none";
+        spinner.remove();
       }
     })
     .catch(() => {
       // something went horribly wrong, initiate coverup
-      wrapper.style.display = "none";
+      wrapper.remove();
     });
 }
