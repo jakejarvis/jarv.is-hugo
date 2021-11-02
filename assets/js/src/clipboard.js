@@ -1,42 +1,35 @@
-import ClipboardJS from "clipboard";
+import copy from "clipboard-copy";
 import trimNewlines from "trim-newlines";
 
 // the default text of the copy button:
-const defaultTerm = "Copy";
-const successTerm = "Copied!";
+const defaultText = "Copy";
+const successText = "Copied!";
 
-// immediately give up if not supported or if there are no code blocks
-if (ClipboardJS.isSupported() && document.querySelector("div.highlight")) {
-  // loop through each code fence on page (if any)
-  document.querySelectorAll("div.highlight").forEach((highlightDiv) => {
-    const wrapperDiv = document.createElement("div");
-    wrapperDiv.className = "highlight-clipboard-enabled";
+// loop through each code fence on page (if any)
+document.querySelectorAll("div.highlight").forEach((highlightDiv) => {
+  // bind a new button to the copy action
+  const button = document.createElement("button");
+  button.className = "copy-button";
+  button.textContent = defaultText;
+  button.addEventListener("click", () => {
+    // prevent unintentional double-clicks by unfocusing button
+    button.blur();
 
-    const button = document.createElement("button");
-    button.className = "copy-button";
-    button.textContent = defaultTerm;
+    // actual code element will have class "language-*", even if plaintext
+    if (copy(trimNewlines(highlightDiv.querySelector('code[class^="language-"]').textContent))) {
+      // show a subtle indication of success
+      button.textContent = successText;
 
-    // insert button as a sibling to Hugo's code fence
-    highlightDiv.before(wrapperDiv);
-    wrapperDiv.prepend(button);
-    wrapperDiv.append(highlightDiv);
+      // reset button to original text after 2 seconds
+      setTimeout(() => {
+        button.textContent = defaultText;
+      }, 2000);
+    }
   });
 
-  // now that all the buttons are in place, bind them to the copy action
-  new ClipboardJS("button.copy-button", {
-    text: (trigger) =>
-      // actual code element will have class "language-*", even if plaintext
-      trimNewlines(trigger.parentElement.querySelector('code[class^="language-"]').textContent),
-  }).on("success", (e) => {
-    // show a subtle indication of success
-    e.trigger.textContent = successTerm;
-
-    // reset button to original text after 2 seconds
-    setTimeout(() => {
-      e.trigger.textContent = defaultTerm;
-    }, 2000);
-
-    // text needed to be auto-selected to copy, unselect immediately
-    e.clearSelection();
-  });
-}
+  // add Hugo's code block to a new wrapper element, and insert the copy button as a sibling to it
+  const wrapperDiv = document.createElement("div");
+  wrapperDiv.className = "highlight-clipboard-enabled";
+  highlightDiv.before(wrapperDiv);
+  wrapperDiv.append(highlightDiv, button);
+});
