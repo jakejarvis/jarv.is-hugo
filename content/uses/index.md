@@ -12,37 +12,38 @@ css: |
 
 ~~I regularly get messages asking about which tools I use to work.~~
 
-Nobody has asked me what I use. Ever. But here's a list of my daily drivers and necessities anyways, mostly revolving around my Apple sheepy-ness. Inspired by [many, many others](https://github.com/wesbos/awesome-uses#readme). ❤️
+Nobody has asked me what I use. Ever. But here's a list of my daily drivers and necessities anyways, mostly revolving around my Apple sheepy-ness. Inspired by [many, many others](https://uses.tech/). ❤️
 
 {{< image src="images/bigsur.png" alt="My mess of a desktop." link="/uses/images/bigsur.png" />}}
 
 ## 🍎 Hardware {#hardware}
 
 - [**MacBook Air** (2020)](https://browser.geekbench.com/v5/cpu/8124907)
-  - Apple M1 (8‑core CPU, 8‑core GPU) 🏎️
+  - Apple M1 (8‑core CPU, 8‑core GPU) 🏎️ 💨
   - 16 GB RAM
   - 1 TB SSD
 - [**MacBook Pro 15"** (Mid-2018)](https://browser.geekbench.com/v5/cpu/1074682)
-  - Core i9 @ 2.9 GHZ 🔥 🧯 🚒
+  - Core i9 @ 2.9 GHZ, [theoretically 🔥 🧯 🚒](https://www.youtube.com/watch?v=Dx8J125s4cg)
   - 32 GB RAM
   - 1 TB SSD
   - Radeon Pro 560X – 4 GB
-  - Most importantly, I literally haven't touched it since M1 stole my heart. 💔
-- **iPhone 12 Pro**
+  - Most importantly, I haven't touched it since M1 stole my heart (for a third of the price). 💔
+- **iPhone 13 Pro**
   - 512 GB in Graphite 😎
-  - [Deep Navy](https://www.apple.com/shop/product/MHL43ZM/A/iphone-12-12-pro-silicone-case-with-magsafe-deep-navy) Silicone Case
+  - [Abyss Blue Silicone Case](https://www.apple.com/shop/product/MM2J3ZM/A/iphone-13-pro-silicone-case-with-magsafe-abyss-blue)
+  - [Saddle Brown Leather "Wallet"](https://www.apple.com/shop/product/MHLR3ZM/A/iphone-leather-wallet-with-magsafe-saddle-brown)
+  - Belkin's MagSafe [Car Vent Mount Pro](https://www.apple.com/shop/product/HPBJ2ZM/A/belkin-car-vent-mount-pro-with-magsafe) is awesome too, btw.
 - **iPad Pro 10.5"**
   - 256 GB in Space Gray
   - Smart Keyboard & Apple Pencil
-- **Apple Watch Series 3** (GPS + Cellular on Verizon)
-  - Stainless Steel – Space Black
-  - 38mm (I have incredibly small wrists.)
-  - Usually either the Midnight Blue sport band or 🏳️‍🌈 woven nylon band.
-- [**Powerbeats<sup>3</sup> Wireless**](https://www.beatsbydre.com/earphones/powerbeats3-wireless) (in the pretty rad [Pop Indigo](https://www.apple.com/shop/product/MREQ2LL/A/powerbeats3-wireless-earphones-beats-pop-collection-pop-indigo) color)
-  - I also have incredibly weird ears, apparently, so my AirPods went right back to the store when they came out. 😢
-  - ...but these are a great alternative with the [same pairing and continuity features](https://www.soundguys.com/how-does-apple-w1-chip-work-21049/) between all of my 🍎 devices.
-- **Google Pixel 2 XL**
-  - For some recreational Android development.
+- **Apple Watch Series 6** (GPS)
+  - Aluminum – Space Gray
+  - 40mm (I have incredibly small wrists.)
+  - Usually with the [Midnight Blue sport band](https://www.apple.com/shop/product/MLL02ZM/A/42mm-midnight-blue-sport-band-s-m-m-l), 🏳️‍🌈 [Pride Edition woven nylon band](https://www.apple.com/shop/product/MQ4F2AM/A/38mm-pride-edition-woven-nylon), or employee 🏋️ [Close Your Rings Challenge woven nylon band](https://www.macrumors.com/2018/04/03/apple-employees-rewards-challenge/).
+- **Google Pixel 4a**
+  - For some recreational Android development and experimentation.
+  - Activated on [Google Fi](https://fi.google.com/) during rare trips.
+  - Really just putting this here in a futile effort to prove I'm not a _complete_ Apple sheep. 🐑
 
 ## 💾 Development {#development}
 
@@ -51,41 +52,42 @@ Nobody has asked me what I use. Ever. But here's a list of my daily drivers and 
   - [Oh My ZSH](https://ohmyz.sh/)
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
     - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-- [**Visual Studio Code**](https://code.visualstudio.com/insiders/)
-  - [All of my settings](https://gist.github.com/jakejarvis/80a04530e0142ff5b7b77c92d5c6f526) via [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync).
+- [**Visual Studio Code**](https://code.visualstudio.com/)
+  - [All of my settings.](https://github.com/jakejarvis/dotfiles/tree/main/vscode)
   - Themes:
-    - [GitHub Theme](https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme)
-    - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+    - [GitHub Dark theme](https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme)
+    - [Material Icon theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
     - [Source Code Pro font](https://github.com/adobe-fonts/source-code-pro)
   - Extensions:
-    - [AWS Toolkit](https://marketplace.visualstudio.com/items?itemName=AmazonWebServices.aws-toolkit-vscode)
     - [Better TOML](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml)
-    - [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
-    - [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
     - [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
     - [Duplicate action](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-duplicate)
     - [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+    - [GitHub Copilot](https://copilot.github.com/)
     - [GitHub Pull Requests](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
+    - [GitHub Repositories](https://marketplace.visualstudio.com/items?itemName=GitHub.remotehub)
     - [Hugo Language and Syntax Support](https://marketplace.visualstudio.com/items?itemName=budparr.language-hugo-vscode)
     - [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare)
+    - [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+    - [npm](https://marketplace.visualstudio.com/items?itemName=eg2.vscode-npm-script)
     - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
     - [Remote Development Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
-    - [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
-    - [Test Explorer UI](https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-test-explorer)
-    - [Visual Studio IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+    - [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
+    - [Word Count](https://marketplace.visualstudio.com/items?itemName=ms-vscode.wordcount)
 - [**Homebrew**](https://brew.sh/)
   - [View my messy `Brewfile` dump](https://github.com/jakejarvis/dotfiles/blob/main/Brewfile) with all of my installed packages.
 - [**Xcode**](https://developer.apple.com/xcode/)
 - [**Docker Desktop**](https://www.docker.com/products/docker-desktop)
-- [**VMware Fusion Pro**](https://www.vmware.com/products/fusion.html)
-  - Microsoft's [free Windows 7 & 10 virtual machines](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) for developers are super convenient and shockingly generous.
-  - Also used as a driver for [minikube](https://minikube.sigs.k8s.io/) and [Vagrant](https://www.vagrantup.com/).
+- [**Parallels Desktop Pro**](https://www.parallels.com/products/desktop/)
+  - Switched from VMware Fusion when Parallels beat them to the punch with [M1 support](https://www.parallels.com/blogs/parallels-desktop-m1/).
+- [**Tailscale**](https://tailscale.com/)
+  - For connecting to remote servers and my ["homelab"](#home) without exposing ports to the world. Highly recommended!
 - [**Sketch**](https://www.sketch.com/)
 - [**Adobe Creative Cloud**](https://www.adobe.com/creativecloud.html)
   - Still on the \$20/month [Student Plan](https://www.adobe.com/creativecloud/buy/students.html), somehow. 🤫 Will need to re-evaulate once I'm kicked off; it's hard to justify spending almost 3x that...
 - [**Transmit**](https://panic.com/transmit/)
 - [**Postman**](https://www.getpostman.com/)
-- [**BrowserStack**](https://www.browserstack.com/)
+- [**BrowserStack**](https://www.browserstack.com/) & [**Percy**](https://percy.io/)
 - [~~Sequel Pro~~](https://www.sequelpro.com/) → [**TablePlus**](https://tableplus.com/)
 - [~~Robo 3T~~](https://robomongo.org/) → [**TablePlus**](https://tableplus.com/)
 - [**ImageOptim**](https://imageoptim.com/mac)
@@ -94,10 +96,10 @@ Nobody has asked me what I use. Ever. But here's a list of my daily drivers and 
 
 ## 🌎 Browsing {#browsing}
 
-- [**Firefox Developer Edition**](https://www.mozilla.org/en-US/firefox/developer/) 🦊
+- [**Firefox**](https://www.mozilla.org/en-US/firefox/developer/) 🦊
   - [My default `user.js` settings.](https://github.com/jakejarvis/dotfiles/blob/main/firefox/user.js)
   - Add-ons:
-    - [1Password](https://1password.com/browsers/firefox/)
+    - [1Password Classic](https://support.1password.com/cs/1password-classic-extension/)
     - [BetterTTV](https://addons.mozilla.org/en-US/firefox/addon/betterttv/)
     - [Cookie Editor](https://addons.mozilla.org/en-US/firefox/addon/cookie-editor/)
     - [Decentraleyes](https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/)
@@ -110,7 +112,7 @@ Nobody has asked me what I use. Ever. But here's a list of my daily drivers and 
     - [Privacy Badger](https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/)
     - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
 - [**Google Chrome**](https://www.google.com/chrome/browser/?extra=devchannel) 😈
-  - **For testing only!** See more of [my de-Googling efforts below](#cloud).
+  - For testing only! See more of [my de-Googling efforts below](#cloud).
   - Add-ons:
     - [AMP Validator](https://chrome.google.com/webstore/detail/amp-validator/nmoffdblmcmgeicmolmhobpoocbbmknc?hl=en)
     - [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?h1=en)
@@ -124,7 +126,7 @@ Nobody has asked me what I use. Ever. But here's a list of my daily drivers and 
 - [**Backblaze**](https://www.backblaze.com/) [(referral link)](https://secure.backblaze.com/r/00x84e)
 - [**Silicon Info**](https://github.com/billycastelli/Silicon-Info)
 - [**MacUpdater**](https://www.corecode.io/macupdater/)
-- [**Unshaky**](https://unshaky.nestederror.com/) ⌨️
+- [**Unshaky**](https://unshaky.nestederror.com/) ⌨️ (on my 2018 MBP)
   - Toooo &nbsp;lzy too vist &nbsp;&nbsp;the&nbsp; Aple Stre geeniusses oonce &nbsp;agin&nbsp; to fiix tthe&nbsp; keeybbbboord. 😒 🦋
 - [**DaisyDisk**](https://daisydiskapp.com/)
 - [**AppCleaner**](https://freemacsoft.net/appcleaner/)
@@ -136,6 +138,7 @@ Nobody has asked me what I use. Ever. But here's a list of my daily drivers and 
 - [**coconutBattery**](https://coconut-flavour.com/coconutbattery/)
 - [**The Unarchiver**](https://theunarchiver.com/)
 - [**WiFi Explorer**](https://www.intuitibits.com/products/wifi-explorer/)
+- [**Parsec**](https://parsec.app/)
 
 ## 📱 iOS {#ios}
 
@@ -152,9 +155,7 @@ I have far too many apps to count, but here the essentials that have earned a sp
 - [**Sonos**](https://apps.apple.com/app/id1488977981)
 - [**Plex** (beta)](https://apps.apple.com/app/id383457673)
 - [**Microsoft To-Do**](https://apps.apple.com/app/id1212616790) (RIP Wunderlist 🙏)
-- [**Reeder 5**](https://apps.apple.com/app/id1529445840)
-- [**Blink Shell**](https://apps.apple.com/app/id1156707581)
-- [**Working Copy**](https://apps.apple.com/app/id896694807)
+- [**Discord**](https://apps.apple.com/app/id985746746)
 
 ## ☁️ Cloud {#cloud}
 
@@ -167,7 +168,7 @@ I've been making recent efforts to [de-Google](https://www.stallman.org/google.h
 - ~~Google Photos~~ → [**iCloud Photos**](https://www.icloud.com/photos/)
 - ~~Google Analytics~~ → [**Netlify Analytics**](https://www.netlify.com/products/analytics/) [(my review)](/notes/netlify-analytics-review/)
 - ~~Google Public DNS~~ → [**Cloudflare's 1.1.1.1**](https://1.1.1.1/dns/) on my home network.
-- ~~GoDaddy~~ → ~~Google Domains~~ → [**Cloudflare Registrar**](https://www.cloudflare.com/products/registrar/) (and [**ISNIC**](https://isnic.is/en/) of course 🇮🇸)
+- ~~GoDaddy~~ → ~~Google Domains~~ → [**Cloudflare Registrar**](https://www.cloudflare.com/products/registrar/) (and [**ISNIC**](https://isnic.is/en/) for this domain, of course 🇮🇸)
 
 Other geeky stuff:
 
@@ -184,5 +185,6 @@ Other geeky stuff:
 - [**Synology DiskStation DS218+**](https://www.synology.com/en-us/products/DS218+)
 - [**Dell Inspiron 3647**](https://www.amazon.com/dp/B00HWML468/), slightly upgraded and running [**VMware ESXi**](https://www.vmware.com/products/esxi-and-esx.html), as a really, _really_ crappy home server.
 - [**Philips Hue**](https://www2.meethue.com/en-us) color bulbs, dimmer switches, etc.
+- 2x [**ecobee3 lite**](https://www.ecobee.com/en-us/smart-thermostats/smart-wifi-thermostat/) smart thermostats (HomeKit support was a must.)
 - 2x [**Sonos One**](https://www.sonos.com/en-us/shop/one.html) (with Alexa turned off...allegedly.)
 - [**Petcube Play**](https://petcube.com/play/) 😻

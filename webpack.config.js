@@ -31,7 +31,7 @@ export default {
       // https://github.com/babel/babel-loader#top-level-function-iife-is-still-arrow-on-webpack-5
       arrowFunction: false,
     },
-    devtoolModuleFilenameTemplate: "webpack:///[resource-path]?[loaders]",
+    devtoolModuleFilenameTemplate: "webpack:///[resource-path]",
   },
   plugins: [
     new MiniCssExtractPlugin({
