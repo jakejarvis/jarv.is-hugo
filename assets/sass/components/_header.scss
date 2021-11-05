@@ -79,27 +79,16 @@ header {
         a {
           display: inline-flex;
 
-          // hovers are super choppy without this in some browsers
-          will-change: transform;
-
           @include themes.themed(
-            $properties: (
+            (
               color: "medium-dark",
-            ),
-            $addTransitions: (
-              transform 0.2s ease-in-out,
             )
           );
 
           &:hover {
-            transform: scale(1.1);
-
             @include themes.themed(
-              $properties: (
+              (
                 color: "links",
-              ),
-              $addTransitions: (
-                transform 0.2s ease-in-out,
               )
             );
           }
@@ -130,19 +119,17 @@ header {
             // native button reset
             border: 0;
             padding: 0;
+            width: 1.56em; // 24.33px, don't ask
+            height: 1.56em;
+            margin-top: -0.05em;
+            margin-left: 1.4em;
+            margin-right: -0.3em; // weirdness w/ svg ratio
+            cursor: pointer;
 
             // prepare for lightbulb symbol depending on active theme (set in components/_global)
             background-color: transparent;
             background-repeat: no-repeat;
             background-size: 100% 100%;
-
-            // 24.33px, don't ask
-            height: 1.56em;
-            width: 1.56em;
-            margin-top: -0.05em;
-            margin-left: 1.4em;
-            margin-right: -0.3em; // weirdness w/ svg ratio
-            cursor: pointer;
           }
         }
 
@@ -195,18 +182,12 @@ header {
             span.header-menu-text {
               display: none;
             }
-
-            // disable hover scale effect
-            &:hover {
-              transform: none;
-            }
           }
 
           // Dark mode toggle
           &#header-lightbulb button.dark-mode-toggle {
-            // TODO: figure out need for weird magic numbers here
-            height: 1.08em; // ~27px, don't ask
-            width: 1.08em;
+            width: 1.08em; // ~27px, don't ask
+            height: 1.08em;
             margin-left: 1em;
             margin-right: -0.2em; // weirdness w/ svg ratio
           }
