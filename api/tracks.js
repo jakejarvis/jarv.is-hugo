@@ -5,21 +5,21 @@ import * as Sentry from "@sentry/node";
 import fetch from "node-fetch";
 import queryString from "query-string";
 
+Sentry.init({
+  dsn: process.env.SENTRY_DSN || "",
+  environment: process.env.NODE_ENV || process.env.VERCEL_ENV || "",
+});
+
 const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN } = process.env;
 
 const basic = Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString("base64");
 
 // https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow
-const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
+const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 // https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-the-users-currently-playing-track
-const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
+const NOW_PLAYING_ENDPOINT = "https://api.spotify.com/v1/me/player/currently-playing";
 // https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-users-top-artists-and-tracks
-const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10`;
-
-Sentry.init({
-  dsn: process.env.SENTRY_DSN || "",
-  environment: process.env.NODE_ENV || process.env.VERCEL_ENV || "",
-});
+const TOP_TRACKS_ENDPOINT = "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10";
 
 export default async (req, res) => {
   try {

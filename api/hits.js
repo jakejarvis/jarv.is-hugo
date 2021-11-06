@@ -2,24 +2,25 @@ import * as Sentry from "@sentry/node";
 import fetch from "node-fetch";
 import parser from "fast-xml-parser";
 import { decode } from "html-entities";
+import pRetry from "p-retry";
 import faunadb from "faunadb";
 const q = faunadb.query;
-
-const BASE_URL = "https://jarv.is/";
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN || "",
   environment: process.env.NODE_ENV || process.env.VERCEL_ENV || "",
 });
 
+const BASE_URL = "https://jarv.is/";
+
 export default async (req, res) => {
   try {
     // some rudimentary error handling
-    if (!process.env.FAUNADB_SERVER_SECRET) {
-      throw new Error("Database credentials aren't set.");
-    }
     if (req.method !== "GET") {
       throw new Error(`Method ${req.method} not allowed.`);
+    }
+    if (!process.env.FAUNADB_SERVER_SECRET) {
+      throw new Error("Database credentials aren't set.");
     }
 
     const client = new faunadb.Client({
@@ -36,8 +37,14 @@ export default async (req, res) => {
       // let Vercel edge and browser cache results for 15 mins
       res.setHeader("Cache-Control", "public, max-age=900, s-maxage=900, stale-while-revalidate");
     } else {
-      // increment this page's hits
-      result = await incrementPageHits(slug, client);
+      // increment this page's hits. retry 3 times in case of Fauna "contended transaction" error:
+      // https://sentry.io/share/issue/9c60a58211954ed7a8dfbe289bd107b5/
+      result = await pRetry(() => incrementPageHits(slug, client), {
+        onFailedAttempt: (error) => {
+          console.warn(`Attempt ${error.attemptNumber} failed, trying again...`);
+        },
+        retries: 3,
+      });
 
       // disable caching on both ends
       res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
