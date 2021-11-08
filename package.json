@@ -38,6 +38,7 @@
     "fast-xml-parser": "^3.21.1",
     "faunadb": "^4.4.1",
     "get-canonical-url": "^1.0.1",
+    "get-stream": "^6.0.1",
     "html-entities": "^2.3.2",
     "lit-html": "^2.0.1",
     "modern-normalize": "github:sindresorhus/modern-normalize#1fc6b5a86676b7ac8abc62d04d6080f92debc70f",

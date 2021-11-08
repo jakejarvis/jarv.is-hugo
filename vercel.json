@@ -12,11 +12,6 @@
       "source": "/apple-touch-icon-precomposed.png",
       "destination": "/assets/images/apple-touch-icon.png"
     },
-    {
-      "source": "/api/csp_wizard/",
-      "destination": "https://jarvis.report-uri.com/r/d/csp/enforce"
-    },
-    { "source": "/api/report/", "destination": "https://jarvis.report-uri.com/a/d/g" },
     { "source": "/api/mention/", "destination": "https://webmention.io/jarv.is/webmention" },
     { "source": "/api/ping/", "destination": "https://webmention.io/jarv.is/xmlrpc" }
   ],
@@ -88,7 +83,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'none'; connect-src 'self' api.github.com hcaptcha.com *.hcaptcha.com platform.twitter.com; font-src 'self'; form-action 'self'; frame-ancestors 'self'; frame-src 'self' jakejarvis.github.io buttons.github.io codepen.io hcaptcha.com *.hcaptcha.com platform.twitter.com www.youtube-nocookie.com; img-src 'self' data: https:; manifest-src 'self'; media-src 'self' data: https:; object-src 'none'; prefetch-src 'self'; script-src 'self' buttons.github.io gist.github.com hcaptcha.com *.hcaptcha.com syndication.twitter.com platform.twitter.com; style-src 'self' 'unsafe-inline' github.githubassets.com; worker-src 'self'; block-all-mixed-content; report-uri https://jarv.is/api/csp_wizard/; report-to default"
+          "value": "default-src 'self'; base-uri 'none'; connect-src 'self' api.github.com hcaptcha.com *.hcaptcha.com platform.twitter.com; font-src 'self'; form-action 'self'; frame-ancestors 'self'; frame-src 'self' jakejarvis.github.io buttons.github.io codepen.io hcaptcha.com *.hcaptcha.com platform.twitter.com www.youtube-nocookie.com; img-src 'self' data: https:; manifest-src 'self'; media-src 'self' data: https:; object-src 'none'; prefetch-src 'self'; script-src 'self' buttons.github.io gist.github.com hcaptcha.com *.hcaptcha.com syndication.twitter.com platform.twitter.com; style-src 'self' 'unsafe-inline' github.githubassets.com; worker-src 'self'; block-all-mixed-content; report-uri https://jarv.is/api/report/?csp; report-to default"
         },
         {
           "key": "Report-To",
