@@ -23,17 +23,18 @@ const TOP_TRACKS_ENDPOINT = "https://api.spotify.com/v1/me/top/tracks?time_range
 
 export default async (req, res) => {
   try {
-    // some rudimentary error handling
+    // permissive access control headers
+    res.setHeader("Access-Control-Allow-Methods", "GET");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     if (req.method !== "GET") {
-      throw new Error(`Method ${req.method} not allowed.`);
-    }
-    if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET || !process.env.SPOTIFY_REFRESH_TOKEN) {
-      throw new Error("Spotify API credentials aren't set.");
+      return res.status(405).send(); // 405 Method Not Allowed
     }
 
     // default to top tracks
     let response;
-    // get currently playing track (/music/?now), otherwise top 10 tracks
+
+    // get currently playing track (/api/tracks/?now), otherwise top 10 tracks
     if (typeof req.query.now !== "undefined") {
       response = await getNowPlaying();
 
@@ -46,10 +47,7 @@ export default async (req, res) => {
       res.setHeader("Cache-Control", "public, max-age=10800, s-maxage=10800, stale-while-revalidate");
     }
 
-    res.setHeader("Access-Control-Allow-Methods", "GET");
-    res.setHeader("Access-Control-Allow-Origin", "*");
-
-    res.status(200).json(response);
+    return res.status(200).json(response);
   } catch (error) {
     console.error(error);
 
@@ -59,7 +57,8 @@ export default async (req, res) => {
 
     const message = error instanceof Error ? error.message : "Unknown error.";
 
-    res.status(400).json({ success: false, message: message });
+    // 500 Internal Server Error
+    return res.status(500).json({ success: false, message: message });
   }
 };
 
@@ -100,7 +99,7 @@ const getNowPlaying = async () => {
   if (active.is_playing === true && active.item) {
     return {
       isPlaying: active.is_playing,
-      artist: active.item.artists.map((_artist) => _artist.name).join(", "),
+      artist: active.item.artists.map((artist) => artist.name).join(", "),
       title: active.item.name,
       album: active.item.album.name,
       imageUrl: active.item.album.images ? active.item.album.images[0].url : undefined,
@@ -126,7 +125,7 @@ const getTopTracks = async () => {
   const { items } = await response.json();
 
   const tracks = items.map((track) => ({
-    artist: track.artists.map((_artist) => _artist.name).join(", "),
+    artist: track.artists.map((artist) => artist.name).join(", "),
     title: track.name,
     album: track.album.name,
     imageUrl: track.album.images ? track.album.images[0].url : undefined,

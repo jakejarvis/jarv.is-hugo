@@ -29,6 +29,6 @@ The [Vercel CLI](https://vercel.com/docs/cli) is not included as a project depen
 
 ![Creative Commons Attribution 4.0 International License](https://raw.githubusercontent.com/creativecommons/cc-cert-core/master/images/cc-by-88x31.png "CC BY")
 
-Site content (everything in [`content/notes`](content/notes/)) is published under the [**Creative Commons Attribution 4.0 International License**](LICENSE.md) (CC-BY-4.0), which means that you can copy, redistribute, remix, transform, and build upon the content for any purpose as long as you give appropriate credit.
+Site content (everything in [`content/notes`](content/notes/)) is published under the [**Creative Commons Attribution 4.0 International License**](LICENSE) (CC-BY-4.0), which means that you can copy, redistribute, remix, transform, and build upon the content for any purpose as long as you give appropriate credit.
 
 All original code in this repository is published under the [**MIT License**](https://opensource.org/licenses/MIT).

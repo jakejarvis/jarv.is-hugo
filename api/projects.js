@@ -8,12 +8,12 @@ Sentry.init({
 
 export default async (req, res) => {
   try {
-    // some rudimentary error handling
+    // permissive access control headers
+    res.setHeader("Access-Control-Allow-Methods", "GET");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     if (req.method !== "GET") {
-      throw new Error(`Method ${req.method} not allowed.`);
-    }
-    if (!process.env.GH_PUBLIC_TOKEN) {
-      throw new Error("GitHub API credentials aren't set.");
+      return res.status(405).send(); // 405 Method Not Allowed
     }
 
     // allow custom limit, max. 24 results
@@ -33,10 +33,8 @@ export default async (req, res) => {
 
     // let Vercel edge and browser cache results for 15 mins
     res.setHeader("Cache-Control", "public, max-age=900, s-maxage=900, stale-while-revalidate");
-    res.setHeader("Access-Control-Allow-Methods", "GET");
-    res.setHeader("Access-Control-Allow-Origin", "*");
 
-    res.status(200).json(result);
+    return res.status(200).json(result);
   } catch (error) {
     console.error(error);
 
@@ -46,7 +44,8 @@ export default async (req, res) => {
 
     const message = error instanceof Error ? error.message : "Unknown error.";
 
-    res.status(400).json({ success: false, message: message });
+    // 500 Internal Server Error
+    return res.status(500).json({ success: false, message: message });
   }
 };
 

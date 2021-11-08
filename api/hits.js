@@ -15,12 +15,12 @@ const BASE_URL = "https://jarv.is/";
 
 export default async (req, res) => {
   try {
-    // some rudimentary error handling
+    // permissive access control headers
+    res.setHeader("Access-Control-Allow-Methods", "GET");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     if (req.method !== "GET") {
-      throw new Error(`Method ${req.method} not allowed.`);
-    }
-    if (!process.env.FAUNADB_SERVER_SECRET) {
-      throw new Error("Database credentials aren't set.");
+      return res.status(405).send(); // 405 Method Not Allowed
     }
 
     const client = new faunadb.Client({
@@ -52,10 +52,7 @@ export default async (req, res) => {
       res.setHeader("Pragma", "no-cache");
     }
 
-    res.setHeader("Access-Control-Allow-Methods", "GET");
-    res.setHeader("Access-Control-Allow-Origin", "*");
-
-    res.status(200).json(result);
+    return res.status(200).json(result);
   } catch (error) {
     console.error(error);
 
@@ -65,7 +62,8 @@ export default async (req, res) => {
 
     const message = error instanceof Error ? error.message : "Unknown error.";
 
-    res.status(400).json({ success: false, message: message });
+    // 500 Internal Server Error
+    return res.status(500).json({ success: false, message: message });
   }
 };
 

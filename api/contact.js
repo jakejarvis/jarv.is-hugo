@@ -16,22 +16,17 @@ const { AIRTABLE_API_KEY, AIRTABLE_BASE } = process.env;
 const AIRTABLE_API_ENDPOINT = "https://api.airtable.com/v0/";
 
 export default async (req, res) => {
-  // disable caching on both ends
-  res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
-  res.setHeader("Expires", 0);
-  res.setHeader("Pragma", "no-cache");
-
-  // permissive access control headers
-  res.setHeader("Access-Control-Allow-Methods", "POST");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
   try {
-    // some rudimentary error handling
+    // permissive access control headers
+    res.setHeader("Access-Control-Allow-Methods", "POST");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    // disable caching on both ends
+    res.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
+    res.setHeader("Expires", 0);
+    res.setHeader("Pragma", "no-cache");
+
     if (req.method !== "POST") {
-      throw new Error(`Method ${req.method} not allowed.`);
-    }
-    if (!AIRTABLE_API_KEY || !AIRTABLE_BASE) {
-      throw new Error("Airtable API credentials aren't set.");
+      return res.status(405).send(); // 405 Method Not Allowed
     }
 
     const { body } = req;
@@ -60,7 +55,7 @@ export default async (req, res) => {
     }
 
     // return in JSON format
-    res.status(200).json({ success: true });
+    return res.status(200).json({ success: true });
   } catch (error) {
     console.error(error);
 
@@ -73,7 +68,8 @@ export default async (req, res) => {
       await Sentry.flush(2000);
     }
 
-    res.status(400).json({ success: false, message: message });
+    // 500 Internal Server Error
+    return res.status(500).json({ success: false, message: message });
   }
 };
 
