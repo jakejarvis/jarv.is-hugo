@@ -1,6 +1,5 @@
 import fetch from "cross-fetch";
 import canonicalUrl from "get-canonical-url";
-import urlParse from "url-parse";
 
 // API endpoint
 const HITS_ENDPOINT = "/api/hits/";
@@ -24,7 +23,7 @@ if (wrapper) {
   wrapper.style.display = "inline-flex";
 
   // get path and strip beginning and ending forward slash
-  const slug = urlParse(canonical).pathname.replace(/^\/|\/$/g, "");
+  const slug = new URL(canonical).pathname.replace(/^\/|\/$/g, "");
 
   fetch(`${HITS_ENDPOINT}?slug=${encodeURIComponent(slug)}`)
     .then((response) => response.json())

@@ -49,7 +49,6 @@
     "trim-newlines": "^4.0.2",
     "twemoji": "^13.1.0",
     "twemoji-emojis": "^14.1.0",
-    "url-parse": "^1.5.3",
     "vanilla-hcaptcha": "^1.0.0-alpha"
   },
   "devDependencies": {
