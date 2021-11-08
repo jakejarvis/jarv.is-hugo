@@ -11,9 +11,7 @@
     {
       "source": "/apple-touch-icon-precomposed.png",
       "destination": "/assets/images/apple-touch-icon.png"
-    },
-    { "source": "/api/mention/", "destination": "https://webmention.io/jarv.is/webmention" },
-    { "source": "/api/ping/", "destination": "https://webmention.io/jarv.is/xmlrpc" }
+    }
   ],
   "redirects": [
     { "source": "/notes/:slug/amp.html", "destination": "/notes/:slug/", "statusCode": 301 },
