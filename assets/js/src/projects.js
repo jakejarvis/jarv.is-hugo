@@ -5,7 +5,7 @@ import { ifDefined } from "lit-html/directives/if-defined.js";
 import dayjs from "dayjs";
 import dayjsLocalizedFormat from "dayjs/plugin/localizedFormat.js";
 import dayjsRelativeTime from "dayjs/plugin/relativeTime.js";
-import twemoji from "twemoji";
+import { parse as parseEmoji } from "imagemoji";
 
 // API endpoint (sort by stars, limit to 12)
 const PROJECTS_ENDPOINT = "/api/projects/?top&limit=12";
@@ -84,9 +84,7 @@ if (wrapper) {
       }
 
       // the repo descriptions were added after the first twemoji parsing
-      twemoji.parse(wrapper, {
-        callback: (icon) => `/assets/emoji/${icon}.svg`,
-      });
+      parseEmoji(wrapper, (icon) => `/assets/emoji/${icon}.svg`);
     })
     .catch(() => {
       // something went horribly wrong, initiate coverup

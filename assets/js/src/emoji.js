@@ -1,6 +1,4 @@
-import twemoji from "twemoji";
+import { parse as parseEmoji } from "imagemoji";
 
-twemoji.parse(document.body, {
-  // simpler relative URIs
-  callback: (icon) => `/assets/emoji/${icon}.svg`,
-});
+// we're hosting twemojis locally instead of from Twitter's CDN
+parseEmoji(document.body, (icon) => `/assets/emoji/${icon}.svg`);
