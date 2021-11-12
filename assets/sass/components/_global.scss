@@ -59,12 +59,14 @@ pre,
   // Chrome doesn't automatically slant multi-axis Inter var, for some reason.
   // Adding "slnt" -10 fixes Chrome but then over-italicizes in Firefox. AHHHHHHHHHH.
   em {
-    font-style: normal;
+    font-style: normal !important;
     font-variation-settings: "ital" 1, "slnt" -10;
 
     // Roboto Mono doesn't have this problem, but the above fix breaks it, of course.
-    code {
-      font-style: italic;
+    code,
+    pre,
+    .monospace {
+      font-style: italic !important;
     }
   }
 }

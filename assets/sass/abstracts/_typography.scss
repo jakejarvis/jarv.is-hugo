@@ -1,13 +1,8 @@
+@use "settings";
+
 @use "~@fontsource/inter/scss/mixins" as Inter;
 @use "~@fontsource/roboto-mono/scss/mixins" as RobotoMono;
 @use "~@fontsource/comic-neue/scss/mixins" as ComicNeue;
-
-// stylelint-disable scss/operator-no-unspaced
-// prettier-ignore
-$latin-only: (
-  latin: (U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD),
-);
-// stylelint-enable scss/operator-no-unspaced
 
 /*!
  * Inter typeface - https://rsms.me/inter/
@@ -18,12 +13,16 @@ $latin-only: (
  */
 
 // Variable
-@include Inter.fontFaceVariable($fontName: "Inter var", $type: "full", $unicodeMap: $latin-only);
+@include Inter.fontFaceVariable(
+  $fontName: "Inter var",
+  $type: "full",
+  $unicodeMap: settings.$webfont-unicode-latin-only
+);
 
 // Legacy
-@include Inter.fontFace($fontName: "Inter", $weight: 400, $unicodeMap: $latin-only);
-@include Inter.fontFace($fontName: "Inter", $weight: 500, $unicodeMap: $latin-only);
-@include Inter.fontFace($fontName: "Inter", $weight: 700, $unicodeMap: $latin-only);
+@include Inter.fontFace($fontName: "Inter", $weight: 400, $unicodeMap: settings.$webfont-unicode-latin-only);
+@include Inter.fontFace($fontName: "Inter", $weight: 500, $unicodeMap: settings.$webfont-unicode-latin-only);
+@include Inter.fontFace($fontName: "Inter", $weight: 700, $unicodeMap: settings.$webfont-unicode-latin-only);
 
 /*!
  * Roboto Mono typeface - https://fonts.google.com/specimen/Roboto+Mono
@@ -34,12 +33,17 @@ $latin-only: (
  */
 
 // Variable
-@include RobotoMono.fontFaceVariable($fontName: "Roboto Mono var", $unicodeMap: $latin-only);
-@include RobotoMono.fontFaceVariable($fontName: "Roboto Mono var", $style: italic, $unicodeMap: $latin-only);
+@include RobotoMono.fontFaceVariable($fontName: "Roboto Mono var", $unicodeMap: settings.$webfont-unicode-latin-only);
+@include RobotoMono.fontFaceVariable(
+  $fontName: "Roboto Mono var",
+  $style: italic,
+  $unicodeMap: settings.$webfont-unicode-latin-only
+);
 
 // Legacy
-@include RobotoMono.fontFace($fontName: "Roboto Mono", $weight: 400, $unicodeMap: $latin-only);
-@include RobotoMono.fontFace($fontName: "Roboto Mono", $weight: 700, $unicodeMap: $latin-only);
+@include RobotoMono.fontFace($fontName: "Roboto Mono", $weight: 400, $unicodeMap: settings.$webfont-unicode-latin-only);
+@include RobotoMono.fontFace($fontName: "Roboto Mono", $weight: 500, $unicodeMap: settings.$webfont-unicode-latin-only);
+@include RobotoMono.fontFace($fontName: "Roboto Mono", $weight: 700, $unicodeMap: settings.$webfont-unicode-latin-only);
 
 /*!
  * Comic Neue typeface - http://comicneue.com/
@@ -49,5 +53,5 @@ $latin-only: (
  * https://github.com/crozynski/comicneue/blob/master/OFL.txt
  */
 
-@include ComicNeue.fontFace($fontName: "Comic Neue", $weight: 400, $unicodeMap: $latin-only);
-@include ComicNeue.fontFace($fontName: "Comic Neue", $weight: 700, $unicodeMap: $latin-only);
+@include ComicNeue.fontFace($fontName: "Comic Neue", $weight: 400, $unicodeMap: settings.$webfont-unicode-latin-only);
+@include ComicNeue.fontFace($fontName: "Comic Neue", $weight: 700, $unicodeMap: settings.$webfont-unicode-latin-only);
