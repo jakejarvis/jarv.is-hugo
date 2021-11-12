@@ -55,6 +55,12 @@ pre,
   .monospace {
     font-family: settings.$font-stack-mono-variable;
   }
+
+  // Chrome doesn't automatically slant multi-axis Inter var, for some reason
+  em {
+    font-style: italic;
+    font-variation-settings: "ital" 1, "slnt" -10;
+  }
 }
 
 a {
