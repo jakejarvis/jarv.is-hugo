@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.202.5/containers/ubuntu
 {
-  "name": "Ubuntu",
+  "name": "jarv.is",
   "runArgs": ["--init"],
   "build": {
     "dockerfile": "Dockerfile",
@@ -11,6 +11,7 @@
   },
   "features": {
     "git": "os-provided",
+    "github-cli": "latest",
     "node": "16"
   },
 
@@ -18,8 +19,7 @@
   "remoteUser": "vscode",
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "npm i -g vercel",
-  "postAttachCommand": "yarn install --frozen-lockfile",
+  "postStartCommand": "yarn install --frozen-lockfile && git update-index --assume-unchanged data/manifest.json",
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [1337],
@@ -32,18 +32,7 @@
 
   // Set *default* container specific settings.json values on container create.
   "settings": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true,
-    "editor.rulers": [120],
-    "files.eol": "\n",
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
-    "css.validate": false,
-    "scss.validate": false,
-    "html.format.templating": true,
-    "prettier.requireConfig": true,
-    "prettier.configPath": ".prettierrc",
-    "markdown.preview.lineHeight": 1.75
+    "terminal.integrated.shell.linux": "/bin/zsh"
   },
 
   // Add the IDs of extensions you want installed when the container is created.
