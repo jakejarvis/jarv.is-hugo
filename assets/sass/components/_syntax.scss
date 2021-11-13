@@ -9,8 +9,7 @@ code {
 
 // inline code in paragraphs/elsewhere (single backticks)
 :not(pre) > code {
-  padding: 0.075em 0.325em;
-  margin: 0 0.1em;
+  padding: 0.075em 0.25em;
   border: 1px solid;
 }
 
