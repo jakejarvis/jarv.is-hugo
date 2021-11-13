@@ -89,7 +89,7 @@
     "postcss-loader": "^6.2.0",
     "postcss-normalize-charset": "^5.0.1",
     "postcss-svgo": "^5.0.3",
-    "prettier": "^2.4.1",
+    "prettier": "~2.4.1",
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",
     "simple-git-hooks": "^2.7.0",
@@ -105,7 +105,7 @@
     "webpack": "^5.64.0",
     "webpack-assets-manifest": "^5.0.6",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.4.0"
+    "webpack-dev-server": "^4.5.0"
   },
   "optionalDependencies": {
     "imagemin-gifsicle": "^7.0.0",
