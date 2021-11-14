@@ -23,13 +23,13 @@ $webfont-unicode-latin-only: (
 // https://markdotto.com/2018/02/07/github-system-fonts/
 // stylelint-disable-next-line value-keyword-case
 $system-fonts-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif;
-$system-fonts-monospace: ui-monospace, "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "Courier", monospace;
+$system-fonts-mono: ui-monospace, "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "Courier", monospace;
 
 // Prefer web fonts with system fonts as backup:
 $font-stack-sans: list.join($webfont-sans, $system-fonts-sans);
-$font-stack-variable: list.join($webfont-sans-variable, $system-fonts-sans);
-$font-stack-mono: list.join($webfont-mono, $system-fonts-monospace);
-$font-stack-mono-variable: list.join($webfont-mono-variable, $system-fonts-monospace);
+$font-stack-sans-variable: list.join($webfont-sans-variable, $font-stack-sans);
+$font-stack-mono: list.join($webfont-mono, $system-fonts-mono);
+$font-stack-mono-variable: list.join($webfont-mono-variable, $font-stack-mono);
 
 // Fancy link underline settings:
 $link-underline-opacity: 40%;

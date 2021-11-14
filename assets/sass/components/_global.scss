@@ -46,7 +46,7 @@ pre,
 // https://caniuse.com/#feat=variable-fonts
 @supports (font-variation-settings: normal) {
   body {
-    font-family: settings.$font-stack-variable;
+    font-family: settings.$font-stack-sans-variable;
     font-optical-sizing: auto;
   }
 
@@ -104,7 +104,7 @@ main {
       $properties: (
         color: "links",
       ),
-      $addTransitions: (
+      $moreTransitions: (
         background-size 0.25s ease-in-out,
       )
     );
