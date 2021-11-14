@@ -84,10 +84,8 @@ export default {
                 [
                   "@babel/preset-env",
                   {
-                    include: ["transform-arrow-functions", "transform-block-scoping", "transform-template-literals"],
-                    bugfixes: true,
-                    useBuiltIns: "entry",
                     corejs: 3,
+                    useBuiltIns: "entry",
                   },
                 ],
               ],
@@ -171,10 +169,7 @@ export default {
         terserOptions: {
           sourceMap: true,
           compress: {
-            arrows: false,
             drop_console: true,
-            negate_iife: false,
-            sequences: false,
             passes: 3,
           },
           format: {

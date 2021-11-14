@@ -8,7 +8,6 @@ updates:
     versioning-strategy: increase
     ignore:
       - dependency-name: "@types/*"
-      - dependency-name: "@fontsource/*"
     labels:
       - "📦 dependencies"
     commit-message:

@@ -20,8 +20,8 @@ yarn-error.log*
 .lighthouseci/
 
 # here be secrets
-.env
-.env.prod*
+*.env*
+!.env.example
 
 # macOS/iCloud junk
 .DS_Store

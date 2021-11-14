@@ -59,7 +59,7 @@ function optimizeHtml() {
 function optimizeImages() {
   // allow skipping this step via an env variable to save time during CI, etc.
   if (process.env.SKIP_OPTIMIZE_IMAGES === "true") {
-    console.log("Skipping image optimization...");
+    console.warn("Skipping image optimization...");
     return Promise.resolve();
   }
 
