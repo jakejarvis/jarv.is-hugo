@@ -8,9 +8,7 @@
  * Inter typeface - https://rsms.me/inter/
  *
  * Copyright (c) 2016-2020 The Inter Project Authors.
- * "Inter" is trademark of Rasmus Andersson.
- * Licensed under the SIL Open Font License, Version 1.1:
- * https://scripts.sil.org/OFL
+ * Licensed under the SIL Open Font License, Version 1.1.
  */
 
 // Variable
@@ -29,8 +27,7 @@
  * Roboto Mono typeface - https://github.com/googlefonts/robotomono
  *
  * Copyright (c) 2015 The Roboto Mono Project Authors.
- * Licensed under the Apache License, Version 2.0:
- * https://www.apache.org/licenses/LICENSE-2.0
+ * Licensed under the Apache License, Version 2.0.
  */
 
 // Variable
@@ -50,8 +47,7 @@
  * Comic Neue typeface - http://comicneue.com/
  *
  * Copyright (c) 2014 The Comic Neue Project Authors.
- * Licensed under the SIL Open Font License, Version 1.1:
- * https://scripts.sil.org/OFL
+ * Licensed under the SIL Open Font License, Version 1.1.
  */
 
 @include ComicNeue.fontFace($fontName: "Comic Neue", $weight: 400, $unicodeMap: settings.$webfont-unicode-latin-only);
