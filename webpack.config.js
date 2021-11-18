@@ -3,6 +3,7 @@ import { fileURLToPath } from "url";
 import webpack from "webpack";
 import WebpackAssetsManifest from "webpack-assets-manifest";
 import CopyPlugin from "copy-webpack-plugin";
+import { LicenseWebpackPlugin as LicensePlugin } from "license-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
@@ -14,8 +15,9 @@ import postcssFocus from "postcss-focus";
 
 // https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#what-do-i-use-instead-of-__dirname-and-__filename
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 const isProd = process.env.NODE_ENV === "production";
+
+const globalBannerText = `Licensed under MIT. Copyright (c) 2015-${new Date().getFullYear()} Jake Jarvis <https://jarv.is/>.`;
 
 export default {
   entry: [path.resolve(__dirname, "assets/js/index.js"), path.resolve(__dirname, "assets/sass/main.scss")],
@@ -37,8 +39,30 @@ export default {
       filename: isProd ? "css/[name]-[contenthash:6].css" : "css/[name].css",
     }),
     new webpack.BannerPlugin({
-      banner: `@license MIT <https://opensource.org/licenses/MIT>
-@copyright (c) 2015-${new Date().getFullYear()} Jake Jarvis <https://jarv.is/>`,
+      banner: `/*! ${globalBannerText} */`,
+      raw: true,
+    }),
+    new LicensePlugin({
+      outputFilename: "third_party.txt",
+      perChunkOutput: false,
+      addBanner: true,
+      renderBanner: (filename) => `/*!
+ * ${globalBannerText}
+ * See here for third-party libraries: https://jarv.is/assets/${filename}
+ */`,
+      additionalModules: [
+        {
+          name: "lit-html",
+          directory: path.join(__dirname, "node_modules", "lit-html"),
+        },
+        {
+          name: "twemoji",
+          directory: path.join(__dirname, "node_modules", "twemoji"),
+        },
+      ],
+      licenseFileOverrides: {
+        twemoji: "LICENSE-GRAPHICS", // we only use the emojis, not the bundled code
+      },
     }),
     new CopyPlugin({
       patterns: [
@@ -171,7 +195,8 @@ export default {
             passes: 3,
           },
           format: {
-            comments: /^\**!|@preserve|@license/i,
+            // cut all comments except for the banner declared above via LicensePlugin:
+            comments: (astNode, comment) => comment.value.toLowerCase().includes("third-party libraries"),
             ascii_only: true, // some symbols get disfigured otherwise
           },
           mangle: true,

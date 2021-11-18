@@ -56,3 +56,7 @@
     open & permissive Creative Commons license:
 
     https://jarv.is/license/
+
+    See licenses for third-party libraries at:
+
+    https://jarv.is/assets/third_party.txt
