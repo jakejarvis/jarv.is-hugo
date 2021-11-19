@@ -21,9 +21,9 @@ Introducing the [**Y2K Sandbox**](https://y2k.app/) — with fully-featured, fu
 
 {{< image src="images/screenshot.png" link="https://y2k.app/" >}}[**Play in the Y2K Sandbox, at your own risk.**](https://y2k.app/){{< /image >}}
 
-The backend is powered by [**QEMU**](https://www.qemu.org/) (as a Pentium III emulator) inside isolated **Docker** containers, [**websocketd**](https://github.com/joewalnes/websocketd) (an **_awesome_** lightweight WebSockets server written in Go), [**Cloudflare Tunnels**](https://www.cloudflare.com/products/argo-tunnel/) (for some protection), and some [Ruby and shell scripts](https://github.com/jakejarvis/y2k/tree/master/backend). ~~I'll push the backend scripts up to GitHub once I have a chance to untangle the spaghetti code. 🍝~~
+The backend is powered by [**QEMU**](https://www.qemu.org/) (as a Pentium III emulator) inside isolated **Docker** containers, [**websocketd**](https://github.com/joewalnes/websocketd) (an **_awesome_** lightweight WebSockets server written in Go), and [**Cloudflare Tunnels**](https://www.cloudflare.com/products/tunnel/) (for some protection), all tied together with some [Ruby code](https://github.com/jakejarvis/y2k/blob/main/container/bin/boot.rb) and [shell scripts](https://github.com/jakejarvis/y2k/tree/main/host). ~~I'll push the backend scripts up to GitHub once I have a chance to untangle the spaghetti code. 🍝~~
 
-The frontend is _much_ simpler with a stripped-down version of [**noVNC**](https://github.com/novnc/noVNC), a JavaScript "VNC via WebSockets" client, and hosted by [**Cloudflare Workers**](https://developers.cloudflare.com/workers/sites/).
+The frontend is _much_ simpler with [a few lines of JavaScript](https://github.com/jakejarvis/y2k/blob/main/frontend/app.js) and [**noVNC**](https://github.com/novnc/noVNC), a VNC-via-WebSockets library, hosted by [**Cloudflare Pages**](https://pages.cloudflare.com/).
 
 ### 🎉 Update: [Everything is now on GitHub!](https://github.com/jakejarvis/y2k)
 
