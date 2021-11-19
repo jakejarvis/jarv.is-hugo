@@ -1,6 +1,5 @@
 import * as Sentry from "@sentry/node";
-import fetch from "node-fetch";
-import parser from "fast-xml-parser";
+import Parser from "rss-parser";
 import { decode } from "html-entities";
 import pRetry from "p-retry";
 import faunadb from "faunadb";
@@ -91,8 +90,9 @@ const incrementPageHits = async (slug, client) => {
 
 const getSiteStats = async (client) => {
   // get database and RSS results asynchronously
+  const parser = new Parser();
   const [feed, result] = await Promise.all([
-    parser.parse(await (await fetch(BASE_URL + "feed.xml")).text()), // this is messy but it works :)
+    parser.parseURL(BASE_URL + "feed.xml"),
     client.query(
       q.Map(
         q.Paginate(q.Documents(q.Collection("hits")), { size: 99 }),
@@ -109,7 +109,7 @@ const getSiteStats = async (client) => {
 
   pages.map((p) => {
     // match URLs from RSS feed with db to populate some metadata
-    const match = feed.rss.channel.item.find((x) => x.link === BASE_URL + p.slug + "/");
+    const match = feed.items.find((x) => x.link === BASE_URL + p.slug + "/");
     if (match) {
       p.title = decode(match.title);
       p.url = match.link;
