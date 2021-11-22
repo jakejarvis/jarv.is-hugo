@@ -60,7 +60,7 @@ header {
         );
 
         img#header-selfie {
-          opacity: 90%;
+          opacity: 0.9;
         }
       }
     }
@@ -121,9 +121,7 @@ header {
             padding: 0;
             width: 1.56em; // 24.33px, don't ask
             height: 1.56em;
-            margin-top: -0.05em;
-            margin-left: 1.4em;
-            margin-right: -0.3em; // weirdness w/ svg ratio
+            margin: -0.075em -0.3em 0 1.4em; // weirdness w/ svg ratio
             cursor: pointer;
 
             // prepare for lightbulb symbol depending on active theme (set in components/_global)
@@ -162,7 +160,7 @@ header {
 
         &:hover {
           img#header-selfie {
-            opacity: 100%;
+            opacity: 1;
           }
         }
       }

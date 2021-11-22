@@ -124,13 +124,11 @@ const getTopTracks = async () => {
 
   const { items } = await response.json();
 
-  const tracks = items.map((track) => ({
+  return items.map((track) => ({
     artist: track.artists.map((artist) => artist.name).join(", "),
     title: track.name,
     album: track.album.name,
     imageUrl: track.album.images ? track.album.images[0].url : undefined,
     songUrl: track.external_urls.spotify,
   }));
-
-  return tracks;
 };

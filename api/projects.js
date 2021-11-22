@@ -91,7 +91,7 @@ const fetchRepos = async (sort, limit) => {
     }
   );
 
-  const repos = user.repositories.edges.map(({ node: repo }) => ({
+  return user.repositories.edges.map(({ node: repo }) => ({
     name: repo.name,
     url: repo.url,
     description: repo.description,
@@ -100,6 +100,4 @@ const fetchRepos = async (sort, limit) => {
     forks: repo.forkCount,
     language: repo.primaryLanguage,
   }));
-
-  return repos;
 };
