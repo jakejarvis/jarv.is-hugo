@@ -1,6 +1,6 @@
 import { h, render } from "preact";
 import { useState, useEffect } from "preact/hooks";
-import fetch from "cross-fetch";
+import fetch from "unfetch";
 import canonicalUrl from "get-canonical-url";
 
 // shared react components:

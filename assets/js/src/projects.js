@@ -1,6 +1,6 @@
 import { h, render, Fragment } from "preact";
 import { useState, useEffect } from "preact/hooks";
-import fetch from "cross-fetch";
+import fetch from "unfetch";
 import dayjs from "dayjs";
 import dayjsLocalizedFormat from "dayjs/plugin/localizedFormat.js";
 import dayjsRelativeTime from "dayjs/plugin/relativeTime.js";

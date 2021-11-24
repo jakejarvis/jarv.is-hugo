@@ -1,5 +1,5 @@
 import "vanilla-hcaptcha";
-import fetch from "cross-fetch";
+import fetch from "unfetch";
 
 // don't continue if there isn't a contact form on this page
 // TODO: be better and only do any of this on /contact/
