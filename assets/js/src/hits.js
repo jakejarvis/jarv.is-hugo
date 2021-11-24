@@ -1,14 +1,42 @@
+import { h, render } from "preact";
+import { useState, useEffect } from "preact/hooks";
 import fetch from "cross-fetch";
 import canonicalUrl from "get-canonical-url";
+
+// shared react components:
+import Loading from "./components/loading.js";
 
 // API endpoint
 const HITS_ENDPOINT = "/api/hits/";
 
+const Counter = (props) => {
+  const [hits, setHits] = useState();
+
+  // start fetching hits from API once slug is set
+  useEffect(() => {
+    fetch(`${HITS_ENDPOINT}?slug=${encodeURIComponent(props.slug)}`)
+      .then((response) => response.json())
+      .then((data) => setHits(data.hits || 0));
+  }, [props.slug]);
+
+  // show spinning loading indicator if data isn't fetched yet
+  if (!hits) {
+    return <Loading boxes={3} width={20} />;
+  }
+
+  // we have data!
+  return (
+    <span title={`${hits.toLocaleString("en-US")} ${hits === 1 ? "view" : "views"}`}>
+      {hits.toLocaleString("en-US")}
+    </span>
+  );
+};
+
 // don't continue if there isn't a span#meta-hits element on this page
-const wrapper = document.querySelector("div#meta-hits");
+const wrapper = document.querySelector("div#meta-hits-counter");
 
 // page must have both span#meta-hits and canonical URL to enter
-if (wrapper) {
+if (typeof window !== "undefined" && wrapper) {
   // use <link rel="canonical"> to deduce a consistent identifier for this page
   const canonical = canonicalUrl({
     normalize: true,
@@ -19,34 +47,8 @@ if (wrapper) {
     },
   });
 
-  // javascript is enabled so show the loading indicator
-  wrapper.style.display = "inline-flex";
-
   // get path and strip beginning and ending forward slash
   const slug = new URL(canonical).pathname.replace(/^\/|\/$/g, "");
 
-  fetch(`${HITS_ENDPOINT}?slug=${encodeURIComponent(slug)}`)
-    .then((response) => response.json())
-    .then((data) => {
-      // pretty number and units
-      const hitsComma = data.hits.toLocaleString("en-US");
-      const hitsPlural = data.hits === 1 ? "view" : "views";
-      wrapper.title = `${hitsComma} ${hitsPlural}`;
-
-      // finally inject the hits...
-      const counter = document.querySelector("span#meta-hits-counter");
-      if (counter) {
-        counter.append(hitsComma);
-      }
-
-      // ...and hide the loading spinner
-      const spinner = document.querySelector("div#meta-hits-loading");
-      if (spinner) {
-        spinner.remove();
-      }
-    })
-    .catch(() => {
-      // something went horribly wrong, initiate coverup
-      wrapper.remove();
-    });
+  render(<Counter slug={slug} />, wrapper);
 }

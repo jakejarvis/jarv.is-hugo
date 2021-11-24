@@ -34,6 +34,13 @@ export default {
     },
     devtoolModuleFilenameTemplate: "webpack:///[resource-path]",
   },
+  resolve: {
+    alias: {
+      // https://preactjs.com/guide/v10/getting-started#aliasing-in-webpack
+      react: "preact/compat",
+      "react-dom": "preact/compat",
+    },
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: isProd ? "css/[name]-[contenthash:6].css" : "css/[name].css",
@@ -52,10 +59,6 @@ export default {
  */`,
       additionalModules: [
         {
-          name: "lit-html",
-          directory: path.join(__dirname, "node_modules", "lit-html"),
-        },
-        {
           name: "twemoji",
           directory: path.join(__dirname, "node_modules", "twemoji"),
         },
@@ -63,6 +66,7 @@ export default {
       licenseFileOverrides: {
         twemoji: "LICENSE-GRAPHICS", // we only use the emojis, not the bundled code
       },
+      excludedPackageTest: (packageName) => packageName.startsWith("preact-"),
     }),
     new CopyPlugin({
       patterns: [
@@ -98,6 +102,11 @@ export default {
     rules: [
       {
         test: /\.js$/,
+        enforce: "pre",
+        use: ["source-map-loader"],
+      },
+      {
+        test: /\.js$/,
         exclude: /node_modules/,
         use: [
           {
@@ -114,18 +123,10 @@ export default {
               ],
               plugins: [
                 [
-                  "template-html-minifier",
+                  "@babel/plugin-transform-react-jsx",
                   {
-                    modules: {
-                      "lit-html": ["html"],
-                      "lit-html/static.js": ["html"],
-                    },
-                    htmlMinifier: {
-                      html5: true,
-                      caseSensitive: true,
-                      collapseWhitespace: true,
-                      removeComments: false,
-                    },
+                    pragma: "h",
+                    pragmaFrag: "Fragment",
                   },
                 ],
               ],
@@ -168,6 +169,13 @@ export default {
         ],
       },
       {
+        test: /\.(png|jp(e*)g|svg|gif|ico)$/,
+        type: "asset/resource",
+        generator: {
+          filename: isProd ? "images/[name]-[contenthash:6][ext]" : "images/[name][ext]",
+        },
+      },
+      {
         test: /\.(woff(2)?|ttf|otf|eot)$/,
         type: "asset/resource",
         generator: {
@@ -196,7 +204,7 @@ export default {
           },
           format: {
             // cut all comments except for the banner declared above via LicensePlugin:
-            comments: (astNode, comment) => comment.value.toLowerCase().includes("third-party libraries"),
+            comments: (_astNode, comment) => comment.value.toLowerCase().includes("third-party libraries"),
             ascii_only: true, // some symbols get disfigured otherwise
           },
           mangle: true,
