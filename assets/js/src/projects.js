@@ -1,10 +1,12 @@
 import { h, render, Fragment } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import fetch from "unfetch";
-import dayjs from "dayjs";
-import dayjsLocalizedFormat from "dayjs/plugin/localizedFormat.js";
-import dayjsRelativeTime from "dayjs/plugin/relativeTime.js";
 import { parse as parseEmoji } from "imagemoji";
+import dayjs from "dayjs";
+import dayjsAdvancedFormat from "dayjs/plugin/advancedFormat.js";
+import dayjsLocalizedFormat from "dayjs/plugin/localizedFormat.js";
+import dayjsTimezone from "dayjs/plugin/timezone.js";
+import dayjsRelativeTime from "dayjs/plugin/relativeTime.js";
 
 // shared react components:
 import { StarIcon, RepoForkedIcon } from "@primer/octicons-react";
@@ -30,12 +32,12 @@ const RepositoryGrid = () => {
 
   // we have data!
   return (
-    <Fragment>
+    <>
       {repos.map((repo) => (
         // eslint-disable-next-line react/jsx-key
         <RepositoryCard {...repo} />
       ))}
-    </Fragment>
+    </>
   );
 };
 
@@ -62,26 +64,34 @@ const RepositoryCard = (repo) => (
       )}
 
       {repo.stars > 0 && (
-        <div
-          class="repo-meta-item"
-          title={`${repo.stars.toLocaleString("en-US")} ${repo.stars === 1 ? "star" : "stars"}`}
-        >
-          <StarIcon size={16} fill="currentColor" />
-          <span>{repo.stars.toLocaleString("en-US")}</span>
+        <div class="repo-meta-item">
+          <a
+            href={`${repo.url}/stargazers`}
+            title={`${repo.stars.toLocaleString("en-US")} ${repo.stars === 1 ? "star" : "stars"}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <StarIcon size={16} fill="currentColor" />
+            <span>{repo.stars.toLocaleString("en-US")}</span>
+          </a>
         </div>
       )}
 
       {repo.forks > 0 && (
-        <div
-          class="repo-meta-item"
-          title={`${repo.forks.toLocaleString("en-US")} ${repo.forks === 1 ? "fork" : "forks"}`}
-        >
-          <RepoForkedIcon size={16} fill="currentColor" />
-          <span>{repo.forks.toLocaleString("en-US")}</span>
+        <div class="repo-meta-item">
+          <a
+            href={`${repo.url}/network/members`}
+            title={`${repo.forks.toLocaleString("en-US")} ${repo.forks === 1 ? "fork" : "forks"}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <RepoForkedIcon size={16} fill="currentColor" />
+            <span>{repo.forks.toLocaleString("en-US")}</span>
+          </a>
         </div>
       )}
 
-      <div class="repo-meta-item" title={dayjs(repo.updatedAt).format("lll Z")}>
+      <div class="repo-meta-item" title={dayjs(repo.updatedAt).format("lll z")}>
         <span>Updated {dayjs(repo.updatedAt).fromNow()}</span>
       </div>
     </div>
@@ -93,8 +103,13 @@ const wrapper = document.querySelector("div#github-cards");
 
 if (typeof window !== "undefined" && wrapper) {
   // dayjs plugins: https://day.js.org/docs/en/plugin/loading-into-nodejs
+  dayjs.extend(dayjsAdvancedFormat);
   dayjs.extend(dayjsLocalizedFormat);
+  dayjs.extend(dayjsTimezone);
   dayjs.extend(dayjsRelativeTime);
+
+  // https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
+  dayjs.tz.setDefault("America/New_York");
 
   render(<RepositoryGrid />, wrapper);
 }

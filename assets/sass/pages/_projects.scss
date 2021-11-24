@@ -60,6 +60,21 @@ div.layout-projects {
             )
           );
 
+          a {
+            background: none !important;
+            padding: 0;
+            color: inherit;
+
+            &:hover {
+              // octicon will inherit this
+              @include themes.themed(
+                (
+                  color: "links",
+                )
+              );
+            }
+          }
+
           .octicon,
           span.repo-language-color {
             margin-right: 0.5em;
@@ -72,7 +87,6 @@ div.layout-projects {
             border-radius: 50%;
             position: relative;
             top: 0.175em;
-            margin-right: 0.5em;
           }
         }
       }
