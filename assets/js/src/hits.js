@@ -32,11 +32,8 @@ const Counter = (props) => {
   );
 };
 
-// don't continue if there isn't a span#meta-hits element on this page
-const wrapper = document.querySelector("div#meta-hits-counter");
-
-// page must have both span#meta-hits and canonical URL to enter
-if (typeof window !== "undefined" && wrapper) {
+// page must have a div#meta-hits-counter element to continue
+if (typeof window !== "undefined" && document.querySelector("div#meta-hits-counter")) {
   // use <link rel="canonical"> to deduce a consistent identifier for this page
   const canonical = canonicalUrl({
     normalize: true,
@@ -48,7 +45,7 @@ if (typeof window !== "undefined" && wrapper) {
   });
 
   // get path and strip beginning and ending forward slash
-  const slug = new URL(canonical).pathname.replace(/^\/|\/$/g, "");
+  const slug = new URL(canonical).pathname.replace(/^\/|\/$/g, "") || "/";
 
-  render(<Counter slug={slug} />, wrapper);
+  render(<Counter slug={slug} />, document.querySelector("div#meta-hits-counter"));
 }

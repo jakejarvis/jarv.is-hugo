@@ -99,9 +99,7 @@ const RepositoryCard = (repo) => (
 );
 
 // detect if these cards are wanted on this page (only /projects)
-const wrapper = document.querySelector("div#github-cards");
-
-if (typeof window !== "undefined" && wrapper) {
+if (typeof window !== "undefined" && document.querySelector("div#github-cards")) {
   // dayjs plugins: https://day.js.org/docs/en/plugin/loading-into-nodejs
   dayjs.extend(dayjsAdvancedFormat);
   dayjs.extend(dayjsLocalizedFormat);
@@ -111,5 +109,5 @@ if (typeof window !== "undefined" && wrapper) {
   // https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
   dayjs.tz.setDefault("America/New_York");
 
-  render(<RepositoryGrid />, wrapper);
+  render(<RepositoryGrid />, document.querySelector("div#github-cards"));
 }
