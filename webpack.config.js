@@ -101,38 +101,14 @@ export default {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        enforce: "pre",
+        test: /\.m?js$/,
+        enforce: "pre", // source-map-loader needs to come before everything else
         use: ["source-map-loader"],
       },
       {
-        test: /\.js$/,
+        test: /\.m?js$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: [
-                [
-                  "@babel/preset-env",
-                  {
-                    corejs: 3,
-                    useBuiltIns: "entry",
-                  },
-                ],
-              ],
-              plugins: [
-                [
-                  "@babel/plugin-transform-react-jsx",
-                  {
-                    pragma: "h",
-                    pragmaFrag: "Fragment",
-                  },
-                ],
-              ],
-            },
-          },
-        ],
+        use: ["babel-loader"],
       },
       {
         test: /\.(sa|sc|c)ss$/,
