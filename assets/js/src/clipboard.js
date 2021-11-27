@@ -11,20 +11,20 @@ document.querySelectorAll("div.highlight").forEach((highlightDiv) => {
   const button = document.createElement("button");
   button.className = "copy-button";
   button.textContent = defaultText;
-  button.addEventListener("click", async () => {
+  button.addEventListener("click", () => {
     // prevent unintentional double-clicks by unfocusing button
     button.blur();
 
     // actual code element will have class "language-*", even if plaintext
-    await copy(trimNewlines(highlightDiv.querySelector('code[class^="language-"]').textContent));
+    if (copy(trimNewlines(highlightDiv.querySelector('code[class^="language-"]').textContent))) {
+      // show a subtle indication of success
+      button.textContent = successText;
 
-    // show a subtle indication of success
-    button.textContent = successText;
-
-    // reset button to original text after 2 seconds
-    setTimeout(() => {
-      button.textContent = defaultText;
-    }, 2000);
+      // reset button to original text after 2 seconds
+      setTimeout(() => {
+        button.textContent = defaultText;
+      }, 2000);
+    }
   });
 
   // add Hugo's code block to a new wrapper element, and insert the copy button as a sibling to it
