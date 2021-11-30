@@ -3,9 +3,6 @@ import { useState, useEffect } from "preact/hooks";
 import fetch from "unfetch";
 import { parse as parseEmoji } from "imagemoji";
 import dayjs from "dayjs";
-import dayjsAdvancedFormat from "dayjs/plugin/advancedFormat.js";
-import dayjsLocalizedFormat from "dayjs/plugin/localizedFormat.js";
-import dayjsTimezone from "dayjs/plugin/timezone.js";
 import dayjsRelativeTime from "dayjs/plugin/relativeTime.js";
 
 // shared react components:
@@ -91,7 +88,17 @@ const RepositoryCard = (repo) => (
         </div>
       )}
 
-      <div class="repo-meta-item" title={dayjs(repo.updatedAt).format("lll z")}>
+      <div
+        class="repo-meta-item"
+        title={new Intl.DateTimeFormat("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          timeZoneName: "short",
+        }).format(new Date(repo.updatedAt))}
+      >
         <span>Updated {dayjs(repo.updatedAt).fromNow()}</span>
       </div>
     </div>
@@ -101,13 +108,7 @@ const RepositoryCard = (repo) => (
 // detect if these cards are wanted on this page (only /projects)
 if (typeof window !== "undefined" && document.querySelector("div#github-cards")) {
   // dayjs plugins: https://day.js.org/docs/en/plugin/loading-into-nodejs
-  dayjs.extend(dayjsAdvancedFormat);
-  dayjs.extend(dayjsLocalizedFormat);
-  dayjs.extend(dayjsTimezone);
   dayjs.extend(dayjsRelativeTime);
-
-  // https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
-  dayjs.tz.setDefault("America/New_York");
 
   render(<RepositoryGrid />, document.querySelector("div#github-cards"));
 }
