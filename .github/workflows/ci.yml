@@ -21,7 +21,6 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
         env:
-          NODE_ENV: production
           SKIP_OPTIMIZE_IMAGES: true
       - run: yarn lint
       - run: npx -p @percy/cli percy snapshot ./public
