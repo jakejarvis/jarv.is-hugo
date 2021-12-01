@@ -11,6 +11,7 @@ document.querySelectorAll(["div#content h2", "div#content h3", "div#content h4"]
   const anchor = document.createElement("a");
   anchor.className = "anchorjs-link";
   anchor.href = `#${h.getAttribute("id")}`;
+  anchor.ariaLabel = "Anchor";
 
   // if this is a touchscreen, always show the "#" icon instead waiting for hover
   // NOTE: this is notoriously unreliable; see https://github.com/Modernizr/Modernizr/pull/2432
