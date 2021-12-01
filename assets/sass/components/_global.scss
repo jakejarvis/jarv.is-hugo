@@ -99,13 +99,11 @@ main {
     background-repeat: no-repeat;
     background-size: 0% settings.$link-underline-size;
     padding-bottom: settings.$link-underline-size;
+    transition: background-size 0.25s ease-in-out;
 
     @include themes.themed(
-      $properties: (
+      (
         color: "links",
-      ),
-      $moreTransitions: (
-        background-size 0.25s ease-in-out,
       )
     );
 

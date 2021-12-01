@@ -133,9 +133,6 @@ body.light {
   :not(pre) > code {
     background-color: #fbfbfb;
     border-color: #d5d5d5;
-
-    // TODO: apply this consistently via themed() mixin like everywhere else
-    transition: color 0.15s linear, background-color 0.15s linear, border-color 0.15s linear;
   }
 
   div.highlight,
@@ -224,9 +221,6 @@ body.dark {
   :not(pre) > code {
     background-color: #252525;
     border-color: #535353;
-
-    // TODO: apply this consistently via themed() mixin like everywhere else
-    transition: color 0.15s linear, background-color 0.15s linear, border-color 0.15s linear;
   }
 
   div.highlight,

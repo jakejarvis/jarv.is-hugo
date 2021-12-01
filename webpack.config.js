@@ -21,7 +21,7 @@ export default (env, argv) => {
   const globalBannerText = `Licensed under MIT. Copyright (c) 2015-${new Date().getFullYear()} Jake Jarvis <https://jarv.is/>.`;
 
   return {
-    entry: [path.resolve(__dirname, "assets/js/index.js"), path.resolve(__dirname, "assets/sass/main.scss")],
+    entry: [path.resolve(__dirname, "assets/js/main.js"), path.resolve(__dirname, "assets/sass/main.scss")],
     mode: isProd ? "production" : "development",
     devtool: isProd ? "source-map" : "inline-source-map",
     output: {

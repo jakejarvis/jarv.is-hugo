@@ -5,18 +5,7 @@
 
 // Takes a map of CSS properties and theme keys (see below) and set both body.light and body.dark selectors.
 // ex. @include themes.themed((color: "text", background-color: "background-inner"));
-// Also accepts additional transitions (in shorthand) to tack on.
-@mixin themed($properties, $moreTransitions: ()) {
-  // generate CSS transition shorthand for each themed property w/ default duration and function
-  $defaults: ();
-  @each $property, $color in $properties {
-    $shorthand: $property settings.$theme-transition-duration settings.$theme-transition-function;
-    $defaults: list.append($defaults, $shorthand);
-  }
-
-  // list all transitions separated by commas (with additional shorthand(s) passed in)
-  transition: list.join($moreTransitions, $defaults, $separator: comma);
-
+@mixin themed($properties) {
   // keep track of the original selector(s) calling this mixin for below
   $selectors: #{&};
 

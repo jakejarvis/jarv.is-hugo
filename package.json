@@ -13,7 +13,6 @@
     "url": "https://github.com/jakejarvis/jarv.is.git"
   },
   "type": "module",
-  "main": "./assets/js/index.js",
   "scripts": {
     "build": "gulp",
     "clean": "gulp clean",
@@ -32,7 +31,6 @@
     "@primer/octicons-react": "^16.1.1",
     "@sentry/node": "^6.15.0",
     "clipboard-copy": "^4.0.1",
-    "dark-mode-switcheroo": "^0.10.0",
     "dayjs": "^1.10.7",
     "faunadb": "^4.4.1",
     "get-canonical-url": "^1.1.0",
