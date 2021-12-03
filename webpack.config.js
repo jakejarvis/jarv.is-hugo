@@ -7,6 +7,7 @@ import { LicenseWebpackPlugin as LicensePlugin } from "license-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 // PostCSS stuff:
 import autoprefixer from "autoprefixer";
@@ -99,6 +100,11 @@ export default (env, argv) => {
           // don't add thousands of unneeded twemoji graphics to the manifest
           if (entry.key.startsWith("emoji/") || entry.key.endsWith(".map")) return false;
         },
+      }),
+      new BundleAnalyzerPlugin({
+        analyzerMode: "disabled", // this is done in gulp via `yarn analyze-bundle` instead
+        generateStatsFile: true,
+        statsFilename: path.resolve(__dirname, "webpack_stats.json"),
       }),
     ],
     module: {

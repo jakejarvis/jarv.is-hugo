@@ -5,9 +5,10 @@ _vendor/
 hugo_stats.json
 .hugo_build.lock
 
-# webpack artifacts
-data/manifest.json
+# webpack output
 static/assets/
+data/manifest.json
+webpack_stats.json
 
 # node/npm/yarn
 node_modules/

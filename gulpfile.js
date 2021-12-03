@@ -1,4 +1,6 @@
 import "dotenv/config";
+import path from "path";
+import { fileURLToPath } from "url";
 import gulp from "gulp";
 import { task as execa } from "gulp-execa";
 import cache from "gulp-cache";
@@ -11,6 +13,9 @@ import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminPngquant from "imagemin-pngquant";
 import imageminGifsicle from "imagemin-gifsicle";
 import imageminSvgo from "imagemin-svgo";
+
+// https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#what-do-i-use-instead-of-__dirname-and-__filename
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 gulp.task(
   "default",
@@ -33,10 +38,27 @@ gulp.task(
   )
 );
 
+gulp.task(
+  "analyze",
+  gulp.series(
+    clean,
+    npx("webpack", ["--mode", "production"]),
+    npx("webpack-bundle-analyzer", [
+      // https://github.com/webpack-contrib/webpack-bundle-analyzer#usage-as-a-cli-utility
+      path.resolve(__dirname, "webpack_stats.json"), // path to webpack-generated JSON stats file
+      path.resolve(__dirname, "static/assets/"), // path to finalized bundles
+      "--mode",
+      "server",
+      "--default-sizes",
+      "gzip",
+    ])
+  )
+);
+
 gulp.task("clean", clean);
 
 function clean() {
-  return del(["public/", "builds/", "_vendor/", "static/assets/"]);
+  return del(["public/", "builds/", "_vendor/", "static/assets/", "webpack_stats.json"]);
 }
 
 function optimizeHtml() {

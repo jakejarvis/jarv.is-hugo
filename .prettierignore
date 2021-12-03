@@ -1,8 +1,9 @@
-# Hugo stuff that doesn't play well with Prettier
+# Hugo/Webpack stuff that doesn't play well with Prettier
 assets/**/vendor/
 layouts/
 static/
 hugo_stats.json
+webpack_stats.json
 data/manifest.json
 
 # output from Hugo
@@ -15,4 +16,4 @@ _vendor/
 .vercel/
 .lighthouseci/
 .vscode/
-content/notes/dark-mode/example/
+/content/notes/dark-mode/example/
