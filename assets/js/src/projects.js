@@ -1,9 +1,9 @@
 import { h, render, Fragment } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import fetch from "unfetch";
-import { parse as parseEmoji } from "imagemoji";
 import dayjs from "dayjs";
 import dayjsRelativeTime from "dayjs/plugin/relativeTime.js";
+import parseEmoji from "./emoji.js";
 
 // shared react components:
 import { StarIcon, RepoForkedIcon } from "@primer/octicons-react";
@@ -48,7 +48,7 @@ const RepositoryCard = (repo) => (
       <p
         class="repo-description"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: parseEmoji(repo.description, (icon) => `/assets/emoji/${icon}.svg`) }}
+        dangerouslySetInnerHTML={{ __html: parseEmoji(repo.description) }}
       />
     )}
 
