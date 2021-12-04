@@ -1,7 +1,15 @@
-// Heavily inspired by AnchorJS: https://github.com/bryanbraun/anchorjs
+// Heavily inspired by AnchorJS:
+// https://github.com/bryanbraun/anchorjs
+
+import isTouchDevice from "is-touch-device";
 
 // loop through each h2, h3, h4 in this page's content area
-document.querySelectorAll(["div#content h2", "div#content h3", "div#content h4"]).forEach((h) => {
+// prettier-ignore
+document.querySelectorAll([
+  "div#content h2",
+  "div#content h3",
+  "div#content h4",
+]).forEach((h) => {
   // don't add to elements without a pre-existing ID (e.g. `<h2 id="...">`)
   if (!h.hasAttribute("id")) {
     return;
@@ -15,7 +23,7 @@ document.querySelectorAll(["div#content h2", "div#content h3", "div#content h4"]
 
   // if this is a touchscreen, always show the "#" icon instead waiting for hover
   // NOTE: this is notoriously unreliable; see https://github.com/Modernizr/Modernizr/pull/2432
-  if ("ontouchstart" in window) {
+  if (isTouchDevice()) {
     anchor.style.opacity = "1";
   }
 
