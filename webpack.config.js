@@ -1,13 +1,13 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import webpack from "webpack";
-import WebpackAssetsManifest from "webpack-assets-manifest";
-import CopyPlugin from "copy-webpack-plugin";
+import AssetsManifestPlugin from "webpack-assets-manifest";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { LicenseWebpackPlugin as LicensePlugin } from "license-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 // PostCSS stuff:
 import autoprefixer from "autoprefixer";
@@ -90,7 +90,7 @@ export default (env, argv) => {
           },
         ],
       }),
-      new WebpackAssetsManifest({
+      new AssetsManifestPlugin({
         writeToDisk: true, // allow Hugo to access file in dev mode
         output: path.resolve(__dirname, "data/manifest.json"),
         publicPath: true,
