@@ -76,10 +76,6 @@
     "gulp-html-minifier-terser": "^6.0.1",
     "gulp-imagemin": "^8.0.0",
     "hugo-extended": "0.89.4",
-    "imagemin-gifsicle": "^7.0.0",
-    "imagemin-mozjpeg": "github:jakejarvis/imagemin-mozjpeg.git#ff7f05ce95f1c6cb326e03e2d817502a231b94d8",
-    "imagemin-pngquant": "^9.0.2",
-    "imagemin-svgo": "^10.0.0",
     "license-webpack-plugin": "^4.0.0",
     "lint-staged": "^12.1.2",
     "markdownlint-cli": "~0.30.0",
@@ -109,6 +105,12 @@
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.6.0"
+  },
+  "optionalDependencies": {
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-mozjpeg": "github:jakejarvis/imagemin-mozjpeg.git#ff7f05ce95f1c6cb326e03e2d817502a231b94d8",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.0"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
