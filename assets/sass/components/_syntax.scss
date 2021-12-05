@@ -127,7 +127,6 @@ div.highlight-clipboard-enabled {
 
 // Syntax Highlighting (light) - modified from Monokai Light: https://github.com/mlgill/pygments-style-monokailight
 body.light {
-  // stylelint-disable no-descending-specificity
   div.highlight,
   button.copy-button,
   :not(pre) > code {
@@ -139,7 +138,6 @@ body.light {
   button.copy-button {
     color: #313131;
   }
-  // stylelint-enable no-descending-specificity
 
   .chroma {
     .k,
@@ -215,7 +213,6 @@ body.light {
 
 // Syntax Highlighting (dark) - modified from Dracula: https://github.com/dracula/pygments
 body.dark {
-  // stylelint-disable no-descending-specificity
   div.highlight,
   button.copy-button,
   :not(pre) > code {
@@ -227,7 +224,6 @@ body.dark {
   button.copy-button {
     color: #e4e4e4;
   }
-  // stylelint-enable no-descending-specificity
 
   .chroma {
     .k,

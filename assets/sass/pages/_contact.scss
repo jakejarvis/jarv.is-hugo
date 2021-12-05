@@ -10,11 +10,6 @@ div.layout-contact {
     text-align: center;
   }
 
-  p {
-    font-size: 0.9em;
-    margin-bottom: 0.5em;
-  }
-
   code {
     background: none !important;
     border: 0;
@@ -30,7 +25,7 @@ div.layout-contact {
     width: 100%;
     padding: 0.8em;
     margin: 0.6em 0;
-    border: 1px solid;
+    border: 2px solid;
     border-radius: 0.3em;
     font-size: 0.9em;
 
@@ -41,6 +36,16 @@ div.layout-contact {
         border-color: "light",
       )
     );
+
+    &:focus {
+      outline: none; // disable browsers' outer border
+
+      @include themes.themed(
+        (
+          border-color: "links",
+        )
+      );
+    }
   }
 
   textarea {
@@ -54,8 +59,10 @@ div.layout-contact {
   div#contact-form-action-row {
     display: flex;
     align-items: center;
+    min-height: 3.75em;
 
     button {
+      flex-shrink: 0;
       padding: 0.8em 1.2em;
       margin-right: 1.5em;
       border: 0;
@@ -71,8 +78,7 @@ div.layout-contact {
         )
       );
 
-      &:hover,
-      &:focus {
+      &:hover {
         @include themes.themed(
           (
             color: "super-duper-light",
@@ -82,13 +88,14 @@ div.layout-contact {
       }
 
       img.emoji {
+        margin-left: 0;
         margin-right: 0.4em;
         cursor: inherit;
       }
     }
 
     span.contact-form-result {
-      font-size: 0.9em;
+      font-size: 0.925em;
       font-weight: 600;
 
       &#contact-form-result-success {
@@ -110,16 +117,14 @@ div.layout-contact {
   }
 
   // hcaptcha widget
-  #contact-form-captcha {
-    display: block;
-    margin: 1.2em 0;
+  div#contact-form-captcha {
+    margin: 1em 0;
   }
 
-  span#contact-form-md-info {
-    display: block;
+  div#contact-form-md-info {
     font-size: 0.75em;
-    margin-top: 0.25em;
-    margin-left: 0.75em;
+    line-height: 1.75;
+    margin: 0.2em 0 0.6em 0;
 
     a {
       // disable fancy underline without `.no-underline`

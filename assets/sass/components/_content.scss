@@ -50,9 +50,7 @@ div#content {
   }
 
   // AnchorJS styles
-  // stylelint-disable-next-line no-descending-specificity
   a.anchorjs-link {
-    display: inline-block;
     margin-left: 0.25em;
     padding: 0 0.5em 0 0.25em;
     background: none;
@@ -70,7 +68,6 @@ div#content {
       )
     );
 
-    // stylelint-disable-next-line no-descending-specificity
     &:hover {
       @include themes.themed(
         (

@@ -38,12 +38,12 @@
   30% {
     transform: rotate(0deg);
   }
+  // stylelint-enable rule-empty-line-before
 
   // pause for 3.5 out of 5 seconds
   100% {
     transform: rotate(0deg);
   }
-  // stylelint-enable rule-empty-line-before
 }
 
 @keyframes beat {
@@ -63,12 +63,12 @@
   8% {
     transform: scale(1);
   }
+  // stylelint-enable rule-empty-line-before
 
   // pause for ~9 out of 10 seconds
   100% {
     transform: scale(1);
   }
-  // stylelint-enable rule-empty-line-before
 }
 
 // modified from https://tobiasahlin.com/spinkit/
