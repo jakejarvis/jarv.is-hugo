@@ -1,89 +1,142 @@
 import "vanilla-hcaptcha";
+import { h, render } from "preact";
+import { useState } from "preact/hooks";
 import fetch from "unfetch";
 
-// don't continue if there isn't a contact form on this page
-// TODO: be better and only do any of this on /contact/
-const contactForm = document.querySelector("form#contact-form");
+const CONTACT_ENDPOINT = "/api/contact/";
 
-if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
-    // immediately prevent <form> from actually submitting to a new page
-    event.preventDefault();
+const ContactForm = () => {
+  // status/feedback:
+  const [status, setStatus] = useState({ success: false, action: "Submit", message: "" });
+  // keep track of fetch:
+  const [sending, setSending] = useState(false);
 
-    // feedback <span>s for later
-    const successSpan = document.querySelector("span#contact-form-result-success");
-    const errorSpan = document.querySelector("span#contact-form-result-error");
+  const onSubmit = async (e) => {
+    // immediately prevent browser from actually navigating to a new page
+    e.preventDefault();
 
-    // disable the whole form if the button has been disabled below (on success)
-    const submitButton = document.querySelector("button#contact-form-btn-submit");
-    if (submitButton.disabled === true) {
+    // begin the process
+    setSending(true);
+
+    // extract data from form fields
+    const { name, email, message } = e.target.elements;
+    const formData = {
+      name: name.value,
+      email: email.value,
+      message: message.value,
+      "h-captcha-response": e.target.elements["h-captcha-response"].value,
+    };
+
+    // some client-side validation. these are all also checked on the server to be safe but we can save some
+    // unnecessary requests here.
+    if (!(formData.name && formData.email && formData.message && formData["h-captcha-response"])) {
+      setSending(false);
+      setStatus({ success: false, action: "Try Again", message: "Please make sure that all fields are filled in." });
+
+      // remove focus from the submit button
+      document.activeElement.blur();
+
       return;
     }
 
-    // change button appearance between click and server response
-    submitButton.textContent = "Sending...";
-    submitButton.disabled = true; // prevent accidental multiple submissions
-    submitButton.style.cursor = "default";
+    // if we've gotten here then all data is (or should be) valid and ready to post to API
+    fetch(CONTACT_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setSending(false);
 
-    try {
-      // https://simonplend.com/how-to-use-fetch-to-post-form-data-as-json-to-your-api/
-      const formData = Object.fromEntries(new FormData(event.currentTarget).entries());
-
-      // some client-side validation. these are all also checked on the server to be safe but we can save some
-      // unnecessary requests here.
-      // we throw identical error messages to the server's so they're caught in the same way below.
-      if (!formData.name || !formData.email || !formData.message) {
-        throw new Error("USER_MISSING_DATA");
-      }
-      if (!formData["h-captcha-response"]) {
-        throw new Error("USER_INVALID_CAPTCHA");
-      }
-
-      // post JSONified form input to /api/contact/
-      fetch(contactForm.action, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(formData),
+        if (data.success === true) {
+          // handle successful submission
+          // disable submissions, hide the send button, and let user know we were successful
+          setStatus({ success: true, action: "", message: "Success! You should hear from me soon. :)" });
+        } else {
+          // pass on any error sent by the server
+          throw new Error(data.message);
+        }
       })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success === true) {
-            // handle successful submission
-            // we can disable submissions & hide the send button now
-            submitButton.disabled = true;
-            submitButton.style.display = "none";
+      .catch((error) => {
+        const message = error instanceof Error ? error.message : "UNKNOWN_EXCEPTION";
 
-            // just in case there *was* a PEBCAK error and it was corrected
-            errorSpan.style.display = "none";
+        setSending(false);
 
-            // let user know we were successful
-            successSpan.textContent = "Success! You should hear from me soon. :)";
-          } else {
-            // pass on an error sent by the server
-            throw new Error(data.message);
-          }
-        });
-    } catch (error) {
-      const message = error instanceof Error ? error.message : "UNKNOWN_EXCEPTION";
+        // give user feedback based on the error message returned
+        if (message === "USER_INVALID_CAPTCHA") {
+          setStatus({
+            success: false,
+            action: "Try Again",
+            message: "Did you complete the CAPTCHA? (If you're human, that is...)",
+          });
+        } else if (message === "USER_MISSING_DATA") {
+          setStatus({
+            success: false,
+            action: "Try Again",
+            message: "Please make sure that all fields are filled in.",
+          });
+        } else {
+          // something else went wrong, and it's probably my fault...
+          setStatus({ success: false, action: "Try Again", message: "Internal server error. Try again later?" });
+        }
 
-      // give user feedback based on the error message returned
-      if (message === "USER_INVALID_CAPTCHA") {
-        errorSpan.textContent = "Did you complete the CAPTCHA? (If you're human, that is...)";
-      } else if (message === "USER_MISSING_DATA") {
-        errorSpan.textContent = "Please make sure that all fields are filled in.";
-      } else {
-        // something else went wrong, and it's probably my fault...
-        errorSpan.textContent = "Internal server error. Try again later?";
-      }
+        // remove focus from the submit button
+        document.activeElement.blur();
+      });
+  };
 
-      // reset submit button to let user try again
-      submitButton.textContent = "Try Again";
-      submitButton.disabled = false;
-      submitButton.style.cursor = "pointer";
-      submitButton.blur(); // remove keyboard focus from the button
-    }
-  });
+  return (
+    <form onSubmit={onSubmit} id="contact-form" action={CONTACT_ENDPOINT} method="POST">
+      <input type="text" name="name" placeholder="Name" disabled={status.success} />
+      <input type="email" name="email" placeholder="Email" disabled={status.success} />
+      <textarea name="message" placeholder="Write something..." disabled={status.success} />
+
+      <span id="contact-form-md-info">
+        Basic{" "}
+        <a
+          href="https://commonmark.org/help/"
+          title="Markdown reference sheet"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Markdown syntax
+        </a>{" "}
+        is allowed here, e.g.: <strong>**bold**</strong>, <em>_italics_</em>, [
+        <a href="https://jarv.is" target="_blank" rel="noopener noreferrer">
+          links
+        </a>
+        ](https://jarv.is), and <code>`code`</code>.
+      </span>
+
+      <h-captcha id="contact-form-captcha" site-key={process.env.HCAPTCHA_SITE_KEY} size="normal" tabindex="0" />
+
+      <div id="contact-form-action-row">
+        <button
+          id="contact-form-btn-submit"
+          title={status.action}
+          aria-label={status.action}
+          disabled={sending}
+          style={{ display: status.success ? "none" : null }}
+        >
+          {sending ? "Sending..." : status.action}
+        </button>
+
+        <span
+          class="contact-form-result"
+          id={status.success ? "contact-form-result-success" : "contact-form-result-error"}
+        >
+          {status.message}
+        </span>
+      </div>
+    </form>
+  );
+};
+
+// don't continue if there isn't a contact form on this page
+if (typeof window !== "undefined" && document.querySelector("div#contact-form-wrapper")) {
+  render(<ContactForm />, document.querySelector("div#contact-form-wrapper"));
 }

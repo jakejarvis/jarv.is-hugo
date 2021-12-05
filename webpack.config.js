@@ -90,6 +90,10 @@ export default (env, argv) => {
           },
         ],
       }),
+      new webpack.EnvironmentPlugin([
+        // we need to dynamically inject the hcaptcha site key into the contact form
+        "HCAPTCHA_SITE_KEY",
+      ]),
       new AssetsManifestPlugin({
         writeToDisk: true, // allow Hugo to access file in dev mode
         output: path.resolve(__dirname, "data/manifest.json"),
