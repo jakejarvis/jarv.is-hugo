@@ -1,35 +1,51 @@
+import { h, render } from "preact";
+import { useState } from "preact/hooks";
 import copy from "clipboard-copy";
 import trimNewlines from "trim-newlines";
 
-// the default text of the copy button:
-const defaultText = "Copy";
-const successText = "Copied!";
+// shared react components:
+import { CopyIcon, CheckIcon } from "@primer/octicons-react";
+
+const CopyButton = (props) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = (e) => {
+    // stop browser from navigating away from page (this shouldn't happen anyways)
+    e.preventDefault();
+    // prevent unintentional double-clicks by unfocusing button
+    e.target.blur();
+
+    // trim any surrounding whitespace from target block's content and send it to the clipboard
+    copy(trimNewlines(props.content));
+
+    // indicate success...
+    setCopied(true);
+    // ...but reset everything after 2 seconds
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  };
+
+  return (
+    <button
+      class="copy-button"
+      title="Copy to clipboard"
+      aria-label="Copy to clipboard"
+      onClick={handleCopy}
+      disabled={copied}
+    >
+      {copied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}
+    </button>
+  );
+};
 
 // loop through each code fence on page (if any)
 document.querySelectorAll("div.highlight").forEach((highlightDiv) => {
-  // bind a new button to the copy action
-  const button = document.createElement("button");
-  button.className = "copy-button";
-  button.textContent = defaultText;
-  button.addEventListener("click", () => {
-    // prevent unintentional double-clicks by unfocusing button
-    button.blur();
+  // actual code element will have class "language-*" (even if plaintext)
+  const codeElement = highlightDiv.querySelector('code[class^="language-"]');
 
-    // actual code element will have class "language-*", even if plaintext
-    if (copy(trimNewlines(highlightDiv.querySelector('code[class^="language-"]').textContent))) {
-      // show a subtle indication of success
-      button.textContent = successText;
-
-      // reset button to original text after 2 seconds
-      setTimeout(() => {
-        button.textContent = defaultText;
-      }, 2000);
-    }
-  });
-
-  // add Hugo's code block to a new wrapper element, and insert the copy button as a sibling to it
-  const wrapperDiv = document.createElement("div");
-  wrapperDiv.className = "highlight-clipboard-enabled";
-  highlightDiv.before(wrapperDiv);
-  wrapperDiv.append(highlightDiv, button);
+  if (codeElement) {
+    // add the button as a sibling to the original Hugo block whose contents we're copying
+    render(<CopyButton content={codeElement.textContent} />, highlightDiv);
+  }
 });

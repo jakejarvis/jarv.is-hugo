@@ -68,7 +68,7 @@ const RepositoryCard = (repo) => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <StarIcon size={16} fill="currentColor" />
+            <StarIcon size={16} />
             <span>{repo.stars.toLocaleString("en-US")}</span>
           </a>
         </div>
@@ -82,7 +82,7 @@ const RepositoryCard = (repo) => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <RepoForkedIcon size={16} fill="currentColor" />
+            <RepoForkedIcon size={16} />
             <span>{repo.forks.toLocaleString("en-US")}</span>
           </a>
         </div>

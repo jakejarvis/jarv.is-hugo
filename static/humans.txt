@@ -31,6 +31,7 @@
 
   - Hugo
   - Vercel
+  - Preact
   - FaunaDB
   - Airtable
   - hCaptcha
