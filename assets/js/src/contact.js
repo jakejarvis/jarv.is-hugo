@@ -4,6 +4,9 @@ import { useState } from "preact/hooks";
 import fetch from "unfetch";
 import parseEmoji from "./emoji.js";
 
+// shared react components:
+import { CheckIcon, XIcon } from "@primer/octicons-react";
+
 const CONTACT_ENDPOINT = "/api/contact/";
 
 const ContactForm = () => {
@@ -31,7 +34,7 @@ const ContactForm = () => {
     // TODO: change border color of the specific empty/missing field(s) to red
     if (!(formData.name && formData.email && formData.message && formData["h-captcha-response"])) {
       setSending(false);
-      setStatus({ success: false, message: "❗ Please make sure that all fields are filled in." });
+      setStatus({ success: false, message: "Please make sure that all fields are filled in." });
 
       // remove focus from the submit button
       document.activeElement.blur();
@@ -55,7 +58,7 @@ const ContactForm = () => {
         if (data.success === true) {
           // handle successful submission
           // disable submissions, hide the send button, and let user know we were successful
-          setStatus({ success: true, message: "Thanks! You should hear from me soon. 😊" });
+          setStatus({ success: true, message: "Thanks! You should hear from me soon." });
         } else {
           // pass on any error sent by the server
           throw new Error(data.message);
@@ -70,16 +73,16 @@ const ContactForm = () => {
         if (message === "USER_INVALID_CAPTCHA") {
           setStatus({
             success: false,
-            message: "❗ Did you complete the CAPTCHA? (If you're human, that is...)",
+            message: "Did you complete the CAPTCHA? (If you're human, that is...)",
           });
         } else if (message === "USER_MISSING_DATA") {
           setStatus({
             success: false,
-            message: "❗ Please make sure that all fields are filled in.",
+            message: "Please make sure that all fields are filled in.",
           });
         } else {
           // something else went wrong, and it's probably my fault...
-          setStatus({ success: false, message: "❗ Internal server error. Try again later?" });
+          setStatus({ success: false, message: "Internal server error. Try again later?" });
         }
 
         // remove focus from the submit button
@@ -128,9 +131,10 @@ const ContactForm = () => {
         <span
           class="contact-form-result"
           id={status.success ? "contact-form-result-success" : "contact-form-result-error"}
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: parseEmoji(status.message) }}
-        />
+          style={{ display: !status.message || sending ? "none" : null }}
+        >
+          {status.success ? <CheckIcon size={16} /> : <XIcon size={16} />} {status.message}
+        </span>
       </div>
     </form>
   );
