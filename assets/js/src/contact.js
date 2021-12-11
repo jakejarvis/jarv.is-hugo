@@ -2,10 +2,10 @@ import "vanilla-hcaptcha";
 import { h, render } from "preact";
 import { useState } from "preact/hooks";
 import fetch from "unfetch";
-import parseEmoji from "./emoji.js";
 
 // shared react components:
 import { CheckIcon, XIcon } from "@primer/octicons-react";
+import SendEmoji from "twemoji-emojis/vendor/svg/1f4e4.svg";
 
 const CONTACT_ENDPOINT = "/api/contact/";
 
@@ -124,9 +124,9 @@ const ContactForm = () => {
           aria-label="Send Message"
           disabled={sending}
           style={{ display: status.success ? "none" : null }}
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: parseEmoji(sending ? "Sending..." : "📤 Send") }}
-        />
+        >
+          <SendEmoji class="emoji" /> {sending ? "Sending..." : "Send"}
+        </button>
 
         <span
           class="contact-form-result"

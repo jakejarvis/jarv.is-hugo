@@ -125,6 +125,12 @@ export default (env, argv) => {
           use: ["babel-loader"],
         },
         {
+          // TODO: make SVGs co-exist here *and* amongst the other `asset/resources` image extensions below
+          test: /\.svg$/,
+          issuer: /\.js$/,
+          use: ["@svgr/webpack"],
+        },
+        {
           test: /\.(sa|sc|c)ss$/,
           use: [
             MiniCssExtractPlugin.loader,
@@ -159,7 +165,7 @@ export default (env, argv) => {
           ],
         },
         {
-          test: /\.(png|jp(e*)g|svg|gif|ico)$/,
+          test: /\.(png|jp(e*)g|gif|ico)$/,
           type: "asset/resource",
           generator: {
             filename: isProd ? "images/[name]-[contenthash:6][ext]" : "images/[name][ext]",

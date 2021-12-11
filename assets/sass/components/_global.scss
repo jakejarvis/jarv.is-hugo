@@ -130,7 +130,6 @@ main {
     margin-top: 0;
     letter-spacing: -0.005em;
 
-    // stylelint-disable-next-line no-descending-specificity
     a {
       // disable fancy underline without `.no-underline`
       color: inherit !important;
@@ -142,7 +141,8 @@ main {
 
 // make SVG twemojis relative to surrounding text
 // https://github.com/twitter/twemoji#inline-styles
-img.emoji {
+img.emoji,
+svg.emoji {
   height: 1.2em;
   width: 1.2em;
   margin: 0 0.05em;
@@ -155,7 +155,7 @@ img.emoji {
 }
 
 // need to manually unset text cursor above when emoji's within a link
-a img.emoji {
+a .emoji {
   cursor: inherit;
 }
 
