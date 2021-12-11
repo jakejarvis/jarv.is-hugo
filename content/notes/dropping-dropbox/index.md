@@ -26,7 +26,7 @@ Decisions made by the top folks at Dropbox gave me an increasingly sour taste in
 
 {{< tweet "https://twitter.com/sandofsky/status/1138686582859239425" >}}
 
-- Explicitly [dropping support for symlinking](https://news.ycombinator.com/item?id=20844363) (aka making aliases to) files outside of the literal `~/Dropbox` folder, which was incredibly helpful for nerds — once their main audience and biggest cheerleaders — with things like [dotfiles](https://github.com/jakejarvis/dotfiles) and Git repositories.
+- Explicitly [dropping support for symlinking](https://news.ycombinator.com/item?id=20844363) (aka making aliases to) files outside of the literal `~/Dropbox` folder, which was incredibly helpful for nerds — once their main audience and biggest cheerleaders — with things like [dotfiles](https://github.com/jakejarvis/dotfiles) and Git repositories.
 - ...and as a bonus, making the process of canceling Dropbox Pro incredibly convoluted, annoying, and sketchy. Here's a video demonstration via [Justin Dunham](https://twitter.com/jwyattd):
 
 {{< video mp4="images/cancel.mp4" webm="images/cancel.webm" width="800" height="450" poster="images/cancel.png" >}}

@@ -1,6 +1,8 @@
 {
   "name": "{{ .Site.Title }}",
-  "short_name": "{{ (urls.Parse .Site.Params.baseURL).Host }}",
+  {{ with .Site.Params.baseURL }}"short_name": "{{ (urls.Parse .).Host }}",{{ end }}
+  {{ with .Site.Params.description }}"description": "{{ . | safeHTML | truncate 160 }}",{{ end }}
+  "lang": "{{ .Site.LanguageCode | default "en" }}",
   "icons": [
     {{ with partial "functions/webpack" (dict "context" . "src" "images/android-chrome-512x512.png") }}{
       "src": "{{ .src | safeJS }}",
@@ -27,8 +29,6 @@
       "purpose": "maskable"
     }{{ end }}
   ],
-  "start_url": "/",
   "display": "browser",
-  "background_color": "#ffffff",
-  "theme_color": "#0e6dc2"
+  "start_url": "/"
 }

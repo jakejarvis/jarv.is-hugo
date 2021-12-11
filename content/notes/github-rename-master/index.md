@@ -15,7 +15,7 @@ draft: false
 
 {{< image src="images/blm-topic.png" alt="Black lives matter." />}}
 
-In the midst of this year's long-overdue support of the [**Black Lives Matter**](https://blacklivesmatters.carrd.co/) movement and calls to action in the US and around the world, a [new spotlight](https://mail.gnome.org/archives/desktop-devel-list/2019-May/msg00066.html) has been placed on unchecked invocations of racially charged language in the computer science world, no matter how big or small — like the long-standing and, until recently, widely accepted terms ["master" and "slave"](https://tools.ietf.org/id/draft-knodel-terminology-00.html#master-slave) as an oppressive metaphor for ownership/importance.
+In the midst of this year's long-overdue support of the [**Black Lives Matter**](https://blacklivesmatters.carrd.co/) movement and calls to action in the US and around the world, a [new spotlight](https://mail.gnome.org/archives/desktop-devel-list/2019-May/msg00066.html) has been placed on unchecked invocations of racially charged language in the computer science world, no matter how big or small — like the long-standing and, until recently, widely accepted terms ["master" and "slave"](https://tools.ietf.org/id/draft-knodel-terminology-00.html#master-slave) as an oppressive metaphor for ownership/importance.
 
 When somebody pointed out the negative connotations of Git projects being created with a branch named `master` by default, and the possibility of this making minorities feel even more unwelcome in an industry already [lacking diversity](https://www.informationisbeautiful.net/visualizations/diversity-in-tech/), GitHub CEO [Nat Friedman](https://github.com/nat) quietly [announced a plan](https://twitter.com/natfriedman/status/1271253144442253312) to change this on Twitter (ignore the replies for your sanity):
 
@@ -25,7 +25,7 @@ I think many people misunderstood this tweet to mean GitHub will forcefully rena
 
 > **Update:** GitHub has [published more details about their plan](https://github.com/github/renaming) to move from `master` to `main` and it will indeed be voluntary and configurable. To my surprise, the Git maintainers have [also agreed to add](https://sfconservancy.org/news/2020/jun/23/gitbranchname/) a `init.defaultBranch` setting to customize the default branch for new repositories in Git 2.28.
 
-But this means in the meantime, project owners are free to rename their branches as they please — and it's pretty simple to do so, usually with minimal disruption. [Some](https://github.com/desktop/desktop/issues/6478) [of](https://github.com/cli/cli/issues/929) [the](https://github.com/sindresorhus/awesome/issues/1793) [biggest](https://github.com/rust-lang/rustlings/issues/437) [OSS](https://github.com/twbs/bootstrap/pull/31050) [projects](https://github.com/ohmyzsh/ohmyzsh/issues/9015) have already voluntarily done so. Here's how to join them.
+But this means in the meantime, project owners are free to rename their branches as they please — and it's pretty simple to do so, usually with minimal disruption. [Some](https://github.com/desktop/desktop/issues/6478) [of](https://github.com/cli/cli/issues/929) [the](https://github.com/sindresorhus/awesome/issues/1793) [biggest](https://github.com/rust-lang/rustlings/issues/437) [OSS](https://github.com/twbs/bootstrap/pull/31050) [projects](https://github.com/ohmyzsh/ohmyzsh/issues/9015) have already voluntarily done so. Here's how to join them.
 
 ---
 
@@ -48,7 +48,7 @@ git push -u origin main
 git remote set-head origin main
 ```
 
-You can verify this worked by running `git branch -r`. You should see something like `origin/HEAD -> origin/main`.
+You can verify this worked by running `git branch -r`. You should see something like `origin/HEAD -> origin/main`.
 
 ### 3. Change the default branch in your repository's settings: {#step-3}
 
@@ -70,7 +70,7 @@ git push origin --delete master
 
 Do a quick search of your codebase for `master` to manually replace any dead references to it.
 
-Pay attention to CI files — `.travis.yml`, `.github/workflows/`, `.circleci/config.yml`, etc. — and make sure there aren't any external services relying on `master` being there. For example, I almost forgot to change the branch [Netlify triggers auto-deploys](https://docs.netlify.com/site-deploys/overview/#branches-and-deploys) from to build this site:
+Pay attention to CI files — `.travis.yml`, `.github/workflows/`, `.circleci/config.yml`, etc. — and make sure there aren't any external services relying on `master` being there. For example, I almost forgot to change the branch [Netlify triggers auto-deploys](https://docs.netlify.com/site-deploys/overview/#branches-and-deploys) from to build this site:
 
 {{< image src="images/netlify-deploy.png" width="720" alt="Netlify auto-deployment branch setting" />}}
 

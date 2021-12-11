@@ -17,7 +17,7 @@ draft: false
 
 A few months ago, I stumbled upon [my first website ever](https://jakejarvis.github.io/my-first-website/) on an old floppy disk. Despite the instant cringing, I [uploaded it](https://github.com/jakejarvis/my-first-website) to GitHub, [collected other iterations](/previously/), and made an [#awesome-list](https://github.com/jakejarvis/awesome-first-code) of others who were brave and/or shameless enough to do the same. But why not take that ~~one~~ 1,000 steps further?
 
-Introducing the [**Y2K Sandbox**](https://y2k.app/) — with fully-featured, fully-isolated, on-demand [**Windows Millennium Edition®**](https://www.youtube.com/watch?v=CaNDeyYP98A) virtual machines, simply to experience my first website in its natural Internet Explorer 5 habitat. And maybe play some [3D Pinball: Space Cadet](https://en.wikipedia.org/wiki/Full_Tilt!_Pinball#3D_Pinball_for_Windows_%E2%80%93_Space_Cadet). Oh, and [Microsoft Bob](https://en.wikipedia.org/wiki/Microsoft_Bob) is there too if you want to say hello and catch up. 🤓
+Introducing the [**Y2K Sandbox**](https://y2k.app/) — with fully-featured, fully-isolated, on-demand [**Windows Millennium Edition®**](https://www.youtube.com/watch?v=CaNDeyYP98A) virtual machines, simply to experience my first website in its natural Internet Explorer 5 habitat. And maybe play some [3D Pinball: Space Cadet](https://en.wikipedia.org/wiki/Full_Tilt!_Pinball#3D_Pinball_for_Windows_%E2%80%93_Space_Cadet). Oh, and [Microsoft Bob](https://en.wikipedia.org/wiki/Microsoft_Bob) is there too if you want to say hello and catch up. 🤓
 
 {{< image src="images/screenshot.png" link="https://y2k.app/" >}}[**Play in the Y2K Sandbox, at your own risk.**](https://y2k.app/){{< /image >}}
 
@@ -31,6 +31,6 @@ I must give credit to both [charlie.bz](https://charlie.bz/) and [benjojo.co.uk]
 
 {{< image src="images/windows-me.png" width="320" >}}**@microsoft** Please don't sue me.{{</ image >}}
 
-Feel free to [open an issue on GitHub](https://github.com/jakejarvis/y2k/issues) if you run into connection glitches or have any nostalgic inspiration for software you think would be cool to install persistently on the OS image. I certainly can't help with any actual Windows Me crashes, though — it was beyond help a long, long time ago. Like, [the day it came out](https://books.google.com/books?id=Jbft8HXJZwQC&lpg=PP1&pg=PA76#v=onepage&q&f=false). But it will always have a soft spot in my heart.
+Feel free to [open an issue on GitHub](https://github.com/jakejarvis/y2k/issues) if you run into connection glitches or have any nostalgic inspiration for software you think would be cool to install persistently on the OS image. I certainly can't help with any actual Windows Me crashes, though — it was beyond help a long, long time ago. Like, [the day it came out](https://books.google.com/books?id=Jbft8HXJZwQC&lpg=PP1&pg=PA76#v=onepage&q&f=false). But it will always have a soft spot in my heart.
 
 Anyways... quarantine boredom is a crazy thing, am I right? 😷

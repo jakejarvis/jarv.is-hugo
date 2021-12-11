@@ -14,13 +14,13 @@ draft: false
 
 {{< image src="images/actions-flow.png" width="780" alt="Example workflow for a GitHub Action" />}}
 
-Since being accepted into the beta for [GitHub Actions](https://github.com/features/actions) a few months ago, I've found a new side hobby of whipping up new (and ideally creative) actions for anybody to add to their CI pipeline. Actions are modular steps that interact with a GitHub repository and can be coded with [Docker](https://github.com/actions/hello-world-docker-action) or [JavaScript/Node](https://github.com/actions/hello-world-javascript-action) — and either way, they can be as [simple](https://github.com/jakejarvis/wait-action) or as [complex](https://github.com/jakejarvis/lighthouse-action) as you want. But in both cases, they're incredibly fun to make and the results always scratch my itch for instant gratification.
+Since being accepted into the beta for [GitHub Actions](https://github.com/features/actions) a few months ago, I've found a new side hobby of whipping up new (and ideally creative) actions for anybody to add to their CI pipeline. Actions are modular steps that interact with a GitHub repository and can be coded with [Docker](https://github.com/actions/hello-world-docker-action) or [JavaScript/Node](https://github.com/actions/hello-world-javascript-action) — and either way, they can be as [simple](https://github.com/jakejarvis/wait-action) or as [complex](https://github.com/jakejarvis/lighthouse-action) as you want. But in both cases, they're incredibly fun to make and the results always scratch my itch for instant gratification.
 
 My favorite so far is my [Lighthouse Audit action](https://github.com/jakejarvis/lighthouse-action), which spins up a headless Google Chrome instance in an Ubuntu container and runs [Google's Lighthouse tool](https://developers.google.com/web/tools/lighthouse), which scores webpages on performance, accessibility, SEO, etc. and provides actual suggestions to improve them. It's a perfect example of the power of combining containers with Git workflows.
 
 {{< image src="images/lighthouse-output.png" width="750" >}}The results of a Lighthouse audit on this website, after running tests in a headless Google Chrome.{{< /image >}}
 
-It's also been a fantastic avenue to dip my feet into the collaborative nature of GitHub and the open-source community. I've made some small apps in the past but these are the first projects where I'm regularly receiving new issues to help out with and impressive pull requests to merge. It's a great feeling!
+It's also been a fantastic avenue to dip my feet into the collaborative nature of GitHub and the open-source community. I've made some small apps in the past but these are the first projects where I'm regularly receiving new issues to help out with and impressive pull requests to merge. It's a great feeling!
 
 Here are the actions I've made so far, sorted by popularity as of this posting:
 
@@ -34,7 +34,7 @@ Here are the actions I've made so far, sorted by popularity as of this posting:
 
 ---
 
-As an example of an _extremely_ simple (and almost completely unnecessary) action, the [Wait action](https://github.com/jakejarvis/wait-action) takes one input — a unit of time — and has the pipeline sleep for that amount of time. The [`Dockerfile`](https://github.com/jakejarvis/wait-action/blob/master/Dockerfile) is as simple as this:
+As an example of an _extremely_ simple (and almost completely unnecessary) action, the [Wait action](https://github.com/jakejarvis/wait-action) takes one input — a unit of time — and has the pipeline sleep for that amount of time. The [`Dockerfile`](https://github.com/jakejarvis/wait-action/blob/master/Dockerfile) is as simple as this:
 
 {{< gist id="6a0830c7c3e514980b30fdf86b4931c5" file="Dockerfile" >}}
 

@@ -69,11 +69,11 @@ BERN is taking this to an unprecedented level. Allowing anybody on the internet 
 [BERN discussion on /r/SandersForPresident thread](https://www.reddit.com/r/SandersForPresident/comments/bi15la/new_get_the_official_bernie_sanders_2020_app_bern/elxi85m/)
 {{< /image >}}
 
-In addition to the points system, it was revealed in the webinar mentioned above that the campaign is planning on giving out shiny rewards based on how many friends one adds, setting expectations at 50+ contacts to reach the "Bernie Super Bundler" tier — whatever that means.
+In addition to the points system, it was revealed in the webinar mentioned above that the campaign is planning on giving out shiny rewards based on how many friends one adds, setting expectations at 50+ contacts to reach the "Bernie Super Bundler" tier — whatever that means.
 
 {{< image src="images/webinar-slide-1.png" width="700" alt="Webinar Slide 1" />}}
 
-In the middle of the webinar, the organizer also paused the presentation for _fifteen minutes_ — complete with a countdown clock — and told volunteers to race to add as many of their friends as possible in that time. She announced afterwards that participants added 20 to 40 friends into the app on average, with some allegedly adding close to 100 in fifteen minutes.
+In the middle of the webinar, the organizer also paused the presentation for _fifteen minutes_ — complete with a countdown clock — and told volunteers to race to add as many of their friends as possible in that time. She announced afterwards that participants added 20 to 40 friends into the app on average, with some allegedly adding close to 100 in fifteen minutes.
 
 {{< image src="images/webinar-slide-2.png" width="700" alt="Webinar Slide 2" />}}
 

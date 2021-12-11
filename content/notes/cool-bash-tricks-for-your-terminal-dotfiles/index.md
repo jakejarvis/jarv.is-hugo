@@ -23,7 +23,7 @@ My [full dotfiles are posted at this Git repository](https://github.com/jakejarv
 
 ---
 
-Check your current IP address (IPv4 or IPv6 or both) — uses [my ⚡ fast simpip server!](https://github.com/jakejarvis/simpip)
+Check your current IP address (IPv4 or IPv6 or both) — uses [my ⚡ fast simpip server!](https://github.com/jakejarvis/simpip)
 
 ```bash
 alias ip4="curl -4 simpip.com --max-time 1 --proto-default https --silent"
