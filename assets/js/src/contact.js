@@ -1,9 +1,9 @@
-import "vanilla-hcaptcha";
-import { h, render } from "preact";
+import { h, Fragment, render } from "preact";
 import { useState } from "preact/hooks";
 import fetch from "unfetch";
 
 // shared react components:
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { CheckIcon, XIcon } from "@primer/octicons-react";
 import SendEmoji from "twemoji-emojis/vendor/svg/1f4e4.svg";
 
@@ -114,7 +114,13 @@ const ContactForm = () => {
       </div>
 
       <div id="contact-form-captcha">
-        <h-captcha site-key={process.env.HCAPTCHA_SITE_KEY} size="normal" />
+        <HCaptcha
+          sitekey={process.env.HCAPTCHA_SITE_KEY}
+          theme={document.body.classList.contains("dark") ? "dark" : "light"}
+          size="normal"
+          reCaptchaCompat={false}
+          onVerify={() => true} // this is allegedly optional but a function undefined error is thrown without it
+        />
       </div>
 
       <div id="contact-form-action-row">
@@ -125,7 +131,13 @@ const ContactForm = () => {
           disabled={sending}
           style={{ display: status.success ? "none" : null }}
         >
-          <SendEmoji class="emoji" /> {sending ? "Sending..." : "Send"}
+          {sending ? (
+            <span>Sending...</span>
+          ) : (
+            <>
+              <SendEmoji class="emoji" /> <span>Send</span>
+            </>
+          )}
         </button>
 
         <span

@@ -1,4 +1,4 @@
-import { h, render, Fragment } from "preact";
+import { h, Fragment, render } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import fetch from "unfetch";
 import dayjs from "dayjs";

@@ -28,6 +28,7 @@
     "@fontsource/comic-neue": "4.5.0",
     "@fontsource/inter": "4.5.1",
     "@fontsource/roboto-mono": "4.5.0",
+    "@hcaptcha/react-hcaptcha": "^0.3.9",
     "@octokit/graphql": "^4.8.0",
     "@primer/octicons-react": "^16.1.1",
     "@sentry/node": "^6.16.1",
@@ -48,8 +49,7 @@
     "trim-newlines": "^4.0.2",
     "twemoji": "^13.1.0",
     "twemoji-emojis": "^14.1.0",
-    "unfetch": "^4.2.0",
-    "vanilla-hcaptcha": "^1.0.0-alpha"
+    "unfetch": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -70,6 +70,7 @@
     "eslint": "~8.4.1",
     "eslint-config-preact": "^1.2.0",
     "eslint-config-prettier": "~8.3.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "~4.0.0",
     "gulp": "^4.0.2",
     "gulp-cache": "^1.1.3",
