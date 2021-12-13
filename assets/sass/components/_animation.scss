@@ -1,18 +1,19 @@
 @use "../abstracts/themes";
 
-.wave {
+.wave,
+.beat {
   display: inline-block;
+}
+
+.wave {
   animation: wave 5s infinite;
   animation-delay: 1s;
   transform-origin: 65% 80%;
-  will-change: transform;
 }
 
 .beat {
-  display: inline-block;
   animation: beat 10s infinite; // 6 bpm, call 911 if you see this please.
   animation-delay: 7.5s; // offset from wave animation
-  will-change: transform;
 }
 
 @keyframes wave {

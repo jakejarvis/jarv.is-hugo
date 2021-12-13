@@ -4,7 +4,7 @@ module.exports = {
   plugins: ["jsx-a11y", "prettier"],
   parser: "@babel/eslint-parser",
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
   },
   ignorePatterns: ["public/**", "static/assets/**"],
 };

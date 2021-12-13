@@ -30,10 +30,6 @@ export default (env, argv) => {
       path: path.resolve(__dirname, "static/assets/"),
       publicPath: "/assets/",
       clean: true,
-      environment: {
-        // https://github.com/babel/babel-loader#top-level-function-iife-is-still-arrow-on-webpack-5
-        arrowFunction: false,
-      },
       devtoolModuleFilenameTemplate: "webpack:///[resource-path]",
     },
     resolve: {
@@ -186,7 +182,6 @@ export default (env, argv) => {
       maxAssetSize: 990000, // ~99 KiB
     },
     optimization: {
-      sideEffects: true,
       minimize: isProd,
       minimizer: [
         new TerserPlugin({
@@ -200,7 +195,7 @@ export default (env, argv) => {
             },
             format: {
               // cut all comments except for the banner declared above via LicensePlugin:
-              comments: (_astNode, comment) => comment.value.toLowerCase().includes("third-party libraries"),
+              comments: (astNode, comment) => comment.value.toLowerCase().includes("third-party libraries"),
               ascii_only: true, // some symbols get disfigured otherwise
             },
             mangle: true,
