@@ -1,4 +1,4 @@
-{{- $url := printf "https://publish.twitter.com/oembed?lang=en&omit_script=true&dnt=true&align=center&url=%s" (index .Params 0 | safeURL) -}}
+{{- $url := printf "https://publish.twitter.com/oembed?lang=en&omit_script=true&dnt=true&url=%s" (index .Params 0 | safeURL) -}}
 {{- $json := getJSON $url -}}
 
 <div class="embed {{ .Name }}">

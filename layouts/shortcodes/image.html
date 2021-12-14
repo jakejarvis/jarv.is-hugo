@@ -6,9 +6,11 @@
     {{- with .Inner }}
       alt="{{ . | $.Page.RenderString | plainify | safeHTML }}"
     {{- else }}
-      {{ with .Get "alt" }} alt="{{ . | safeHTML }}"{{ end }}
+      {{ with .Get "alt" }}
+        alt="{{ . | safeHTML }}"
+      {{ end }}
     {{- end -}}
-  >
+  />
   {{ if .Get "link" }}</a>{{ end }}
 
   {{ with .Inner -}}

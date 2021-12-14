@@ -5,7 +5,7 @@ snapshot:
     - 1050
   enable-javascript: true
   percy-css: >
-    div.embed,
+    .embed,
     iframe,
     video,
     img[src$=".gif"],
