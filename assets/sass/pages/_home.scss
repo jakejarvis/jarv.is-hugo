@@ -200,7 +200,7 @@ div.layout-home {
 // Loop through $colors-home (see above)
 @each $id, $colors in $colors-home {
   @each $theme, $color in $colors {
-    @at-root body.#{$theme} div.layout-home a##{$id} {
+    @at-root html.#{$theme} div.layout-home a##{$id} {
       color: $color;
       background-image: functions.underline-hack($color, map.get(map.get(themes.$themes, $theme), "background-inner"));
     }

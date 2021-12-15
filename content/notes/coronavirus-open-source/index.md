@@ -17,7 +17,7 @@ css: |
   div#content a#octocat svg {
     vertical-align: text-bottom;
   }
-  body.dark div#content a#octocat svg path {
+  html.dark div#content a#octocat svg path {
     fill: #d3d3d3;
   }
 draft: false

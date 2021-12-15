@@ -100,7 +100,7 @@ main {
 
     // cool link underlines via messy SCSS hacking (see ../abstracts/_functions)
     @each $theme, $map in themes.$themes {
-      @at-root body.#{$theme} #{&} {
+      @at-root html.#{$theme} #{&} {
         background-image: functions.underline-hack(map.get($map, "links"), map.get($map, "background-inner"));
       }
     }

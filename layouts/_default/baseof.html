@@ -7,11 +7,11 @@
 {{- partial "functions/prepare-js" . -}}
 {{- partial "functions/prepare-css" . -}}
 
-<html lang="{{ .Site.LanguageCode | default "en" }}">
+<html lang="{{ .Site.LanguageCode | default "en" }}" class="{{ .Site.Params.Theme.defaultTheme }}">
   <head>
 {{ partial "head/_head" . }}
   </head>
-  <body class="{{ .Site.Params.Theme.defaultTheme }}">
+  <body>
 {{ partialCached "page/header" . }}
 <main>
 {{ block "main" . }}{{ end }}

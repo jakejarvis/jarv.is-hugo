@@ -129,7 +129,7 @@ div.highlight {
 }
 
 // Syntax Highlighting (light) - modified from Monokai Light: https://github.com/mlgill/pygments-style-monokailight
-body.light {
+html.light {
   div.highlight,
   button.copy-button,
   :not(pre) > code {
@@ -215,7 +215,7 @@ body.light {
 }
 
 // Syntax Highlighting (dark) - modified from Dracula: https://github.com/dracula/pygments
-body.dark {
+html.dark {
   div.highlight,
   button.copy-button,
   :not(pre) > code {

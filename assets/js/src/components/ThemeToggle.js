@@ -1,6 +1,6 @@
 import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
-import { isDark, setDarkClass, setDarkPref } from "../utils/theme.js";
+import { isDark, setDarkPref } from "../utils/theme.js";
 
 // react components:
 import BulbOn from "../assets/bulb-on.svg";
@@ -11,7 +11,9 @@ const ThemeToggle = () => {
   const [dark, setDark] = useState(isDark());
 
   useEffect(() => {
-    return setDarkClass(dark);
+    // sets appropriate `<html class="...">`
+    document.documentElement.classList.remove("dark", "light");
+    document.documentElement.classList.add(dark ? "dark" : "light");
   }, [dark]);
 
   const handleToggle = () => {

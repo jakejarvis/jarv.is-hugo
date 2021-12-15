@@ -1,24 +1,17 @@
 @use "sass:map";
 
-// Takes a map of CSS properties and theme keys (see below) and set both body.light and body.dark selectors.
+// Takes a map of CSS properties and theme keys (see below) and set both html.light and html.dark selectors.
 // ex. @include themes.themed((color: "text", background-color: "background-inner"));
 @mixin themed($properties) {
   // keep track of the original selector(s) calling this mixin for below
   $selectors: #{&};
 
-  // add corresponding body.light and body.dark root selectors
+  // add corresponding html.light and html.dark root selectors
   @each $theme, $map in $themes {
-    @at-root body.#{$theme} {
-      // support theming root body element
-      @if $selectors == "body" {
+    @at-root html.#{$theme} {
+      #{$selectors} {
         @each $property, $color in $properties {
           #{$property}: map.get($map, $color);
-        }
-      } @else {
-        #{$selectors} {
-          @each $property, $color in $properties {
-            #{$property}: map.get($map, $color);
-          }
         }
       }
     }

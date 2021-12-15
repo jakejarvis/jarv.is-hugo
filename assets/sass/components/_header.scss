@@ -110,23 +110,25 @@ header {
         }
 
         // Dark mode toggle
-        &.theme-toggle button {
-          border: 0;
-          padding: 0;
-          background: none;
-          margin: 0.3em -0.3em 0 1.4em;
-          cursor: pointer;
+        &.theme-toggle {
+          margin-left: 1.4em;
 
-          svg {
-            width: 1.56em; // 24.33px, don't ask
-            height: 1.56em;
+          button {
+            border: 0;
+            padding: 0;
+            background: none;
+            margin: 0.3em -0.3em 0 0;
+            cursor: pointer;
+
+            svg {
+              width: 1.56em; // 24.33px, don't ask
+              height: 1.56em;
+            }
           }
         }
 
-        // no margin on the first child to make more room on narrow windows (before responsiveness kicks in).
-        // last child is the dark mode toggle -- margin is set directly on it in case it's hidden (if JS is disabled).
-        &:first-child,
-        &:last-child {
+        // no margin on the first child to make more room on narrow windows (before responsiveness kicks in)
+        &:first-child {
           margin-left: 0;
         }
       }

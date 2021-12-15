@@ -72,7 +72,7 @@ function optimizeHtml() {
         collapseBooleanAttributes: true,
         removeComments: true,
         minifyCSS: true,
-        minifyJS: false,
+        minifyJS: true,
       })
     )
     .pipe(gulp.dest(".", { overwrite: true }));
