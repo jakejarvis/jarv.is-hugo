@@ -10,6 +10,6 @@ document.querySelectorAll("div.highlight").forEach((highlightDiv) => {
 
   if (codeElement) {
     // add the button as a sibling to the original Hugo block whose contents we're copying
-    render(<CopyButton content={codeElement.textContent} />, highlightDiv);
+    render(<CopyButton content={codeElement.textContent} timeout={2000} />, highlightDiv);
   }
 });

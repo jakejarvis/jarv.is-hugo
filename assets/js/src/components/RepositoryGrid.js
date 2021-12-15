@@ -12,7 +12,7 @@ const RepositoryGrid = () => {
   // start fetching repos from API immediately
   useEffect(() => {
     // API endpoint (sort by stars, limit to 12)
-    fetch("/api/projects/?top&limit=12")
+    return fetch("/api/projects/?top&limit=12")
       .then((response) => response.json())
       .then((data) => setRepos(data || []));
   }, []);

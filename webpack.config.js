@@ -66,7 +66,9 @@ export default (env, argv) => {
         licenseFileOverrides: {
           twemoji: "LICENSE-GRAPHICS", // we only use the emojis, not the bundled code
         },
-        excludedPackageTest: (packageName) => packageName.startsWith("preact-"),
+        stats: {
+          warnings: false,
+        },
       }),
       new CopyPlugin({
         patterns: [

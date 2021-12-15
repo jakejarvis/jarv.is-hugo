@@ -11,7 +11,7 @@ const ThemeToggle = () => {
   const [dark, setDark] = useState(isDark());
 
   useEffect(() => {
-    setDarkClass(dark);
+    return setDarkClass(dark);
   }, [dark]);
 
   const handleToggle = () => {

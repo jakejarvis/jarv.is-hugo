@@ -10,7 +10,7 @@ const Counter = (props) => {
 
   // start fetching hits from API once slug is set
   useEffect(() => {
-    fetch(`/api/hits/?slug=${encodeURIComponent(props.slug)}`)
+    return fetch(`/api/hits/?slug=${encodeURIComponent(props.slug)}`)
       .then((response) => response.json())
       .then((data) => setHits(data.hits || 0));
   }, [props.slug]);
