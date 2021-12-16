@@ -177,13 +177,16 @@ header {
           }
 
           // Dark mode toggle
-          &.theme-toggle button {
+          &.theme-toggle {
             margin-left: 1em;
-            margin-right: -0.2em; // weirdness w/ svg ratio
 
-            svg {
-              width: 1.08em; // ~27px, don't ask
-              height: 1.08em;
+            button {
+              margin-right: -0.2em; // weirdness w/ svg ratio
+
+              svg {
+                width: 1.08em; // ~27px, don't ask
+                height: 1.08em;
+              }
             }
           }
         }
