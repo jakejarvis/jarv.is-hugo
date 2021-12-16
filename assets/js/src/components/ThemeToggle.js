@@ -11,7 +11,7 @@ const ThemeToggle = () => {
   const [dark, setDark] = useState(isDark());
   const [saved, setSaved] = useState(!!getDarkPref());
 
-  // real-time switching between modes based on system if preference isn't set (and it's supported by OS/browser)
+  // real-time switching between modes based on user's system if preference isn't set (and it's supported by OS/browser)
   const matchCallback = useCallback((e) => setDark(e.matches), []);
   useEffect(() => {
     try {
