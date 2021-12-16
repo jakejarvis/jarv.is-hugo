@@ -11,16 +11,22 @@ const ThemeToggle = () => {
   const [dark, setDark] = useState(isDark());
   const [saved, setSaved] = useState(!!getDarkPref());
 
-  // real-time switching between modes if preference isn't set (and it's supported by OS/browser)
-  const callback = useCallback((e) => setDark(e.matches), []);
+  // real-time switching between modes based on system if preference isn't set (and it's supported by OS/browser)
+  const matchCallback = useCallback((e) => setDark(e.matches), []);
   useEffect(() => {
-    if (saved) {
-      // TODO: FIX THIS...
-      window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", callback, true);
-    } else {
-      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", callback, true);
-    }
-  }, [saved, callback]);
+    try {
+      // https://drafts.csswg.org/mediaqueries-5/#prefers-color-scheme
+      const matcher = window.matchMedia("(prefers-color-scheme: dark)");
+
+      // only listen to OS if the user hasn't specified a preference
+      if (!saved) {
+        matcher.addEventListener("change", matchCallback, true);
+      }
+
+      // cleanup and stop listening if/when preference is explicitly set
+      return () => matcher.removeEventListener("change", matchCallback, true);
+    } catch (e) {}
+  }, [saved, matchCallback]);
 
   useEffect(() => {
     // sets appropriate `<html class="...">`
