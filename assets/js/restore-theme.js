@@ -14,8 +14,4 @@ try {
     cl.remove("light");
     cl.add("dark");
   }
-
-  // TODO: fix real-time switching (works but bulb icon isn't updated)
-  // window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => e.matches && setDark(true));
-  // window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => e.matches && setDark(false));
 } catch (error) {}
