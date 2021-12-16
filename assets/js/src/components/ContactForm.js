@@ -6,7 +6,7 @@ import { isDark } from "../utils/theme.js";
 // react components:
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { CheckIcon, XIcon } from "@primer/octicons-react";
-import SendEmoji from "twemoji-emojis/vendor/svg/1f4e4.svg";
+import SendIcon from "../assets/send.svg";
 
 const ContactForm = () => {
   // status/feedback:
@@ -134,7 +134,7 @@ const ContactForm = () => {
             <span>Sending...</span>
           ) : (
             <>
-              <SendEmoji class="emoji" /> <span>Send</span>
+              <SendIcon class="emoji" /> <span>Send</span>
             </>
           )}
         </button>

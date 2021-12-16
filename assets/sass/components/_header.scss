@@ -96,6 +96,7 @@ header {
 
           span {
             &.header-menu-icon {
+              width: 1.3em;
               font-size: 1.3em;
               user-select: none;
             }
@@ -111,6 +112,7 @@ header {
 
         // Dark mode toggle
         &.theme-toggle {
+          width: 1.3em;
           margin-left: 1.4em;
 
           button {
@@ -178,6 +180,7 @@ header {
 
           // Dark mode toggle
           &.theme-toggle {
+            width: 0.9em;
             margin-left: 1em;
 
             button {
