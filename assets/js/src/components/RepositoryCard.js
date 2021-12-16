@@ -1,13 +1,9 @@
 import { h } from "preact";
-import dayjs from "dayjs";
-import dayjsRelativeTime from "dayjs/plugin/relativeTime.js";
+import { intlFormat, formatDistanceToNowStrict } from "date-fns";
 import parseEmoji from "../utils/parseEmoji.js";
 
 // react components:
 import { StarIcon, RepoForkedIcon } from "@primer/octicons-react";
-
-// dayjs plugins: https://day.js.org/docs/en/plugin/loading-into-nodejs
-dayjs.extend(dayjsRelativeTime);
 
 const RepositoryCard = (props) => (
   <div class="github-card">
@@ -61,16 +57,22 @@ const RepositoryCard = (props) => (
 
       <div
         class="repo-meta-item"
-        title={new Intl.DateTimeFormat("en-US", {
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-          timeZoneName: "short",
-        }).format(new Date(props.updatedAt))}
+        title={intlFormat(
+          new Date(props.updatedAt),
+          {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            timeZoneName: "short",
+          },
+          {
+            locale: "en-US",
+          }
+        )}
       >
-        <span>Updated {dayjs(props.updatedAt).fromNow()}</span>
+        <span>Updated {formatDistanceToNowStrict(new Date(props.updatedAt), { addSuffix: true })}</span>
       </div>
     </div>
   </div>
