@@ -100,7 +100,26 @@ function optimizeImages() {
             strip: true,
           }),
           imageminGifsicle(),
-          imageminSvgo(),
+          imageminSvgo({
+            plugins: [
+              {
+                name: "preset-default",
+                params: {
+                  overrides: {
+                    removeViewBox: false,
+                  },
+                },
+              },
+              {
+                name: "removeDimensions",
+                active: true,
+              },
+              {
+                name: "sortAttrs",
+                active: true,
+              },
+            ],
+          }),
         ])
       )
     )
