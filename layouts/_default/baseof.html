@@ -7,7 +7,7 @@
 {{- partial "functions/prepare-js" . -}}
 {{- partial "functions/prepare-css" . -}}
 
-<html lang="{{ .Site.LanguageCode | default "en" }}" class="{{ .Site.Params.Theme.defaultTheme }}">
+<html lang="{{ .Site.LanguageCode | default "en" }}"{{ with .Site.Params.Theme.defaultTheme }} class="{{ . }}" style="color-scheme: {{ . }};"{{ end }}>
   <head>
 {{ partial "head/_head" . }}
   </head>
@@ -20,7 +20,4 @@
 {{ template "__body_js" . }}
   </body>
 </html>
-
-{{ if ne hugo.Environment "production" }}
-{{ partial "functions/debug" . }}
-{{ end }}
+{{- partial "functions/debug" . -}}
