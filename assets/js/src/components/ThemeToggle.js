@@ -1,6 +1,6 @@
 import { h } from "preact";
 import { useState, useEffect, useCallback } from "preact/hooks";
-import { isDark, getDarkPref, setDarkPref } from "../utils/theme.js";
+import { isDark, getDarkPref, setDarkPref, updateDOM } from "../utils/theme.js";
 
 // react components:
 import BulbOn from "../assets/bulb-on.svg";
@@ -28,11 +28,8 @@ const ThemeToggle = () => {
     } catch (e) {}
   }, [saved, matchCallback]);
 
-  useEffect(() => {
-    // sets appropriate `<html class="...">`
-    document.documentElement.classList.remove("dark", "light");
-    document.documentElement.classList.add(dark ? "dark" : "light");
-  }, [dark]);
+  // sets appropriate `<html class="...">` and `color-scheme` CSS property when mode changes
+  useEffect(() => updateDOM(dark), [dark]);
 
   const handleToggle = () => {
     // only update the local storage preference if the user explicitly presses the lightbulb
