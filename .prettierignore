@@ -1,5 +1,6 @@
 # Hugo/Webpack stuff that doesn't play well with Prettier
 assets/**/vendor/
+assets/jsconfig.json
 layouts/
 static/
 hugo_stats.json
