@@ -9,13 +9,14 @@
     </a>
     <ul id="header-menu">
       {{- range .Site.Menus.main }}
-      <li>
-        <a class="header-menu-item" {{ printf "href=%q" .URL | safeHTMLAttr }} aria-label="{{ .Name }}"{{ if strings.HasPrefix .URL "http" }} target="_blank" rel="me noopener"{{ end }}>
-          <span class="header-menu-icon">{{ .Pre }}</span>
-          <span class="header-menu-text">{{ .Name }}</span>
-        </a>
-      </li>
+        <li>
+          <a class="header-menu-item" href="{{ .URL }}" aria-label="{{ .Name }}">
+            <span class="header-menu-icon">{{ .Pre }}</span>
+            <span class="header-menu-text">{{ .Name }}</span>
+          </a>
+        </li>
       {{- end }}
+
       <li class="theme-toggle"></li>
     </ul>
   </nav>

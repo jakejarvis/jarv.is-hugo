@@ -5,7 +5,7 @@ description: "Things I use daily."
 image: "images/bigsur.png"
 layout: etc
 css: |
-  h2 img.emoji {
+  h2 .emoji {
     margin-right: 2px;
   }
 ---

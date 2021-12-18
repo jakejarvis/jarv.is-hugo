@@ -1,6 +1,16 @@
-{{/* Pull in JS processed by Webpack */}}
+{{- define "__head_js" -}}
+  {{/* A super tiny script to restore dark mode off the bat (to hopefully avoid blinding flashes of white) */}}
+  {{ $themeScript := resources.Get "js/restore-theme.js" | js.Build (dict "target" "es2015" "format" "iife") }}
+
+  {{ with $themeScript }}
+    <script>
+      {{ .Content | safeJS }}
+    </script>
+  {{ end }}
+{{- end -}}
 
 {{- define "__body_js" -}}
+  {{/* Pull in JS processed by Webpack */}}
   {{ with partial "functions/webpack" (dict "context" . "src" "main.js") }}
     <script async defer src="{{ .src }}"></script>
   {{ end }}

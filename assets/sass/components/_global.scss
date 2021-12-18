@@ -27,6 +27,8 @@ body {
 }
 
 code,
+kbd,
+samp,
 pre,
 .monospace {
   font-family: settings.$font-stack-mono;
@@ -42,6 +44,8 @@ pre,
   }
 
   code,
+  kbd,
+  samp,
   pre,
   .monospace {
     font-family: settings.$font-stack-mono-variable;
@@ -55,6 +59,8 @@ pre,
 
     // Roboto Mono doesn't have this problem, but the above fix breaks it, of course.
     code,
+    kbd,
+    samp,
     pre,
     .monospace {
       font-style: italic !important;

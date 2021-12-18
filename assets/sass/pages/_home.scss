@@ -135,8 +135,12 @@ div.layout-home {
     font-weight: 500;
     letter-spacing: -0.014em;
 
-    img.emoji {
+    .emoji {
       margin-left: 0.1em; // a little extra social distancing for the hand
+    }
+
+    .wave {
+      margin-left: 2px;
     }
   }
 
@@ -163,7 +167,7 @@ div.layout-home {
       word-spacing: -0.3em;
       margin-right: 0.1em;
 
-      img.emoji {
+      .emoji {
         vertical-align: -0.2em; // magic number to align with text :\
         padding: 0;
       }
@@ -189,10 +193,6 @@ div.layout-home {
           color: "medium-light",
         )
       );
-    }
-
-    &.wave {
-      margin-left: 2px;
     }
   }
 }

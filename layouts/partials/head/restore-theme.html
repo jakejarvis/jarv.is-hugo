@@ -1,6 +1,0 @@
-{{ $themeScript := resources.Get "js/restore-theme.js" | js.Build (dict "target" "es2015" "format" "iife") }}
-{{ with $themeScript }}
-<script>
-{{ .Content | safeJS }}
-</script>
-{{ end }}
