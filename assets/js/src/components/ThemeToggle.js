@@ -25,7 +25,7 @@ const ThemeToggle = () => {
 
       // cleanup and stop listening if/when preference is explicitly set
       return () => matcher.removeEventListener("change", matchCallback, true);
-    } catch (e) {}
+    } catch (e) {} // eslint-disable-line no-empty
   }, [saved, matchCallback]);
 
   // sets appropriate `<html class="...">` and `color-scheme` CSS property when mode changes

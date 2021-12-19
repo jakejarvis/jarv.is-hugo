@@ -10,4 +10,4 @@ try {
   // - the user's OS is in dark mode.
   const pref = getDarkPref();
   updateDOM(pref === "true" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches));
-} catch (e) {}
+} catch (e) {} // eslint-disable-line no-empty
