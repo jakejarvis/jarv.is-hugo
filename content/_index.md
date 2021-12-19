@@ -1,6 +1,6 @@
 ---
 title: "Jake Jarvis – Front-End Web Developer in Boston, MA 👨‍💻"
-date: 2021-10-16 07:16:17-0400
+date: 2021-12-18 08:14:49-0400
 type: home
 sitemap:
   priority: 1.0
@@ -28,7 +28,7 @@ Over the years, some of my side projects
 <a href="https://gigaom.com/2009/10/06/fresh-faces-in-tech-10-kid-entrepreneurs-to-watch/6/" title="&quot;Fresh Faces in Tech: 10 Kid Entrepreneurs to Watch&quot; on Gigaom" id="news-6" target="_blank" rel="noopener">media</a>
 <a href="https://adage.com/article/small-agency-diary/client-ceo-s-son/116723/" title="&quot;Your Next Client? The CEO&#39;s Son&quot; on Advertising Age" id="news-7" target="_blank" rel="noopener">outlets</a>.
 
-You can find more of my work on <a href="https://github.com/jakejarvis" title="Jake Jarvis on GitHub" id="github" target="_blank" rel="me noopener">GitHub</a> and <a href="https://www.linkedin.com/in/jakejarvis/" title="Jake Jarvis on LinkedIn" id="linkedin" target="_blank" rel="me noopener">LinkedIn</a>, and I'm always open to connect over <a href="/contact/" title="Send an email" id="email">email</a> <sup id="key" class="monospace"><a class="no-underline" href="/pubkey.asc" title="My Public Key" id="pgp" target="_blank" rel="pgpkey authn noopener">🔐 2B0C 9CF2 51E6 9A39</a></sup>, <a href="https://twitter.com/jakejarvis" title="Jake Jarvis on Twitter" id="twitter" target="_blank" rel="me noopener">Twitter</a>, or <a href="sms:+1-617-917-3737" title="Send SMS to +1 (617) 917-3737" id="sms">SMS</a> as well!
+You can find more of my work on <a href="https://github.com/jakejarvis" title="Jake Jarvis on GitHub" id="github" target="_blank" rel="me noopener">GitHub</a> and <a href="https://www.linkedin.com/in/jakejarvis/" title="Jake Jarvis on LinkedIn" id="linkedin" target="_blank" rel="me noopener">LinkedIn</a>. I'm always available to connect over <a href="/contact/" title="Send an email" id="email">email</a> <sup id="key" class="monospace"><a class="no-underline" href="/pubkey.asc" title="My Public Key" id="pgp" target="_blank" rel="pgpkey authn noopener">🔐 2B0C 9CF2 51E6 9A39</a></sup>, <a href="https://twitter.com/jakejarvis" title="Jake Jarvis on Twitter" id="twitter" target="_blank" rel="me noopener">Twitter</a>, or <a href="sms:+1-617-917-3737" title="Send SMS to +1 (617) 917-3737" id="sms">SMS</a> as well!
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
