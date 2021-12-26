@@ -1,6 +1,27 @@
 {
   "links": [
     {
+      "source": "https://fixeme.com/difference-between-main-branch-and-master-branch-in-github/",
+      "verified": true,
+      "verified_date": "2021-12-25T14:08:16+00:00",
+      "id": 1322293,
+      "private": false,
+      "data": {
+        "url": "https://fixeme.com/difference-between-main-branch-and-master-branch-in-github/",
+        "name": null,
+        "content": null,
+        "published": null,
+        "published_ts": null
+      },
+      "activity": {
+        "type": "link",
+        "sentence": "https://fixeme.com/difference-between-main-branch-and-master-branch-in-github/ posted '' linking to https://jarv.is/notes/github-rename-master/",
+        "sentence_html": "<a href=\"https://fixeme.com/difference-between-main-branch-and-master-branch-in-github/\">someone</a> posted '' linking to <a href=\"https://jarv.is/notes/github-rename-master/\">https://jarv.is/notes/github-rename-master/</a>"
+      },
+      "rels": { "canonical": "https://fixeme.com/difference-between-main-branch-and-master-branch-in-github/" },
+      "target": "https://jarv.is/notes/github-rename-master/"
+    },
+    {
       "source": "http://scholars.com.pk/?p=105139",
       "verified": true,
       "verified_date": "2021-12-23T09:35:00+00:00",
