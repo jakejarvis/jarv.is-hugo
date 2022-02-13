@@ -78,7 +78,7 @@
     "postcss-svgo": "^5.0.2",
     "prettier": "^2.3.0",
     "rimraf": "^3.0.2",
-    "simple-git-hooks": "^2.4.1",
+    "simple-git-hooks": "^2.7.0",
     "stylelint": "~13.13.1",
     "stylelint-config-prettier": "~8.0.2",
     "stylelint-config-sass-guidelines": "~8.0.0",
